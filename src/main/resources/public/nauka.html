@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Tryb nauki I</title>
+  <meta name="description" content="Tryb nauki - etap pierwszy"/>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <script src="js/myscript.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+</head>
+
+<body onload="loadFiche()">
+
+  <div id="container">
+    <center>
+      <div id="fiszkaX">
+        <div class="front fiszka">
+          <p class="text" id="textENG"></p>
+          <button type="button" class="mybutton" id="speaker" onclick="readENG()">&#x1f50a</button>
+          <!--<button type="button" class="mybutton" id="next" onclick="$('#card').flip();">&#x25B6</button>-->
+        </div>
+
+        <div class="back fiszka">
+          <p class="text" id="textPL"></p>
+          <button type="button" class="mybutton" id="speaker" onclick="readPL()">&#x1f50a</button>
+          <!--<button type="button" class="mybutton" id="next" onclick="$('#card').flip();">&#x25B6</button>-->
+        </div>
+      </div>
+        <button type="button" class="mybutton" id="next" onclick="nextFiche()">NEXT</button>
+    </center>
+
+  </div>
+  <script>
+    $('#fiszkaX').flip({axis: 'y'});
+  </script>
+
+
+</body>
+
+<html>
