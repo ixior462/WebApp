@@ -1,5 +1,5 @@
-var pl = ["JABŁKO", "GRUSZKA", "ŚLIWKA"];
-var eng = ["APPLE", "PEAR", "PLUM"];
+var pl = ["ERROR"];
+var eng = ["ERROR"];
 var wordIndex = 0;
 
 function readPL(){
