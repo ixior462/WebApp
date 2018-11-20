@@ -23,10 +23,10 @@ function loadFiche(){
 }
 
 function nextFiche(){
-  $('#fiszkaX').animate({bottom:"500px"},500, function(){
+  $('#fiszkaX').animate({bottom:"500px"},400, function(){
     wordIndex = (wordIndex+1)%pl.length;
     loadFiche();
-    $('#fiszkaX').animate({bottom:"0px"},500)
+    $('#fiszkaX').animate({bottom:"0px"},400)
   })
   //flip(false);
   //var x = document.getElementsByClassName('fiszka');

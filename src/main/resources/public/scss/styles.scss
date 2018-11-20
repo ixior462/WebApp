@@ -23,9 +23,14 @@ body{
 .mybutton{
   border: none;
   background-color: #f2f2f2;
-  border-radius: 50%;
-  color: black;
+  font-size: 30px;
+  border-radius: 10%;
+  color: #020202;
+  margin-top: 5px;
 }
-#speaker{
-
+.speakerButton{
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  color: #020202;
 }

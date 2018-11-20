@@ -21,5 +21,13 @@ body {
 .mybutton {
   border: none;
   background-color: #f2f2f2;
+  font-size: 30px;
+  border-radius: 10%;
+  color: #020202;
+  margin-top: 5px; }
+
+.speakerButton {
+  border: none;
+  background-color: #f2f2f2;
   border-radius: 50%;
-  color: black; }
+  color: #020202; }
