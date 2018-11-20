@@ -2,10 +2,10 @@ package com.project.app.registration;
 
 
 public class UserData {
-    private String userName;
-    private String password;
-    private String matchingPassword;
-    private String email;
+    public String userName;
+    public String password;
+    public String matchingPassword;
+    public String email;
 
     public String getUserName() {
 

@@ -20,5 +20,19 @@ public class RegistrationController {
         model.addAttribute("user", user);
         return "registration";
     }
+    @PostMapping("/login")
+    public String HelloUser(@ModelAttribute UserData user, Model model) {
+        user.setUserName(user.getUserName());
+        model.addAttribute("username", user.userName);
+        return "result";
+    }
+    @PostMapping("/register")
+    public String NewUser(@ModelAttribute UserData user, Model model) {
+        user.setUserName(user.getUserName());
+        model.addAttribute("username", user.userName);
+        return "result";
+    }
+
+
 }
 
