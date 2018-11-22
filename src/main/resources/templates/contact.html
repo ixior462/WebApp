@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
+        <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
+        <meta name="author" content="Weronika Jasiak">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nazwa</title>
+        <link rel="stylesheet" href="../public/css/reset.css">
+        <link rel="stylesheet" href="../public/css/styleIndex.css">
+    </head>
+    <body>
+        <header>
+            <nav id="main-nav">
+                <ul class="menu">
+                    <li><img src="../public/images/flaga.png" alt="flaga"></li>
+                    <li><a href="index.html"><h1>Nazwa</h1></a></li>
+                    <li class="right"><a href="login.html">Zaloguj</a></li>
+                    <li class="right"><a class="active" href="#">Kontakt</a></li>
+                    <li class="right"><a href="menu.html">Menu</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="contact">
+            <h2>Kontakt</h2>
+
+            <div class="container">
+                <form action="/action_page.php">
+                    <label for="alias">Pseudonim</label>
+                    <input type="text" id="alias" name="alias" placeholder="Twój pseudonim..">
+
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email" placeholder="Twój adres e-mail..">
+
+                    <label for="topic">Temat</label>
+                    <input type="text" id="topic" name="topic" placeholder="Temat wiadomości..">
+
+                    <label for="subject">Wiadomość</label>
+                    <textarea id="subject" name="subject" placeholder="W jakiej sprawie się z nami kontaktujesz?" style="height:200px"></textarea>
+
+                    <input type="submit" value="Wyślij">
+                </form>
+            </div>
+        </section>
+    </body>
+</html>
