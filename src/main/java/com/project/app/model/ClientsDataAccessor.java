@@ -10,12 +10,13 @@ public class ClientsDataAccessor {
     }
 
     public void addNewClientToJSON(Client client){
-       handler.addClientToJSON(client);
+        handler.addClientToJSON(client);
     }
 
     public Client getClient(String login){
         return handler.getClientFromJSON(login);
     }
+    public boolean clientAlreadyExist(String login){
+        return handler.clientAlreadyExist(login);
+    }
 }
-
-
