@@ -16,7 +16,5 @@ public class ClientsDataAccessor {
     public Client getClient(String login){
         return handler.getClientFromJSON(login);
     }
-    public boolean clientAlreadyExist(String login){
-        return handler.clientAlreadyExist(login);
-    }
+
 }

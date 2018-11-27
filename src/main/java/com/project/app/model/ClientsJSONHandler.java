@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Random;
 
+import static java.lang.Math.toIntExact;
+
 public class ClientsJSONHandler {
     //Class that will acces Clients JSON file
     private JSONParser parser;
@@ -43,6 +45,11 @@ public class ClientsJSONHandler {
             JSONObject newObject = new JSONObject();
             newObject.put("login", client.getLogin());
             newObject.put("password", client.getPassword());
+            newObject.put("email", client.getEmail());
+            newObject.put("elo", 1200);
+            newObject.put("level", "A1");
+
+
 
 
             //Print object that we will add to the array
@@ -92,7 +99,7 @@ public class ClientsJSONHandler {
                 String loginFromDataBase = (String) client.get("login");
                 if(loginFromDataBase.equals(login))
                 {
-                    return new Client((String) client.get("login"),(String) client.get("password"));
+                    return new Client((String) client.get("login"),(String) client.get("password"), (String) client.get("email"), (String) client.get("level"), toIntExact( (long) client.get("elo")));
                 }
                 // ...
             }
