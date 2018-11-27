@@ -12,16 +12,12 @@ public class WebController {
     public String showLearningPage(Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
         int numberOfWords = 3;
-        String[] pl = new String[numberOfWords];
-        String[] eng = new String[numberOfWords];
+        Word[] words = new Word[numberOfWords];
         for(int i=0; i<numberOfWords; i++){
             Word w = dict.getRandomWord();
-            pl[i] = w.getPl();
-            eng[i] = w.getEng();
+            words[i] = w;
         }
-
-        model.addAttribute( "pl", pl);
-        model.addAttribute("eng", eng);
+        model.addAttribute("words", words);
         return "nauka";
     }
 }

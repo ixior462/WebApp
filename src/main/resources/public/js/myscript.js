@@ -1,5 +1,4 @@
-var pl = ["ERROR"];
-var eng = ["ERROR"];
+var words = ["ERROR"]
 var wordIndex = 0;
 
 function readPL(){
@@ -18,13 +17,13 @@ function readENG(){
 function loadFiche(){
   var fichePL = document.getElementById("textPL");
   var ficheENG = document.getElementById("textENG");
-  fichePL.innerHTML = pl[wordIndex];
-  ficheENG.innerHTML = eng[wordIndex];
+  fichePL.innerHTML = words[wordIndex].pl;
+  ficheENG.innerHTML = words[wordIndex].eng;
 }
 
 function nextFiche(){
   $('#fiszkaX').animate({bottom:"500px"},400, function(){
-    wordIndex = (wordIndex+1)%pl.length;
+    wordIndex = (wordIndex+1)%words.length;
     loadFiche();
     $('#fiszkaX').animate({bottom:"0px"},400)
   })
