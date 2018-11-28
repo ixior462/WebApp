@@ -9,11 +9,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Random;
 
 import static java.lang.Math.toIntExact;
 
 public class ClientsJSONHandler {
+    
+
+
+
     //Class that will acces Clients JSON file
     private JSONParser parser;
 
@@ -27,7 +30,7 @@ public class ClientsJSONHandler {
         /**
          * Write object Word to a dictionary.json
          *
-         * TODO : Check if word doesn't already exist in file nad maybe something else ?
+         *
          */
 
         try {
@@ -46,9 +49,10 @@ public class ClientsJSONHandler {
             newObject.put("login", client.getLogin());
             newObject.put("password", client.getPassword());
             newObject.put("email", client.getEmail());
-            newObject.put("elo", 1200);
-            newObject.put("level", "A1");
-
+            newObject.put("elo", client.getElo());
+            newObject.put("level", client.getLevel());
+            newObject.put("lastLesson", client.getLastLesson());
+            newObject.put("stage", client.getStage());
 
 
 
@@ -99,7 +103,14 @@ public class ClientsJSONHandler {
                 String loginFromDataBase = (String) client.get("login");
                 if(loginFromDataBase.equals(login))
                 {
-                    return new Client((String) client.get("login"),(String) client.get("password"), (String) client.get("email"), (String) client.get("level"), toIntExact( (long) client.get("elo")));
+                    return new Client(
+                            (String) client.get("login"),
+                            (String) client.get("password"),
+                            (String) client.get("email"),
+                            (String) client.get("level"),
+                            toIntExact( (long) client.get("elo")),
+                            toIntExact( (long) client.get("lastLesson")),
+                            toIntExact( (long) client.get("stage")));
                 }
                 // ...
             }
@@ -109,5 +120,35 @@ public class ClientsJSONHandler {
         }
 
         return null;
+    }
+
+    public boolean usernameAlreadyExist(String name) {
+
+        /**
+         *  check if client with that name already exist
+         */
+
+        Object obj = null;
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("clients.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("clients");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject client = (JSONObject) list.get(i);
+                String loginFromDataBase = (String) client.get("login");
+                if(loginFromDataBase.equals(name))
+                {
+                   return true;
+                }
+            }
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
+
     }
 }

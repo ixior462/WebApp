@@ -5,6 +5,7 @@ public class ClientsDataAccessor {
     private ClientsJSONHandler handler;
 
 
+
     public ClientsDataAccessor() {
         this.handler = new ClientsJSONHandler();
     }
@@ -15,6 +16,10 @@ public class ClientsDataAccessor {
 
     public Client getClient(String login){
         return handler.getClientFromJSON(login);
+    }
+
+    public boolean usernameAlreadyExist(String name){
+        return handler.usernameAlreadyExist(name);
     }
 
 }

@@ -2,7 +2,6 @@ package com.project.app.registration;
 
 import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
-import com.project.app.model.ClientsJSONHandler;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -68,17 +67,25 @@ public class RegistrationController {
     }
     @PostMapping("/register")
     public String NewUser(@ModelAttribute UserData user, Model model) {
-        user.setUserName(user.getUserName());
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        if(user.getPassword().equals(user.getMatchingPassword()))
-        {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        }
-        Client newClient = new Client(user.getUserName(),user.getPassword(),user.getEmail(),"A1", 1200);
         ClientsDataAccessor parser = new ClientsDataAccessor();
-        parser.addNewClientToJSON(newClient);
-        model.addAttribute("username", user.userName);
+
+        if(!parser.usernameAlreadyExist(user.getUserName())) {
+            user.setUserName(user.getUserName());
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            if (user.getPassword().equals(user.getMatchingPassword())) {
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+            }
+            Client newClient = new Client(user.getUserName(), user.getPassword(), user.getEmail(), "A1", 1200, 0, 0);
+            parser.addNewClientToJSON(newClient);
+            model.addAttribute("username", user.userName);
+        }
+        else{
+            //TODO: NOTIFY USER THAT NAME HE CHOOSE IS ALREADY TAKEN AND HE DIDN'T REGISTER
+
+            // Right now, user only see: "Hello User: null"
+        }
         return "result";
     }
 
