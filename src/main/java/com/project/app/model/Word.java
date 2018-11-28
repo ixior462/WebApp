@@ -11,11 +11,14 @@ public class Word {
     private String eng;
     private String pl;
     private String label;
+    private int lesson;
 
-    public Word( String eng, String pl, String label){
+
+    public Word( String eng, String pl, String label, int lesson){
         this.eng = eng;
         this.pl = pl;
         this.label = label;
+        this.lesson = lesson;
     }
 
     public String getEng() {
@@ -28,5 +31,9 @@ public class Word {
 
     public String getLabel() {
         return label;
+    }
+
+    public int getLesson() {
+        return lesson;
     }
 }

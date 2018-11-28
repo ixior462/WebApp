@@ -6,10 +6,13 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Random;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import static java.lang.Math.toIntExact;
 
 public class DictionaryJSONHandler {
 
@@ -50,6 +53,8 @@ public class DictionaryJSONHandler {
             newObject.put("eng",word.getEng());
             newObject.put("pl",word.getPl());
             newObject.put("label",word.getLabel());
+            newObject.put("lesson",word.getLesson());
+
 
             //Print object that we will add to the array
             StringWriter out = new StringWriter();
@@ -98,7 +103,7 @@ public class DictionaryJSONHandler {
             JSONObject json = (JSONObject) parser.parse(list.get( rand.nextInt(list.size())).toString());
 
             //return object Word
-            return new Word((String) json.get("eng"),(String) json.get("pl"),(String)json.get("label"));
+            return new Word((String) json.get("eng"),(String) json.get("pl"),(String)json.get("label"), toIntExact( (long) json.get("lesson")));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -106,5 +111,34 @@ public class DictionaryJSONHandler {
         return null;
     }
 
+    public ArrayList<Word> getWordsFromLessonFromJSON(int lesson){
+
+        /**
+         *  return words from specified lesson from JSON file
+         */
+
+        Object obj = null;
+        ArrayList <Word> wordsFromLesson = new ArrayList<Word>();
+
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("dictionary.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("words");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject word = (JSONObject) list.get(i);
+                int lessonNumber = toIntExact((long) word.get("lesson"));
+                if (lessonNumber == lesson) {
+                    wordsFromLesson.add(new Word((String) word.get("eng"), (String) word.get("pl"), (String) word.get("label"), toIntExact((long) word.get("lesson"))));
+                }
+            }
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return wordsFromLesson;
+    }
 
 }
