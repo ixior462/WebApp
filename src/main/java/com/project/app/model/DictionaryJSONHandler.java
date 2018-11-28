@@ -54,6 +54,8 @@ public class DictionaryJSONHandler {
             newObject.put("pl",word.getPl());
             newObject.put("label",word.getLabel());
             newObject.put("lesson",word.getLesson());
+            newObject.put("category",word.getCategory());
+
 
 
             //Print object that we will add to the array
@@ -103,7 +105,7 @@ public class DictionaryJSONHandler {
             JSONObject json = (JSONObject) parser.parse(list.get( rand.nextInt(list.size())).toString());
 
             //return object Word
-            return new Word((String) json.get("eng"),(String) json.get("pl"),(String)json.get("label"), toIntExact( (long) json.get("lesson")));
+            return new Word((String) json.get("eng"),(String) json.get("pl"),(String)json.get("label"), toIntExact( (long) json.get("lesson")), (String) json.get("category"));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -130,7 +132,7 @@ public class DictionaryJSONHandler {
                 JSONObject word = (JSONObject) list.get(i);
                 int lessonNumber = toIntExact((long) word.get("lesson"));
                 if (lessonNumber == lesson) {
-                    wordsFromLesson.add(new Word((String) word.get("eng"), (String) word.get("pl"), (String) word.get("label"), toIntExact((long) word.get("lesson"))));
+                    wordsFromLesson.add(new Word((String) word.get("eng"), (String) word.get("pl"), (String) word.get("label"), toIntExact((long) word.get("lesson")), (String) word.get("category")));
                 }
             }
 

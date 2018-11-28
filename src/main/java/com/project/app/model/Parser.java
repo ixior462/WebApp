@@ -61,7 +61,7 @@ public class Parser {
                 /**
                  * New object of Word class used while creating ArrayList of parsed words
                  */
-                Word newWord = new Word(separated[0], separated[1], separated[2], Integer.parseInt(separated[3]));
+                Word newWord = new Word(separated[0], separated[1], separated[2], Integer.parseInt(separated[3]), separated[4]);
                 parsed.add(newWord);
                 line = br.readLine();
             }
