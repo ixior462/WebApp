@@ -8,58 +8,91 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $( function() {
-            $( ".eng" ).sortable();
+            var ul = document.querySelector('ul');
+            for (var i = ul.children.length; i >= 0; i--) {
+                ul.appendChild(ul.children[Math.random() * i | 0]);
+            }
+            $( ".eng" ).sortable({placeholder: "ui-state-highlight"});
             $( ".eng" ).disableSelection();
-        } );
+
+
+
+        } )
+        function check( )
+        {
+            if(document.getElementsByTagName('li')[0].id =="drag-5" &&
+                document.getElementsByTagName('li')[1].id =="drag-6"&&
+                document.getElementsByTagName('li')[2].id =="drag-7"&&
+                document.getElementsByTagName('li')[3].id =="drag-8" ) {
+                var x = document.createElement("div");
+                x.textContent = "Correct!";
+                document.body.appendChild(x);
+
+            }
+        };
     </script>
     <style>
-
+        .ui-state-highlight { height: 2.5em; line-height: 1.2em; }
         .pl{
-            width: 49%;
+            width: 47%;
             margin-top: 0;
             float:left;
-            margin-right: 1%;
+            margin-right: 0%;
             margin-left: 0%;
         }
 
         .eng{
-            width: 49%;
+            width: 47%;
             margin-top: 0;
             float:left;
             margin-left: 0;
+            height: 2.5em;
         }
 
         #drag-1, #drag-2, #drag-3,#drag-4{
             width:20%;
-            min-height: 2.5em;
+            height: 2.5em;
             margin-bottom: 1%;
             margin-left: 70%;
             background-color: #29e;
             color: white;
             border-radius: 0.75em;
             padding: 2%;
-            user-select: none;
-            -webkit-transform: translate(0px, 0px);
-            transform: translate(0px, 0px);
             font-size:20px;
             text-align: center;
         }
         #drag-5, #drag-6, #drag-7,#drag-8{
             width:20%;
-            min-height: 2.5em;
+            height: 2.5em;
             margin-bottom: 1%;
             background-color: #29e;
             color: white;
             border-radius: 0.75em;
             padding: 2%;
-            user-select: none;
-            -webkit-transform: translate(0px, 0px);
-            transform: translate(0px, 0px);
             font-size:20px;
             text-align: center;
+
         }
-
-
+        li{
+            list-style-type: none;
+        }
+        #btn{
+            background:#2ecc71;
+            width:250px;
+            padding-top:5px;
+            padding-bottom:5px;
+            color:white;
+            border-radius:4px;
+            border: #27ae60 1px solid;
+            height:70px;
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:38%;
+            font-weight:800;
+            font-size:0.8em;
+            border-radius: 0.75em;
+            font-size:20px;
+        }
 
     </style>
 </head>
@@ -70,12 +103,13 @@
     <div  id="drag-3" th:text="${words[2].pl}"></div>
     <div  id="drag-4" th:text="${words[3].pl}"></div>
 </div>
-<div class="eng" th:object="${words}">
-    <div class="draggable" id="drag-5" th:text="${words[0].eng}"></div>
-    <div class="draggable" id="drag-6" th:text="${words[1].eng}"></div>
-    <div class="draggable" id="drag-7"th:text="${words[2].eng}"></div>
-    <div class="draggable" id="drag-8"th:text="${words[3].eng}"></div>
-</div>
+<ul class="eng" th:object="${words}">
+    <li class="draggable" id="drag-5" th:text="${words[0].eng}"></li>
+    <li class="draggable" id="drag-6" th:text="${words[1].eng}"></li>
+    <li class="draggable" id="drag-7"th:text="${words[2].eng}"></li>
+    <li class="draggable" id="drag-8"th:text="${words[3].eng}"></li>
+</ul>
+<button id="btn" onclick="check()">Sprawdź</button>
 
 </body>
 </html>
