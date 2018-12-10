@@ -17,10 +17,13 @@
   </script>
 </head>
 
-<body onload="loadFiche()">
+<body onload="loadFiche(); initializeCounter();">
 
   <div id="container">
     <center>
+      <div id="counter">
+          <span id="ficheNumber"></span><span id="numberOfWords"></span>
+      </div>
       <div id="fiszkaX">
         <div class="front fiszka">
           <p class="text" id="textENG"></p>
@@ -35,6 +38,7 @@
         </div>
       </div>
         <button type="button" class="mybutton" id="next" onclick="nextFiche()">NEXT</button>
+        <button type="button" class="mybutton" id="nextStage" >Następny etap</button>
     </center>
 
   </div>

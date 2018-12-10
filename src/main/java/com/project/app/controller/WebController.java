@@ -5,19 +5,15 @@ import com.project.app.model.Word;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebController {
     @RequestMapping(value = "/nauka")
-    public String showLearningPage(Model model) {
+    public String showLearningPage(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
-        int numberOfWords = 3;
-        Word[] words = new Word[numberOfWords];
-        for(int i=0; i<numberOfWords; i++){
-            Word w = dict.getRandomWord();
-            words[i] = w;
-        }
-        model.addAttribute("words", words);
+
+        model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka";
     }
     @RequestMapping(value = "/nauka2")
