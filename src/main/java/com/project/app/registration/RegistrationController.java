@@ -47,7 +47,7 @@ public class RegistrationController {
                  */
                 model.addAttribute("username", user.userName);
 
-                return "result";
+                return "redirect:mainpage";
             }
             else
             {
@@ -63,7 +63,11 @@ public class RegistrationController {
 
         }
         model.addAttribute("username", user.userName);
-        return "result";
+        return "redirect:login";
+    }
+    @RequestMapping(value = "/mainpage")
+    public String mainpage(){
+        return "mainpage";
     }
     @PostMapping("/register")
     public String NewUser(@ModelAttribute UserData user, Model model) {
