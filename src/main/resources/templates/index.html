@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
         <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
         <meta name="author" content="Weronika Jasiak">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Nazwa</title>
-        <link rel="stylesheet" href="../public/css/reset.css">
-        <link rel="stylesheet" href="../public/css/styleIndex.css">
+        <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
+        <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
     </head>
     <body>
         <header>
             <nav id="main-nav">
                 <ul class="menu">
-                    <li><img src="../public/images/flaga.png" alt="flaga"></li>
+                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
                     <li><a class="active" href="#"><h1>Nazwa</h1></a></li>
-                    <li class="right"><a href="login.html">Zaloguj</a></li>
-                    <li class="right"><a href="contact.html">Kontakt</a></li>
-                    <li class="right"><a href="menu.html">Menu</a></li>
+                    <li class="right"><a href="/login">Zaloguj</a></li>
+                    <li class="right"><a href="/contact">Kontakt</a></li>
+                    <li class="right"><a href="/menu">Menu</a></li>
                 </ul>
             </nav>
         </header>
         <slider>
             <slide>
                 <h2>Rozpocznij z nami swoją przygodę z angielskim!</h2>
-                <button onclick="location.href='#'" type="button" id="login">Zaloguj</button>
+                <button onclick="location.href='/login'" type="button" id="login">Zaloguj</button>
             </slide>
             <slide>
                 <h2>Rywalizuj z innymi użytkownikami o tytuł Króla!</h2>

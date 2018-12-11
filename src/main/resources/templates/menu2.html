@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
@@ -7,14 +7,14 @@
         <meta name="author" content="Weronika Jasiak">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nazwa</title>
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/styleIndex.css">
-        <script src="js/script.js"></script>
-        <link rel="stylesheet" href="css/styles.css">
-        <script src="js/myscript.js"></script>
+        <link rel="stylesheet" href="../public/reset.css">
+        <link rel="stylesheet" href="../public/styleIndex.css">
+        <script src="../public/script.js"></script>
+        <link rel="stylesheet" href="../public/styles.css">
+        <script src="../public/myscript.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-        <script  th:inline="javascript">
+        <script th:inline="javascript">
             /*<![CDATA[*/
             words = /*[[${words}]]*/[];
             /*]]>*/
@@ -24,7 +24,7 @@
         <header>
             <nav id="main-nav">
                 <ul class="menu">
-                    <li><img src="images/flaga.png" alt="flaga"></li>
+                    <li><img src="../public/images/flaga.png" alt="flaga"></li>
                     <li><a href="index.html"><h1>Nazwa</h1></a></li>
                     <li class="right"><a href="login.html">Zaloguj</a></li>
                     <li class="right"><a href="contact.html">Kontakt</a></li>
@@ -81,8 +81,6 @@
                 <button type="button" class="mybutton" id="showTranslation" onclick="showPL()">Pokaż tłumaczenie</button>
                 <button type="button" class="mybutton" id="nextStage" >Następny etap</button>
             </center>
-
-            </div>
             <script>
                 $('#ficheContainer').flip({trigger: 'manual', axis: 'y'});
             </script>

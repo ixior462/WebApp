@@ -9,6 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebController {
+    @RequestMapping(value = "/index")
+    public String showMainPage(){
+        return "index";
+    }
+    @RequestMapping(value = "/contact")
+    public String showContactPage(){
+        return "contact";
+    }
+    @RequestMapping(value = "/menu")
+    public String showMenuPage(){
+        return "menu";
+    }
     @RequestMapping(value = "/nauka")
     public String showLearningPage(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();

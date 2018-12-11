@@ -202,8 +202,8 @@ slide button {
 #contact {
     box-sizing: border-box;
     text-transform: uppercase;
-    margin-top: 80px;
-    width: 100%;
+    margin: 80px auto;
+    width: 50%;
 }
 
 #contact h2 {
@@ -212,7 +212,7 @@ slide button {
     margin-bottom: 20px;
 }
 
-input[type=text], select, textarea {
+#contact input[type=text], #contact input[type=email], #contact select, #contact textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -222,7 +222,7 @@ input[type=text], select, textarea {
     resize: vertical;
 }
 
-input[type=submit] {
+#contact input[type=submit] {
     color: #ffffff;
     padding: 12px 20px;
     border: none;
@@ -233,20 +233,21 @@ input[type=submit] {
     transform: translateX(-50%);
 }
 
-input[type=submit]:hover {
+#contact input[type=submit]:hover {
     background-color: #d00c27;
 }
 
-textarea {
+#contact textarea {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
-    border-radius: 5px;
     background-color: #f9f8f6;
     padding: 20px;
 }
+
 /***************************************** MENU *******************************************/
+
 .sidenav {
     height: 88.4%;
     width: 0;
@@ -312,4 +313,64 @@ textarea {
     .sidenav, .centerSidenav {
         padding-top: 15px;
     }
+}
+/***************************************** LOGIN & REGISTRATION *******************************************/
+
+.box {
+    box-sizing: border-box;
+    text-transform: uppercase;
+    margin: 80px auto;
+    width: 50%;
+}
+
+.box h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.box input[type=text], .box input[type=password], .box input[type=email] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.box form {
+    background-color: #f9f8f6;
+    padding: 20px;
+}
+
+.box button {
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #001f7e;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.box button:hover {
+    background-color: #d00c27;
+}
+
+.box a {
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: initial;
+}
+
+#signUp, #reset:hover {
+    color: #001f7e;
+    cursor: pointer;
+}
+
+#reset, #signUp:hover {
+    color: #d00c27;
+    cursor: pointer;
 }

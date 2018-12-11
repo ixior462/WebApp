@@ -1,24 +1,41 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/loginstyles.css" th:href="@{css/loginstyles.css}">
-</head>
-<body>
-<div class ="box">
-<h1>Rejestracja</h1>
-<form action="/register"  th:object="${user}" method="post">
-    <p>Nazwa użytkownika</p>
-    <input type="text" class ="field" name ="userName"  th:field="*{userName}" />
-    <p>Email</p>
-    <input type="email" class= "field" name ="email"  value ="E-mail" th:field="*{email}" />
-    <p>Hasło</p>
-    <input type="password" name = "password" class = "field"  th:field="*{password}" />
-    <p>Potwierdź hasło</p>
-    <input type="password" class = "field" name = "matchingPassword" th:field="*{matchingPassword}" />
-    <button class = "btn" type="submit">Zarejestruj</button>
-</form>
-</div>
-</body>
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
+        <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
+        <meta name="author" content="Weronika Jasiak & Weronika Pawlak">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Nazwa</title>
+        <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
+        <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
+    </head>
+    <body>
+        <header>
+            <nav id="main-nav">
+                <ul class="menu">
+                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
+                    <li><a href="/index"><h1>Nazwa</h1></a></li>
+                    <li class="right"><a class="active" href="/#">Zaloguj</a></li>
+                    <li class="right"><a href="/contact">Kontakt</a></li>
+                    <li class="right"><a href="/menu">Menu</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class ="box">
+            <h2>Rejestracja</h2>
+            <form action="/register"  th:object="${user}" method="post">
+                <p>Nazwa użytkownika</p>
+                <input type="text" class ="field" name ="userName" required th:field="*{userName}">
+                <p>Email</p>
+                <input type="email" class= "field" name ="email" value ="E-mail" required th:field="*{email}">
+                <p>Hasło</p>
+                <input type="password" class = "field" name = "password" required th:field="*{password}">
+                <p>Potwierdź hasło</p>
+                <input type="password" class = "field" name = "matchingPassword" required th:field="*{matchingPassword}" />
+                <button class = "btn" type="submit">Zarejestruj</button>
+            </form>
+        </section>
+    </body>
 </html>

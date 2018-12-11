@@ -1,44 +1,40 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
         <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
         <meta name="author" content="Weronika Jasiak">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Nazwa</title>
-        <link rel="stylesheet" href="../public/css/reset.css">
-        <link rel="stylesheet" href="../public/css/styleIndex.css">
+        <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
+        <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
     </head>
     <body>
         <header>
             <nav id="main-nav">
                 <ul class="menu">
-                    <li><img src="../public/images/flaga.png" alt="flaga"></li>
-                    <li><a href="index.html"><h1>Nazwa</h1></a></li>
-                    <li class="right"><a href="login.html">Zaloguj</a></li>
+                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
+                    <li><a href="/index"><h1>Nazwa</h1></a></li>
+                    <li class="right"><a href="/login">Zaloguj</a></li>
                     <li class="right"><a class="active" href="#">Kontakt</a></li>
-                    <li class="right"><a href="menu.html">Menu</a></li>
+                    <li class="right"><a href="/menu">Menu</a></li>
                 </ul>
             </nav>
         </header>
         <section id="contact">
             <h2>Kontakt</h2>
-
             <div class="container">
-                <form action="/action_page.php">
+                <form action="#">
                     <label for="alias">Pseudonim</label>
-                    <input type="text" id="alias" name="alias" placeholder="Twój pseudonim..">
-
+                    <input type="text" id="alias" name="alias" placeholder="Twój pseudonim" required>
                     <label for="email">E-mail</label>
-                    <input type="text" id="email" name="email" placeholder="Twój adres e-mail..">
-
+                    <input type="email" id="email" name="email" placeholder="Twój adres e-mail" required>
                     <label for="topic">Temat</label>
-                    <input type="text" id="topic" name="topic" placeholder="Temat wiadomości..">
-
+                    <input type="text" id="topic" name="topic" placeholder="Temat wiadomości" required>
                     <label for="subject">Wiadomość</label>
-                    <textarea id="subject" name="subject" placeholder="W jakiej sprawie się z nami kontaktujesz?" style="height:200px"></textarea>
-
+                    <textarea id="subject" name="subject" placeholder="W jakiej sprawie się z nami kontaktujesz?" style="height:200px" required></textarea>
                     <input type="submit" value="Wyślij">
                 </form>
             </div>
