@@ -2,12 +2,17 @@ package com.project.app.registration;
 
 import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class RegistrationController {
@@ -25,7 +30,7 @@ public class RegistrationController {
         return "registration";
     }
     @PostMapping("/login")
-    public String HelloUser(@ModelAttribute UserData user, Model model) {
+    public String HelloUser(@ModelAttribute UserData user, Model model, HttpSession session) {
         user.setUserName(user.getUserName());
         ClientsDataAccessor parser = new ClientsDataAccessor();
         Client currentClient = parser.getClient(user.getUserName());
@@ -46,7 +51,7 @@ public class RegistrationController {
                 TODO: Create page for successful log in
                  */
                 model.addAttribute("username", user.userName);
-
+                session.setAttribute("username", user.userName);
                 return "redirect:mainpage";
             }
             else
@@ -65,12 +70,18 @@ public class RegistrationController {
         model.addAttribute("username", user.userName);
         return "redirect:login";
     }
-    @RequestMapping(value = "/mainpage")
-    public String mainpage(){
+    @RequestMapping(value = "/mainpage", method = RequestMethod.GET)
+    public String mainpage(HttpSession session, Model model){
+
+
+        System.out.println("principal name: "+session.getAttribute("username"));
+        model.addAttribute("username", session.getAttribute("username"));
+
+
         return "mainpage";
     }
     @PostMapping("/register")
-    public String NewUser(@ModelAttribute UserData user, Model model) {
+    public String NewUser(@ModelAttribute UserData user, Model model,HttpSession session) {
 
         ClientsDataAccessor parser = new ClientsDataAccessor();
 
@@ -84,6 +95,7 @@ public class RegistrationController {
             Client newClient = new Client(user.getUserName(), user.getPassword(), user.getEmail(), "A1", 1200, 0, 0);
             parser.addNewClientToJSON(newClient);
             model.addAttribute("username", user.userName);
+            session.setAttribute("username", user.userName);
         }
         else{
             //TODO: NOTIFY USER THAT NAME HE CHOOSE IS ALREADY TAKEN AND HE DIDN'T REGISTER
