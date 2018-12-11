@@ -5,7 +5,6 @@ html, body {
     width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0;
 }
 
 /***************************************** HEADER *******************************************/
@@ -13,7 +12,7 @@ html, body {
 ul.menu {
     list-style-type: none;
     margin: 0;
-    padding: 2%;
+    padding: 20px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -73,7 +72,7 @@ ul.menu img {
 slider {
     display: block;
     width: 100%;
-    height: 89.5%;
+    height: 88.8%;
     overflow: hidden;
     position: absolute;
 }
@@ -88,7 +87,7 @@ slider > * {
 }
 
 slide:nth-child(1) {
-    left: 0%;
+    left: 0;
     animation-delay: -1s;
     background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../images/tlo.jpg");
     background-size: cover;
@@ -175,11 +174,11 @@ slide button {
     }
 
     5% {
-        left: 0%;
+        left: 0;
     }
 
     25% {
-        left: 0%;
+        left: 0;
     }
 
     30% {
@@ -189,12 +188,12 @@ slide button {
 
     30.0001% {
         left: -100%;
-        width: 0%;
+        width: 0;
     }
 
     100% {
         left: 100%;
-        width: 0%;
+        width: 0;
     }
 }
 
@@ -246,4 +245,71 @@ textarea {
     border-radius: 5px;
     background-color: #f9f8f6;
     padding: 20px;
+}
+/***************************************** MENU *******************************************/
+.sidenav {
+    height: 88.4%;
+    width: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #e0dfdd;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.centerSidenav {
+    position: absolute;
+    padding-left: 30%;
+}
+
+.centerSidenav a, .closebtn {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    transition: 0.3s;
+    color: #000000;
+}
+
+.centerSidenav a:hover, .closebtn:hover {
+    color: #001f7e;
+}
+
+.centerSidenav a.active {
+    color: #d00c27;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#learn {
+    transition: margin-left .5s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#menuSidenav, #learn {
+    display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+    #menuSidenav {
+        width: 100%;
+    }
+
+    .centerSidenav a, .closebtn {
+        font-size: 15px;
+    }
+
+    .sidenav, .centerSidenav {
+        padding-top: 15px;
+    }
 }
