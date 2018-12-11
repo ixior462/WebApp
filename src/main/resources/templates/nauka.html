@@ -24,14 +24,14 @@
       <div id="counter">
           <span id="ficheNumber"></span><span id="numberOfWords"></span>
       </div>
-      <div id="fiszkaX">
-        <div class="front fiszka">
+      <div id="ficheContainer">
+        <div class="front fische">
           <p class="text" id="textENG"></p>
           <button type="button" class="speakerButton" onclick="readENG()">&#x1f50a</button>
           <!--<button type="button" class="mybutton" id="next" onclick="$('#card').flip();">&#x25B6</button>-->
         </div>
 
-        <div class="back fiszka">
+        <div class="back fische">
           <p class="text" id="textPL"></p>
           <button type="button" class="speakerButton" onclick="readPL()">&#x1f50a</button>
           <!--<button type="button" class="mybutton" id="next" onclick="$('#card').flip();">&#x25B6</button>-->
@@ -43,7 +43,7 @@
 
   </div>
   <script>
-    $('#fiszkaX').flip({axis: 'y'});
+    $('#ficheContainer').flip({speed: 200});
   </script>
 
 

@@ -16,6 +16,20 @@ public class WebController {
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka";
     }
+    @RequestMapping(value = "/naukav2")
+    public String showLearningPagev2(@RequestParam(value = "lesson") int lesson ,Model model) {
+        DictionaryAccessor dict = new DictionaryAccessor();
+
+        model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
+        return "naukav2";
+    }
+    @RequestMapping(value = "/menu2")
+    public String showLearningMenu(@RequestParam(value = "lesson") int lesson ,Model model) {
+        DictionaryAccessor dict = new DictionaryAccessor();
+
+        model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
+        return "menu2";
+    }
     @RequestMapping(value = "/nauka2")
     public String showLearningPage2(Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
