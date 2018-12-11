@@ -104,6 +104,18 @@ public class RegistrationController {
         }
         return "result";
     }
+    @RequestMapping("/waiting")
+    public String waitingPage(){
+        return "waiting";
+    }
+    @RequestMapping("/rival_mode")
+    public String rivalMode(){
+        return "rival_mode";
+    }
+    @PostMapping("/rival_results")
+    public String rivalResults(){
+        return "rival_results";
+    }
 
 
 }
