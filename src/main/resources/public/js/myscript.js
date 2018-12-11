@@ -1,25 +1,53 @@
 var words = ["ERROR"]
+var unlearnedWords = [];
 var wordIndex = 0;
 var active = false;
+var front = true;
 
-function readPL(){
-  var msg = new SpeechSynthesisUtterance(document.getElementById('textPL').innerHTML);
+function readPL1(){
+  var msg = new SpeechSynthesisUtterance(document.getElementById('textPL1').innerHTML);
   msg.pitch=0.7;
   window.speechSynthesis.speak(msg);
 }
 
-function readENG(){
-  var msg = new SpeechSynthesisUtterance(document.getElementById('textENG').innerHTML);
+function readENG1(){
+  var msg = new SpeechSynthesisUtterance(document.getElementById('textENG1').innerHTML);
   msg.lang='en-US';
   msg.pitch=0.7;
   window.speechSynthesis.speak(msg);
 }
 
+function readPL2(){
+    var msg = new SpeechSynthesisUtterance(document.getElementById('textPL2').innerHTML);
+    msg.pitch=0.7;
+    window.speechSynthesis.speak(msg);
+}
+
+function readENG2(){
+    var msg = new SpeechSynthesisUtterance(document.getElementById('textENG2').innerHTML);
+    msg.lang='en-US';
+    msg.pitch=0.7;
+    window.speechSynthesis.speak(msg);
+}
+
 function loadFiche(){
-  var fichePL = document.getElementById("textPL");
-  var ficheENG = document.getElementById("textENG");
+  if(front) {
+      var fichePL = document.getElementById("textPL1");
+      var ficheENG = document.getElementById("textENG1");
+      var buttPL =  document.getElementById("PLbutton1");
+  } else {
+      var fichePL = document.getElementById("textPL2");
+      var ficheENG = document.getElementById("textENG2");
+      var buttPL =  document.getElementById("PLbutton2");
+  }
   fichePL.innerHTML = words[wordIndex].pl;
   ficheENG.innerHTML = words[wordIndex].eng;
+  fichePL.style.visibility = "hidden";
+  buttPL.style.visibility = "hidden";
+  document.getElementById("unlearned").style.display = "none";
+  document.getElementById("learned").style.display = "none";
+  document.getElementById("showTranslation").style.display = "block";
+  front=!front;
 }
 
 function initializeCounter(){
@@ -30,28 +58,69 @@ function initializeCounter(){
 function updateCounter(){
   var ficheNumber = document.getElementById("ficheNumber")
   ficheNumber.innerHTML = wordIndex+1;
-  if(ficheNumber.innerHTML == words.length){
-      document.getElementById("nextStage").style.display = "block";
-  }
+
 }
 
+
+function showPL(){
+    if(!front) {
+        var fichePL = document.getElementById("textPL1");
+        var buttPL =  document.getElementById("PLbutton1");
+    } else{
+        var fichePL = document.getElementById("textPL2");
+        var buttPL =  document.getElementById("PLbutton2");
+    }
+    fichePL.style.visibility = "visible";
+    buttPL.style.visibility = "visible";
+    document.getElementById("showTranslation").style.display = "none";
+    document.getElementById("unlearned").style.display = "inline";
+    document.getElementById("learned").style.display = "inline";
+}
 function nextFiche(){
-  if(!active){
+  wordIndex = (wordIndex+1)%words.length;
+  if(wordIndex==0 && unlearnedWords.length > 0){
+      words = unlearnedWords;
+      unlearnedWords = [];
+      initializeCounter();
+  }
+  else if(wordIndex == 0&& unlearnedWords.length == 0){
+        document.getElementById("nextStage").style.display = "block";
+        document.getElementById("info").style.display = "block";
+        document.getElementById("frontFiche").style.display = "none";
+        document.getElementById("backFiche").style.display = "none";
+        document.getElementById("counter").style.display = "none";
+        document.getElementById("unlearned").style.display = "none";
+        document.getElementById("learned").style.display = "none";
+        document.getElementById("showTranslation").style.display = "none";
+        return;
+  }
+  loadFiche();
+  $("#ficheContainer").flip('toggle');
+  updateCounter();
+
+  /*if(!active){
     active = true;
-    $.when($('#fiszkaX').animate({bottom:"500px"},400, function(){
+    $.when($('#ficheContainer').animate({bottom:"500px"},400, function(){
       wordIndex = (wordIndex+1)%words.length;
       loadFiche();
       updateCounter();
-      $('#fiszkaX').animate({bottom:"0px"},400)
+      $("#ficheContainer").flip(false);
+      $('#ficheContainer').animate({bottom:"0px"},400)
     })).then(function() {active = false})
-  }
-   /* $('#fiszkaX').animate({bottom:"500px"},400, function(){
+  }*/
+   /* $('#ficheContainer').animate({bottom:"500px"},400, function(){
         wordIndex = (wordIndex+1)%words.length;
         loadFiche();
         updateCounter();
-        $('#fiszkaX').animate({bottom:"0px"},400)
+        $('#ficheContainer').animate({bottom:"0px"},400)
     })*/
   //flip(false);
-  //var x = document.getElementsByClassName('fiszka');
+  //var x = document.getElementsByClassName('fische');
   //x[0].style.display = "none";
 }
+
+function notLearned(){
+    unlearnedWords.push(words[wordIndex]);
+    nextFiche();
+}
+

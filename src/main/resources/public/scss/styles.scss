@@ -1,5 +1,19 @@
+$fiche1: #f9f8f6;
+$fiche2: #d2d1cf;
+$frame: #d00c27;
+$text: #191919;
+$learned1: #35f922;
+$learned2: #57f929;
+$unlearned1: #f90000;
+$unlearned2: #ff1f15;
+
 body{
   background-color: #d9d9d9;
+}
+#info{
+  display: none;
+  color: $text;
+  font-size: 3em;
 }
 #container{
   -webkit-touch-callout: none; /* iOS Safari */
@@ -10,48 +24,56 @@ body{
   user-select: none;
 }
 #counter{
-  background-image: linear-gradient(#0066cc, #1a8cff);
-  border: 2px solid #f2f2f2;
-  border-radius: 15px;
+  background-image: linear-gradient($fiche1, $fiche2);
+  border: 2px solid $frame;
+  border-radius: 3px;
   width: 65px;
   span{
     font-size: 23px;
-    color: #f2f2f2;
+    color: $text;
   }
 }
-#fiszkaX{
+#unlearned{
+  background-image: linear-gradient($unlearned1, $unlearned2);
+  border: 2px solid $unlearned1;
+}
+#learned{
+  background-image: linear-gradient($learned1, $learned2);
+  border: 2px solid $learned1;
+}
+#ficheContainer{
   width: 400px;
   height: 220px;
-  margin-top: 30px;
+  line-height: 100px;
 }
-.fiszka {
-  background-image: linear-gradient(#0066cc, #1a8cff);
-  border-radius: 10px;
+.fische {
+  background-image: linear-gradient($fiche1, $fiche2);
+  border-radius: 3px;
   border-style: solid;
   border-width: 5px;
-  border-color: #f2f2f2;
+  border-color: $frame;
 
   .text{
     text-align: center;
-    padding-top: 70px;
-    font-size: 60px;
-    color: #f2f2f2;
+    margin-left: 0.5em;
+    font-size: 3em;
+    color: $text;
   }
 }
 .mybutton{
   border: none;
   background-color: #f2f2f2;
   font-size: 30px;
-  border-radius: 10%;
+  border-radius: 3px;
   color: #020202;
   margin-top: 5px;
+  display: none;
 }
 #nextStage{
   display: none;
 }
 .speakerButton{
   border: none;
-  background-color: #f2f2f2;
-  border-radius: 50%;
-  color: #020202;
+  background-color: inherit;
+  font-size: 2em;
 }
