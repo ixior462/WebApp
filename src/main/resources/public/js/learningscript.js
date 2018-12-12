@@ -109,7 +109,7 @@ var value=1;
 function count() {
     return value++;
 }
-function next(data) {
+function next() {
     var n;
 
     if (data == 1) {
@@ -122,15 +122,15 @@ function next(data) {
     var j = 1;
     var numofclick=count();
 
-    for (i = n * numofclick; i < n * 2 * numofclick; i++) {
+    for (i = n * numofclick; i < n * (numofclick+1); i++) {
         if (i >= words.length) {
-            //document.getElementById("stat").style.display="inline";
-            document.getElementById("next").style.display="none";
-            break;
+            document.getElementById("wordpl-" + j).style.display = "none";
+            document.getElementById("wordeng-" + j).style.display = "none";
         }
-        document.getElementById("wordpl-" + j).innerText = words[i].pl;
-        document.getElementById("wordeng-" + j).innerText = words[i].eng;
-
+        else {
+            document.getElementById("wordpl-" + j).innerText = words[i].pl;
+            document.getElementById("wordeng-" + j).innerText = words[i].eng;
+        }
         j++;
 
     }
