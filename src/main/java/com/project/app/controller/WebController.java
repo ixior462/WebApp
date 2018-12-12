@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class WebController {
     @RequestMapping(value = "/index")
@@ -43,15 +45,10 @@ public class WebController {
         return "menu2";
     }
     @RequestMapping(value = "/nauka2")
-    public String showLearningPage2(Model model) {
+    public String showLearningPage2(@RequestParam("lesson") List<Integer> lesson , Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
-        int numberOfWords = 4;
-        Word[] words = new Word[numberOfWords];
-        for(int i=0; i<numberOfWords; i++){
-            Word w = dict.getRandomWord();
-            words[i] = w;
-        }
-        model.addAttribute("words", words);
+        model.addAttribute("words", dict.getWordsFromLesson(lesson.get(0)).toArray());
+        model.addAttribute("level",lesson.get(1));
         return "nauka2";
     }
 }
