@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 @Controller
+@Scope("session")
 public class RegistrationController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(WebRequest request, Model model) {
