@@ -1,5 +1,6 @@
 package com.project.app.registration;
 
+import com.project.app.gameauthorization.QueueAccessor;
 import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
 import org.springframework.context.annotation.Scope;
@@ -13,10 +14,13 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @Scope("session")
 public class RegistrationController {
+
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(WebRequest request, Model model) {
         UserData user = new UserData();
@@ -24,12 +28,7 @@ public class RegistrationController {
 
         return "login";
     }
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String showRegistrationForm(WebRequest request, Model model) {
-        UserData user = new UserData();
-        model.addAttribute("user", user);
-        return "registration";
-    }
+
     @PostMapping("/login")
     public String HelloUser(@ModelAttribute UserData user, Model model, HttpSession session) {
         user.setUserName(user.getUserName());
@@ -71,16 +70,19 @@ public class RegistrationController {
         model.addAttribute("username", user.userName);
         return "redirect:login";
     }
-    @RequestMapping(value = "/mainpage", method = RequestMethod.GET)
-    public String mainpage(HttpSession session, Model model){
 
 
-        System.out.println("principal name: "+session.getAttribute("username"));
-        model.addAttribute("username", session.getAttribute("username"));
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-        return "mainpage";
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String showRegistrationForm(WebRequest request, Model model) {
+        UserData user = new UserData();
+        model.addAttribute("user", user);
+        return "registration";
     }
+
     @PostMapping("/register")
     public String NewUser(@ModelAttribute UserData user, Model model,HttpSession session) {
 
@@ -105,10 +107,70 @@ public class RegistrationController {
         }
         return "result";
     }
-    @RequestMapping("/waiting")
-    public String waitingPage(){
-        return "waiting";
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    @RequestMapping(value = "/mainpage", method = RequestMethod.GET)
+    public String mainpage(HttpSession session, Model model){
+
+
+        System.out.println("principal name: "+session.getAttribute("username"));
+
+        
+        model.addAttribute("username", session.getAttribute("username"));
+
+
+        return "mainpage";
     }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    /*
+        QueueAccessor -> outside method to grant to have only one instantiation od the queue
+     */
+    QueueAccessor queue = QueueAccessor.getInstance();
+
+    @RequestMapping("/waiting")
+    public String waitingPage(HttpSession session){
+
+        String player = session.getAttribute("username").toString();
+        if(!queue.isInQueue(player) ) { //   new player wants to play, add him to queue, refresh site and wait for match for him :>
+            if(!queue.isInGame(player)) {
+                System.out.println("Użytkownik = '" + player + "' czeka na rozgrywke");
+                queue.addToQueue(player);
+            }
+            else{
+                return "redirect:rival_mode";
+
+            }
+        }
+        else{   //player is waiting for a game to start :>
+
+            while(true){
+                try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
+                System.out.println(player);
+                if(queue.twoElementsAtQueue()){
+                    System.out.println("Gracz "+player+" zaczyna grę");
+                    queue.startGame();
+                }
+                if(!queue.isInQueue(player)){
+                    // TODO: Game starts
+                    return "redirect:rival_mode";
+                }
+            }
+        }
+
+
+
+
+        return "waiting";
+
+
+    }
+
+
+
     @RequestMapping("/rival_mode")
     public String rivalMode(){
         return "rival_mode";
