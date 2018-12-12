@@ -9,29 +9,29 @@
     <script th:inline="javascript">
         bad=0;
         all=0;
+        /*<![CDATA[*/
+        data = [[${level}]];
+        /*]]>*/
+        /*<![CDATA[*/
+        var words = /*[[${words}]]*/[];
+        /*]]>*/
         $( function() {
-            /*<![CDATA[*/
-            data = [[${level}]];
-            /*]]>*/
+            var parent = document.getElementById("pl");
+            var parent2 = document.getElementById("eng");
+            var parent3 = document.getElementById("checksymb");
             if(data==1) {
-                var parent = document.getElementById("pl");
-                var parent2 = document.getElementById("eng");
-                parent.removeChild(document.getElementById("drag-5"));
-                parent.removeChild(document.getElementById("drag-6"));
-                parent.removeChild(document.getElementById("drag-7"));
-                parent.removeChild(document.getElementById("drag-8"));
-                parent2.removeChild(document.getElementById("drag-13"));
-                parent2.removeChild(document.getElementById("drag-14"));
-                parent2.removeChild(document.getElementById("drag-15"));
-                parent2.removeChild(document.getElementById("drag-16"));
+                for(i=5;i<=8;i++){
+                    parent.removeChild(document.getElementById("wordpl-"+i));
+                    parent2.removeChild(document.getElementById("wordeng-"+i));
+                    parent3.removeChild(document.getElementById("check-"+i));
+                }
             }
             if(data==2) {
-                var parent = document.getElementById("pl");
-                var parent2 = document.getElementById("eng");
-                parent.removeChild(document.getElementById("drag-7"));
-                parent.removeChild(document.getElementById("drag-8"));
-                parent2.removeChild(document.getElementById("drag-15"));
-                parent2.removeChild(document.getElementById("drag-16"));
+                for(i=7;i<=8;i++){
+                    parent.removeChild(document.getElementById("wordpl-"+i));
+                    parent2.removeChild(document.getElementById("wordeng-"+i));
+                    parent3.removeChild(document.getElementById("check-"+i));
+                }
             }
             var ul = document.querySelector('ul');
             for (var i = ul.children.length; i >= 0; i--) {
@@ -45,77 +45,58 @@
         } )
         function check( )
         {
-            /*<![CDATA[*/
-            data = [[${level}]];
-            /*]]>*/
-            /*<![CDATA[*/
-            var words = /*[[${words}]]*/[];
-            /*]]>*/
                 if(data==1) {
-                    if (document.getElementsByTagName('li')[0].id == "drag-9" &&
-                        document.getElementsByTagName('li')[1].id == "drag-10" &&
-                        document.getElementsByTagName('li')[2].id == "drag-11" &&
-                        document.getElementsByTagName('li')[3].id == "drag-12") {
-                        var x = document.createElement("div");
-                        x.textContent = "Dobrze!";
-                        document.body.appendChild(x);
+                    if (document.getElementsByTagName('li')[0].id == "wordeng-1" &&
+                        document.getElementsByTagName('li')[1].id == "wordeng-2" &&
+                        document.getElementsByTagName('li')[2].id == "wordeng-3" &&
+                        document.getElementsByTagName('li')[3].id == "wordeng-4") {
+                        checkBad();
 
                     } else {
-                        var x = document.createElement("div");
-                        x.textContent = "Źle!";
-                        document.body.appendChild(x);
+
                         bad=bad+checkBad();
                     }
                     all+=4;
                 }
                 else if (data==2) {
-                    if (document.getElementsByTagName('li')[0].id == "drag-9" &&
-                        document.getElementsByTagName('li')[1].id == "drag-10" &&
-                        document.getElementsByTagName('li')[2].id == "drag-11" &&
-                        document.getElementsByTagName('li')[3].id == "drag-12" &&
-                        document.getElementsByTagName('li')[4].id == "drag-13" &&
-                        document.getElementsByTagName('li')[5].id == "drag-14") {
-                        var x = document.createElement("div");
-                        x.textContent = "Dobrze!";
-                        document.body.appendChild(x);
+                    if (document.getElementsByTagName('li')[0].id == "wordeng-1" &&
+                        document.getElementsByTagName('li')[1].id == "wordeng-2" &&
+                        document.getElementsByTagName('li')[2].id == "wordeng-3" &&
+                        document.getElementsByTagName('li')[3].id == "wordeng-4" &&
+                        document.getElementsByTagName('li')[4].id == "wordeng-5" &&
+                        document.getElementsByTagName('li')[5].id == "wordeng-6") {
+                            checkBad();
 
                     } else {
-                        var x = document.createElement("div");
-                        x.textContent = "Źle!";
-                        document.body.appendChild(x);
+
                         bad=bad+checkBad();
                     }
                     all+=6;
                 }
                 else {
-                    if (document.getElementsByTagName('li')[0].id == "drag-9" &&
-                        document.getElementsByTagName('li')[1].id == "drag-10" &&
-                        document.getElementsByTagName('li')[2].id == "drag-11" &&
-                        document.getElementsByTagName('li')[3].id == "drag-12" &&
-                        document.getElementsByTagName('li')[4].id == "drag-13" &&
-                        document.getElementsByTagName('li')[5].id == "drag-14" &&
-                        document.getElementsByTagName('li')[6].id == "drag-15" &&
-                        document.getElementsByTagName('li')[7].id == "drag-16") {
-                        var x = document.createElement("div");
-                        x.textContent = "Dobrze!";
-                        document.body.appendChild(x);
+                    if (document.getElementsByTagName('li')[0].id == "wordeng-1" &&
+                        document.getElementsByTagName('li')[1].id == "wordeng-2" &&
+                        document.getElementsByTagName('li')[2].id == "wordeng-3" &&
+                        document.getElementsByTagName('li')[3].id == "wordeng-4" &&
+                        document.getElementsByTagName('li')[4].id == "wordeng-5" &&
+                        document.getElementsByTagName('li')[5].id == "wordeng-6" &&
+                        document.getElementsByTagName('li')[6].id == "wordeng-7" &&
+                        document.getElementsByTagName('li')[7].id == "wordeng-8") {
+                            checkBad();
 
                     } else {
-                        var x = document.createElement("div");
-                        x.textContent = "Źle!";
-                        document.body.appendChild(x);
                         bad=bad+checkBad();
                     }
                     all+=8;
                 }
+                document.getElementById("check").style.display="none";
+                if(all<words.length)
+                    document.getElementById("next").style.display="inline";
+                else
+                    document.getElementById("stat").style.display="inline";
+
         }
         function checkBad(){
-            /*<![CDATA[*/
-            var words = /*[[${words}]]*/[];
-            /*]]>*/
-            /*<![CDATA[*/
-            data = [[${level}]];
-            /*]]>*/
             var n;
             var wrong=0;
             if (data == 1) {
@@ -124,10 +105,15 @@
                 n = 6;
             } else
                 n = 8;
-            var j=9;
+            var j=1;
             for(i=0;i<n;i++){
-                if(document.getElementsByTagName('li')[i].id != "drag-"+j)
+                if(document.getElementsByTagName('li')[i].id != "wordeng-"+j) {
                     wrong++;
+                    document.getElementById("check-"+j).innerText="Źle"
+
+                }
+                else
+                    document.getElementById("check-"+j).innerText="Dobrze"
                     j++;
             }
             return wrong;
@@ -137,12 +123,6 @@
             return value++;
         }
         function next(data) {
-            /*<![CDATA[*/
-            var words = /*[[${words}]]*/[];
-            /*]]>*/
-            /*<![CDATA[*/
-            data = [[${level}]];
-            /*]]>*/
             var n;
 
             if (data == 1) {
@@ -157,38 +137,41 @@
 
             for (i = n * numofclick; i < n * 2 * numofclick; i++) {
                 if (i >= words.length) {
-                    document.getElementById("stat").style.display="inline";
+                    //document.getElementById("stat").style.display="inline";
+                    document.getElementById("next").style.display="none";
                     break;
                 }
-                document.getElementById("drag-" + j).innerText = words[i].pl;
+                document.getElementById("wordpl-" + j).innerText = words[i].pl;
+                document.getElementById("wordeng-" + j).innerText = words[i].eng;
+
                 j++;
 
             }
-            var z = 9;
-            for (i = n * numofclick; i < n * 2 * numofclick; i++) {
-                if (i >= words.length) {
-                    break;
-                }
-                 document.getElementById("drag-" + z).innerText = words[i].eng;
-                    z++;
 
-            }
             var ul = document.querySelector('ul');
             for (var i = ul.children.length; i >= 0; i--) {
                 ul.appendChild(ul.children[Math.random() * i | 0]);
             }
+
+            document.getElementById("check").style.display="inline";
+            document.getElementById("next").style.display="none";
+            clear();
         }
         function stats(){
 
-            var z = document.createElement("div");
-            z.textContent = "źle:"+bad;
-            document.body.appendChild(z);
+            var z = document.getElementById("bad");
+            z.innerText = "Źle:    "+bad;
 
             var correct =all-bad;
-            var y = document.createElement("div");
-            y.textContent = "dobrze:"+correct;
-            document.body.appendChild(y);
+            var y = document.getElementById("corr");
+            y.textContent = "Dobrze:    "+correct;
+            document.getElementById("stats").style.display="inline";
 
+        }
+        function clear(){
+            for(z=1; z<=8;z++){
+                document.getElementById("check-"+z).innerText="";
+            }
         }
 
     </script>
@@ -202,7 +185,7 @@
         }
 
         .eng{
-            width: 47%;
+            width: 20%;
             margin-top: 0;
             float:left;
             margin-left: 0;
@@ -210,10 +193,10 @@
         }
 
         .eng li{
-            width:20%;
-            height: 1.5em;
-            line-height: 1.5em;
-            margin-bottom: 1%;
+            width:52.5%;
+            height: 2.24em;
+            line-height: 2.24em;
+            margin-bottom: 2%;
             background-color: #2929bc;
             color: white;
             border-radius: 0.75em;
@@ -224,7 +207,7 @@
         }
 
 
-        #drag-1, #drag-2, #drag-3,#drag-4,#drag-5, #drag-6, #drag-7,#drag-8{
+        #wordpl-1, #wordpl-2, #wordpl-3,#wordpl-4,#wordpl-5, #wordpl-6, #wordpl-7,#wordpl-8{
             width:20%;
             height: 1.5em;
             line-height: 1.5em;
@@ -259,32 +242,80 @@
         #stat{
             display: none;
         }
+        #stats{
+            display: none;
+            float:left;
+            margin-top:0;
+            margin-left:15%;
+        }
+        #bad{
+            font-color:#cc0000;
+            font-size:20px;
+        }
+        #corr{
+            font-color:#2929bc;
+            font-size:20px;
+        }
+        #next{
+            display: none;
+        }
+        #title{
+            font-color:#2929bc;
+            font-size:20px;
+        }
+        #checksymb{
+            float:left;
+            width: 20%;
+
+        }
+        #check-1,#check-2,#check-3,#check-4,#check-5,#check-6,#check-7,#check-8{
+            width:52.5%;
+            height: 3.6em;
+            line-height: 3.6em;
+            margin-bottom: 2%;
+        }
 
     </style>
 </head>
 <body>
 <div class="pl" id="pl" th:object = "${words}">
-    <div  id="drag-1" th:text="${words[0].pl}"></div>
-    <div  id="drag-2" th:text="${words[1].pl}"></div>
-    <div  id="drag-3" th:text="${words[2].pl}"></div>
-    <div  id="drag-4" th:text="${words[3].pl}"></div>
-    <div  id="drag-5" th:text="${words[4].pl}"></div>
-    <div  id="drag-6" th:text="${words[5].pl}"></div>
-    <div  id="drag-7" th:text="${words[6].pl}"></div>
-    <div  id="drag-8" th:text="${words[7].pl}"></div>
+    <div id="stats">
+        <div id="title">Statystyki:</div>
+        <div id="corr"></div>
+        <div id="bad"></div>
+    </div>
+    <div  id="wordpl-1" th:text="${words[0].pl}"></div>
+    <div  id="wordpl-2" th:text="${words[1].pl}"></div>
+    <div  id="wordpl-3" th:text="${words[2].pl}"></div>
+    <div  id="wordpl-4" th:text="${words[3].pl}"></div>
+    <div  id="wordpl-5" th:text="${words[4].pl}"></div>
+    <div  id="wordpl-6" th:text="${words[5].pl}"></div>
+    <div  id="wordpl-7" th:text="${words[6].pl}"></div>
+    <div  id="wordpl-8" th:text="${words[7].pl}"></div>
 </div>
 <ul class="eng" id="eng" th:object="${words}">
-    <li class="draggable" id="drag-9" th:text="${words[0].eng}"></li>
-    <li class="draggable" id="drag-10" th:text="${words[1].eng}"></li>
-    <li class="draggable" id="drag-11"th:text="${words[2].eng}"></li>
-    <li class="draggable" id="drag-12"th:text="${words[3].eng}"></li>
-    <li class="draggable" id="drag-13" th:text="${words[4].eng}"></li>
-    <li class="draggable" id="drag-14" th:text="${words[5].eng}"></li>
-    <li class="draggable" id="drag-15"th:text="${words[6].eng}"></li>
-    <li class="draggable" id="drag-16"th:text="${words[7].eng}"></li>
+    <li class="draggable" id="wordeng-1" th:text="${words[0].eng}"></li>
+    <li class="draggable" id="wordeng-2" th:text="${words[1].eng}"></li>
+    <li class="draggable" id="wordeng-3"th:text="${words[2].eng}"></li>
+    <li class="draggable" id="wordeng-4"th:text="${words[3].eng}"></li>
+    <li class="draggable" id="wordeng-5" th:text="${words[4].eng}"></li>
+    <li class="draggable" id="wordeng-6" th:text="${words[5].eng}"></li>
+    <li class="draggable" id="wordeng-7"th:text="${words[6].eng}"></li>
+    <li class="draggable" id="wordeng-8"th:text="${words[7].eng}"></li>
 </ul>
-<button class="btn" onclick="check()">Sprawdź</button>
-<button class="btn" onclick="next()">Dalej</button>
+<div id="checksymb">
+    <div id="check-1"></div>
+    <div id="check-2"></div>
+    <div id="check-3"></div>
+    <div id="check-4"></div>
+    <div id="check-5"></div>
+    <div id="check-6"></div>
+    <div id="check-7"></div>
+    <div id="check-8"></div>
+</div>
+
+<button class="btn" id="check" onclick="check()">Sprawdź</button>
+<button class="btn" id="next" onclick="next()">Dalej</button>
 <button class="btn" id="stat" onclick="stats()">Statystyki</button>
 
 </body>
