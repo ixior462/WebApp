@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -24,7 +25,7 @@ public class WebController {
         return "menu";
     }
     @RequestMapping(value = "/indexClient")
-    public String showClientMainPage() {
+    public String showClientMainPage(HttpSession session, Model model){
         return "indexClient";
     }
     @RequestMapping(value = "/contactClient")

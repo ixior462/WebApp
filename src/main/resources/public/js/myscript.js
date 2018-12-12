@@ -91,6 +91,7 @@ function loadUnlearnedWords(){
 function nextFiche(){
   wordIndex = (wordIndex+1)%words.length;
   if(wordIndex==0 && unlearnedWords.length > 0){
+      front = !front;
       document.getElementById("next").style.display = "block";
       document.getElementById("info").innerHTML = "Pozostała liczba słówek: "+unlearnedWords.length+". Dasz radę!";
       document.getElementById("info").style.display = "block";

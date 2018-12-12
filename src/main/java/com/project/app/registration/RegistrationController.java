@@ -53,7 +53,7 @@ public class RegistrationController {
                  */
                 model.addAttribute("username", user.userName);
                 session.setAttribute("username", user.userName);
-                return "redirect:mainpage";
+                return "redirect:indexClient";
             }
             else
             {
@@ -110,19 +110,14 @@ public class RegistrationController {
     }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // PRZENIESIONE DO WEBCONTROLLER (MAPPING "/indexClient")
 
-    @RequestMapping(value = "/mainpage", method = RequestMethod.GET)
+    /*@RequestMapping("/mainpage")
     public String mainpage(HttpSession session, Model model){
-
-
         System.out.println("principal name: "+session.getAttribute("username"));
-
-
         model.addAttribute("username", session.getAttribute("username"));
-
-
-        return "mainpage";
-    }
+        return "indexClient";
+    }*/
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -243,13 +238,18 @@ public class RegistrationController {
 
     }
     @RequestMapping("/rival_results")
-    public String rivalResults(  WebRequest request, HttpSession session){
+    public String rivalResults(WebRequest request, HttpSession session, Model model){
+
         String player1 = (String) session.getAttribute("player1");
         String player2 = (String) session.getAttribute("player2");
         int player1points =  (Integer) session.getAttribute("player1points");
         int player2points = (Integer) session.getAttribute("player2points");
         String winner = (String) session.getAttribute("winner");
-
+        model.addAttribute("player1", player1);
+        model.addAttribute("player2", player2);
+        model.addAttribute("player1points", player1points);
+        model.addAttribute("player2points", player2points);
+        model.addAttribute("winner", winner);
         System.out.println("Player "+player1+" points: "+player1points+" Player "+player2+" points: "+player2points+" -----> Winner: "+winner);
         return "rival_results";
     }

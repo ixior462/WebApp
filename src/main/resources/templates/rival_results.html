@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Results</title>
 </head>
 <body>
- <p>Your points: </p>
- <p id="yourPoints"></p>
- <p>Opponent's points: </p>
- <p id="oppPoints"></p>
+ <center>
+     <p th:text="${player1}"></p>
+     <p th:text="${player1points}"></p>
+     <p th:text="${player2}"></p>
+     <p th:text="${player2points}"></p>
+     <p>Zwycięzca:</p>
+     <h2 th:text="${winner}"></h2>
+     <br/>
+     <a href="/indexClient">Powrót</a>
+ </center>
 </body>
 </html>
