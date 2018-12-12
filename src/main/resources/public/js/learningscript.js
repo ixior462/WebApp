@@ -2,6 +2,15 @@ var bad=0;
 var all=0;
 var data=0;
 var words=[];
+var n;
+function initializeN(){
+    if (data == 1) {
+        n = 4;
+    } else if (data == 2) {
+        n = 6;
+    } else
+        n = 8;
+}
 $( function() {
     var parent = document.getElementById("pl");
     var parent2 = document.getElementById("eng");
@@ -32,50 +41,21 @@ $( function() {
 } )
 function check( )
 {
-    if(data==1) {
-        if (document.getElementsByTagName('li')[0].id == "wordeng-1" &&
-            document.getElementsByTagName('li')[1].id == "wordeng-2" &&
-            document.getElementsByTagName('li')[2].id == "wordeng-3" &&
-            document.getElementsByTagName('li')[3].id == "wordeng-4") {
-            checkBad();
-
-        } else {
-
-            bad=bad+checkBad();
+    var badAns = false;
+    for(var i=1; i<=n; i++){
+        if(document.getElementsByTagName('li')[i-1].id != ("wordeng-"+i)){
+            badAns = true;
+            break;
         }
-        all+=4;
     }
-    else if (data==2) {
-        if (document.getElementsByTagName('li')[0].id == "wordeng-1" &&
-            document.getElementsByTagName('li')[1].id == "wordeng-2" &&
-            document.getElementsByTagName('li')[2].id == "wordeng-3" &&
-            document.getElementsByTagName('li')[3].id == "wordeng-4" &&
-            document.getElementsByTagName('li')[4].id == "wordeng-5" &&
-            document.getElementsByTagName('li')[5].id == "wordeng-6") {
-            checkBad();
-
-        } else {
-
-            bad=bad+checkBad();
-        }
-        all+=6;
+    if(badAns){
+        bad=bad+checkBad();
+    } else {
+        checkBad();
     }
-    else {
-        if (document.getElementsByTagName('li')[0].id == "wordeng-1" &&
-            document.getElementsByTagName('li')[1].id == "wordeng-2" &&
-            document.getElementsByTagName('li')[2].id == "wordeng-3" &&
-            document.getElementsByTagName('li')[3].id == "wordeng-4" &&
-            document.getElementsByTagName('li')[4].id == "wordeng-5" &&
-            document.getElementsByTagName('li')[5].id == "wordeng-6" &&
-            document.getElementsByTagName('li')[6].id == "wordeng-7" &&
-            document.getElementsByTagName('li')[7].id == "wordeng-8") {
-            checkBad();
 
-        } else {
-            bad=bad+checkBad();
-        }
-        all+=8;
-    }
+    all+=n;
+
     document.getElementById("check").style.display="none";
     if(all<words.length)
         document.getElementById("next").style.display="inline";
@@ -84,16 +64,11 @@ function check( )
 
 }
 function checkBad(){
-    var n;
+
     var wrong=0;
-    if (data == 1) {
-        n = 4;
-    } else if (data == 2) {
-        n = 6;
-    } else
-        n = 8;
+
     var j=1;
-    for(i=0;i<n;i++){
+    for(var i=0;i<n;i++){
         if(document.getElementsByTagName('li')[i].id != "wordeng-"+j) {
             wrong++;
             document.getElementById("check-"+j).innerText="Źle"
@@ -110,22 +85,18 @@ function count() {
     return value++;
 }
 function next() {
-    var n;
-
-    if (data == 1) {
-        n = 4;
-    } else if (data == 2) {
-        n = 6;
-    } else
-        n = 8;
-
     var j = 1;
     var numofclick=count();
-
-    for (i = n * numofclick; i < n * (numofclick+1); i++) {
+    var num = n;
+    for (i = num * numofclick; i < num * (numofclick+1); i++) {
         if (i >= words.length) {
-            document.getElementById("wordpl-" + j).style.display = "none";
-            document.getElementById("wordeng-" + j).style.display = "none";
+            var eng = document.getElementById("eng");
+            var pl = document.getElementById("pl");
+            var checksymb = document.getElementById("checksymb");
+            pl.removeChild(document.getElementById("wordpl-" + j));
+            eng.removeChild(document.getElementById("wordeng-" + j));
+            checksymb.removeChild(document.getElementById("check-" + j));
+            n--;
         }
         else {
             document.getElementById("wordpl-" + j).innerText = words[i].pl;
@@ -156,7 +127,7 @@ function stats(){
 
 }
 function clear(){
-    for(z=1; z<=8;z++){
+    for(var z=1; z<=n;z++){
         document.getElementById("check-"+z).innerText="";
     }
 }

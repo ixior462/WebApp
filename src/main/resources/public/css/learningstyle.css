@@ -19,9 +19,10 @@
     height: 2.24em;
     line-height: 2.24em;
     margin-bottom: 2%;
-    background-color: #2929bc;
-    color: white;
-    border-radius: 0.75em;
+    background-image: linear-gradient(#f9f8f6,#d2d1cf);
+    color: #191919;
+    border: 2px solid #d00c27;
+    border-radius: 3px;
     padding: 2%;
     font-size:20px;
     text-align: center;
@@ -35,9 +36,10 @@
     line-height: 1.5em;
     margin-bottom: 1%;
     margin-left: 70%;
-    background-color: #2929bc;
-    color: white;
-    border-radius: 0.75em;
+    background-image: linear-gradient(#f9f8f6,#d2d1cf);
+    color: #191919;
+    border: 2px solid #d00c27;
+    border-radius: 3px;
     padding: 2%;
     font-size:20px;
     text-align: center;
