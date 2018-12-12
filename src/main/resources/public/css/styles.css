@@ -65,7 +65,11 @@ body {
 #nextStage {
   display: none; }
 
+#nextStage {
+  display: none; }
+
 .speakerButton {
   border: none;
   background-color: inherit;
-  font-size: 2em; }
+  font-size: 2em;
+  -webkit-appearance: caret; }
