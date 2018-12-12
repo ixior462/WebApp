@@ -15,6 +15,7 @@ public class QueueAccessor {
     {
         queue = new ArrayList<>();
         currentgames = new ArrayList<>();
+        listOfGames = new ArrayList<>();
     }
 
     private static QueueAccessor single_instance = null;
@@ -30,7 +31,7 @@ public class QueueAccessor {
     private ClientsDataAccessor accessor = new ClientsDataAccessor();
     private List<String> queue;
     private List<String> currentgames;
-
+    private List<Game> listOfGames;
 
     public boolean isInQueue(String player){
 
@@ -45,6 +46,9 @@ public class QueueAccessor {
         return (queue.size() >= 2);
     }
 
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     public void addToCurrentGame(String player){
         currentgames.add(player);
     }
@@ -54,7 +58,32 @@ public class QueueAccessor {
         return currentgames.contains(player);
     }
 
-    public void startGame() {
+    public void removeCurrentGame(String player){
+        currentgames.remove(player);
+    }
+
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    public void addNewGame(Game game){
+        listOfGames.add(game);
+    }
+
+    public Game getGameByNameOfPlayer(String player){
+        Game wantedGame=null;
+        for(Game g : listOfGames)
+        {
+
+            if(g.getPlayer(1).equals(player) || g.getPlayer(2).equals(player))
+            {
+                wantedGame=g;
+            }
+        }
+        return wantedGame;
+    }
+    public Game startGame() {
+
+        Game game = null;
 
         if(block) {
             block = false;
@@ -68,10 +97,11 @@ public class QueueAccessor {
             queue.remove(0);
 
             //panie prowizarka jakich mało
-            Game game = new Game();
+            game = new Game();
             game.setPlayers(player_1, player_2);
             game.startGame();
             block = true;
         }
+        return game;
     }
 }

@@ -1,5 +1,6 @@
 package com.project.app.registration;
 
+import com.project.app.gameauthorization.Game;
 import com.project.app.gameauthorization.QueueAccessor;
 import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
@@ -20,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 @Scope("session")
 public class RegistrationController {
 
+
+     Game game;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(WebRequest request, Model model) {
@@ -117,7 +120,7 @@ public class RegistrationController {
 
         System.out.println("principal name: "+session.getAttribute("username"));
 
-        
+
         model.addAttribute("username", session.getAttribute("username"));
 
 
@@ -152,7 +155,8 @@ public class RegistrationController {
                 System.out.println(player);
                 if(queue.twoElementsAtQueue()){
                     System.out.println("Gracz "+player+" zaczyna grę");
-                    queue.startGame();
+                    queue.addNewGame(queue.startGame());
+                    //wpisz gre do arraylisty gier
                 }
                 if(!queue.isInQueue(player)){
                     // TODO: Game starts
@@ -160,10 +164,6 @@ public class RegistrationController {
                 }
             }
         }
-
-
-
-
         return "waiting";
 
 
@@ -175,8 +175,88 @@ public class RegistrationController {
     public String rivalMode(){
         return "rival_mode";
     }
-    @PostMapping("/rival_results")
-    public String rivalResults(){
+
+
+
+        @RequestMapping("/waitingResults")
+    public String waitForResults(WebRequest request, HttpSession session){
+
+        String player = session.getAttribute("username").toString();
+
+        if(queue.isInGame(player) ){
+
+            int point = Integer.parseInt(request.getParameter("points")); //Piots gained
+            queue.getGameByNameOfPlayer(player).setPoints(player,point);
+            System.out.println("Punkty gracza "+player+": "+point);
+            queue.removeCurrentGame(player);
+            return  "waitingResults";
+        }
+        else{
+
+            System.out.println("Player "+player+ " is waiting for player 2");
+
+            while(true){
+                try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
+                String secondPlayer = queue.getGameByNameOfPlayer(player).getSecondPlayer(player);
+                if(!queue.isInGame(secondPlayer) ){
+
+                    Game currentGame =  queue.getGameByNameOfPlayer(player);
+
+                    if(currentGame.getPoints(1) > currentGame.getPoints(2) )
+                    {
+                        System.out.println("Gracz "+ currentGame.getPlayer(1)+" wygrał");
+
+                    }
+                    else if(currentGame.getPoints(1) < currentGame.getPoints(2) )
+                    {
+                        System.out.println("Gracz "+ currentGame.getPlayer(2)+" wygrał");
+                    }
+                    else
+                    {
+                        System.out.println("Remis");
+
+                    }
+
+                    return "redirect:rival_results";
+                }
+            }
+        }
+
+
+        /*
+               session.setAttribute("points", request.getParameter("points") );
+               game.setPoints((String) session.getAttribute("username"), Integer.parseInt(request.getParameter("points")));
+        while(game.getPoints(1) == -1 || game.getPoints(2) == -1){
+            try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
+
+
+        }
+        if(game.getPoints(1) != -1 && game.getPoints(2) != -1){
+            System.out.println("Punkty gracza "+game.getPlayer(1)+": "+game.getPoints(1));
+            System.out.println("Punkty gracza "+game.getPlayer(2)+": "+game.getPoints(2));
+
+            if(game.getPoints(1) > game.getPoints(2) )
+            {
+                System.out.println("Gracz "+ game.getPlayer(1)+" wygrał");
+
+            }
+            else if(game.getPoints(1) < game.getPoints(2) )
+            {
+                System.out.println("Gracz "+ game.getPlayer(2)+" wygrał");
+            }
+            else
+            {
+                System.out.println("Remis");
+
+            }
+
+        }
+     */
+
+
+    }
+    @RequestMapping("/rival_results")
+    public String rivalResults(WebRequest request, HttpSession session){
         return "rival_results";
     }
 
