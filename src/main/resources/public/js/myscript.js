@@ -76,15 +76,35 @@ function showPL(){
     document.getElementById("unlearned").style.display = "inline";
     document.getElementById("learned").style.display = "inline";
 }
+function loadUnlearnedWords(){
+    words = unlearnedWords;
+    unlearnedWords = [];
+    initializeCounter();
+    loadFiche();
+    document.getElementById("next").style.display = "none";
+    document.getElementById("info").style.display = "none";
+    document.getElementById("frontFiche").style.display = "block";
+    document.getElementById("backFiche").style.display = "block";
+    document.getElementById("counter").style.display = "block";
+    document.getElementById("showTranslation").style.display = "block";
+}
 function nextFiche(){
   wordIndex = (wordIndex+1)%words.length;
   if(wordIndex==0 && unlearnedWords.length > 0){
-      words = unlearnedWords;
-      unlearnedWords = [];
-      initializeCounter();
+      document.getElementById("next").style.display = "block";
+      document.getElementById("info").innerHTML = "Pozostała liczba słówek: "+unlearnedWords.length+". Dasz radę!";
+      document.getElementById("info").style.display = "block";
+      document.getElementById("frontFiche").style.display = "none";
+      document.getElementById("backFiche").style.display = "none";
+      document.getElementById("counter").style.display = "none";
+      document.getElementById("unlearned").style.display = "none";
+      document.getElementById("learned").style.display = "none";
+      document.getElementById("showTranslation").style.display = "none";
+      return;
   }
   else if(wordIndex == 0&& unlearnedWords.length == 0){
         document.getElementById("nextStage").style.display = "block";
+        document.getElementById("info").innerHTML = "Udało ci się przerobić wszystkie słówka!";
         document.getElementById("info").style.display = "block";
         document.getElementById("frontFiche").style.display = "none";
         document.getElementById("backFiche").style.display = "none";
@@ -97,26 +117,6 @@ function nextFiche(){
   loadFiche();
   $("#ficheContainer").flip('toggle');
   updateCounter();
-
-  /*if(!active){
-    active = true;
-    $.when($('#ficheContainer').animate({bottom:"500px"},400, function(){
-      wordIndex = (wordIndex+1)%words.length;
-      loadFiche();
-      updateCounter();
-      $("#ficheContainer").flip(false);
-      $('#ficheContainer').animate({bottom:"0px"},400)
-    })).then(function() {active = false})
-  }*/
-   /* $('#ficheContainer').animate({bottom:"500px"},400, function(){
-        wordIndex = (wordIndex+1)%words.length;
-        loadFiche();
-        updateCounter();
-        $('#ficheContainer').animate({bottom:"0px"},400)
-    })*/
-  //flip(false);
-  //var x = document.getElementsByClassName('fische');
-  //x[0].style.display = "none";
 }
 
 function notLearned(){
