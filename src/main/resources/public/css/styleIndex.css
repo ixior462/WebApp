@@ -374,3 +374,31 @@ slide button {
     color: #d00c27;
     cursor: pointer;
 }
+
+/***************************************** USER *******************************************/
+
+#user {
+    width: 100%;
+}
+
+#userPictrue {
+    font-size: 150px;
+}
+
+#crown {
+    color: #ffbf00;
+}
+
+.userData {
+    width: 33%;
+    display: inline-block;
+    float: left;
+}
+
+.statistics {
+    width: -moz-calc(100% - 37%);
+    width: -webkit-calc(100% - 37%);
+    width: calc(100% - 37%);
+    display: inline-block;
+    float: left;
+}

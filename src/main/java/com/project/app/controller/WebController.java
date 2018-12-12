@@ -23,6 +23,22 @@ public class WebController {
     public String showMenuPage(){
         return "menu";
     }
+    @RequestMapping(value = "/indexClient")
+    public String showClientMainPage() {
+        return "indexClient";
+    }
+    @RequestMapping(value = "/contactClient")
+    public String showClientContactPage(){
+        return "contactClient";
+    }
+    @RequestMapping(value = "/menuClient")
+    public String showClientMenuPage(){
+        return "menuClient";
+    }
+    @RequestMapping(value = "/user")
+    public String showClientPage() {
+        return "user";
+    }
     @RequestMapping(value = "/nauka")
     public String showLearningPage(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();

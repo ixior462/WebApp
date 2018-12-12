@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
+        <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
+        <meta name="author" content="Weronika Jasiak">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Nazwa</title>
+        <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
+        <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
+    </head>
+    <body>
+        <header>
+            <nav id="main-nav">
+                <ul class="menu">
+                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
+                    <li><a href="/indexClient"><h1>Nazwa</h1></a></li>
+                    <li class="right"><a href="/index">Wyloguj</a></li>
+                    <li class="right"><a class="active" href="#">
+                        <i class="fas fa-user-secret"></i>
+                    </a></li>
+                    <!-- TODO: Poprawić wysyłanie formularza. -->
+                    <li class="right"><a href="/contactClient">Kontakt</a></li>
+                    <!-- TODO: Dodać stronę z rywalizacją. -->
+                    <li class="right"><a href="#">Rywalizuj</a></li>
+                    <li class="right"><a href="/menuClient">Ucz się</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- TODO: Wczytywanie danych użytkownika. -->
+        <section id="user">
+            <div class="userData">
+                <i id="userPictrue" class="fas fa-user-secret"></i>
+                <br><br>
+                <table>
+                    <tr>
+                        <td>NICK</td>
+                        <td>Użytkownik</td>
+                    </tr>
+                    <tr>
+                        <td>POZIOM</td>
+                        <td>A1</td>
+                    </tr>
+                    <tr>
+                        <td><i id="crown" class="fas fa-crown"></i></td>
+                        <td>1235</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="statistics">
+                <table>
+                    <tr>
+                        <th>Miejsce</th>
+                        <th>Nick</th>
+                        <th>Poziom</th>
+                        <th>Liczba punktów</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Ala</td>
+                        <td>C1</td>
+                        <th>123456</th>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Basia</td>
+                        <td>B1</td>
+                        <th>12356</th>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Ola</td>
+                        <td>A2</td>
+                        <th>1256</th>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <th>...</th>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td>Ula</td>
+                        <td>A1</td>
+                        <th>12</th>
+                    </tr>
+                    <tr>
+                        <td>124</td>
+                        <td>Jagoda</td>
+                        <td>B1</td>
+                        <th>10</th>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </body>
+</html>
