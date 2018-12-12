@@ -205,15 +205,33 @@ public class RegistrationController {
                     if(currentGame.getPoints(1) > currentGame.getPoints(2) )
                     {
                         System.out.println("Gracz "+ currentGame.getPlayer(1)+" wygrał");
+                        session.setAttribute("winner", currentGame.getPlayer(1));
+                        session.setAttribute("player1points", currentGame.getPoints(1));
+                        session.setAttribute("player2points", currentGame.getPoints(2));
+                        session.setAttribute("player1", currentGame.getPlayer(1));
+                        session.setAttribute("player2", currentGame.getPlayer(2));
+
+
 
                     }
                     else if(currentGame.getPoints(1) < currentGame.getPoints(2) )
                     {
                         System.out.println("Gracz "+ currentGame.getPlayer(2)+" wygrał");
+                        session.setAttribute("winner", currentGame.getPlayer(2));
+                        session.setAttribute("player1points", currentGame.getPoints(1));
+                        session.setAttribute("player2points", currentGame.getPoints(2));
+                        session.setAttribute("player1", currentGame.getPlayer(1));
+                        session.setAttribute("player2", currentGame.getPlayer(2));
                     }
                     else
                     {
                         System.out.println("Remis");
+                        System.out.println("Gracz "+ currentGame.getPlayer(1)+" wygrał");
+                        session.setAttribute("winner", "draw");
+                        session.setAttribute("player1points", currentGame.getPoints(1));
+                        session.setAttribute("player2points", currentGame.getPoints(2));
+                        session.setAttribute("player1", currentGame.getPlayer(1));
+                        session.setAttribute("player2", currentGame.getPlayer(2));
 
                     }
 
@@ -223,40 +241,19 @@ public class RegistrationController {
         }
 
 
-        /*
-               session.setAttribute("points", request.getParameter("points") );
-               game.setPoints((String) session.getAttribute("username"), Integer.parseInt(request.getParameter("points")));
-        while(game.getPoints(1) == -1 || game.getPoints(2) == -1){
-            try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
 
-
-        }
-        if(game.getPoints(1) != -1 && game.getPoints(2) != -1){
-            System.out.println("Punkty gracza "+game.getPlayer(1)+": "+game.getPoints(1));
-            System.out.println("Punkty gracza "+game.getPlayer(2)+": "+game.getPoints(2));
-
-            if(game.getPoints(1) > game.getPoints(2) )
-            {
-                System.out.println("Gracz "+ game.getPlayer(1)+" wygrał");
-
-            }
-            else if(game.getPoints(1) < game.getPoints(2) )
-            {
-                System.out.println("Gracz "+ game.getPlayer(2)+" wygrał");
-            }
-            else
-            {
-                System.out.println("Remis");
-
-            }
-
-        }
-     */
 
 
     }
     @RequestMapping("/rival_results")
-    public String rivalResults(WebRequest request, HttpSession session){
+    public String rivalResults(  WebRequest request, HttpSession session){
+        String player1 = (String) session.getAttribute("player1");
+        String player2 = (String) session.getAttribute("player2");
+        int player1points =  (Integer) session.getAttribute("player1points");
+        int player2points = (Integer) session.getAttribute("player2points");
+        String winner = (String) session.getAttribute("winner");
+
+        System.out.println("Player "+player1+" points: "+player1points+" Player "+player2+" points: "+player2points+" -----> Winner: "+winner);
         return "rival_results";
     }
 
