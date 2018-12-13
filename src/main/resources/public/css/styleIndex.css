@@ -51,7 +51,7 @@ ul.menu img {
     height: 50px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
     ul.menu li.right, ul.menu li {
         float: none;
     }
@@ -301,7 +301,7 @@ slide button {
     display: inline-block;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
     #menuSidenav {
         width: 100%;
     }
@@ -376,13 +376,17 @@ slide button {
 }
 
 /***************************************** USER *******************************************/
-
 #user {
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 35%;
+    transform: translateY(-35%);
 }
 
 #userPictrue {
-    font-size: 150px;
+    font-size: 250px;
 }
 
 #crown {
@@ -390,15 +394,23 @@ slide button {
 }
 
 .userData {
-    width: 33%;
-    display: inline-block;
-    float: left;
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
 }
 
-.statistics {
-    width: -moz-calc(100% - 37%);
-    width: -webkit-calc(100% - 37%);
-    width: calc(100% - 37%);
-    display: inline-block;
-    float: left;
+.userData table {
+    align-self: center;
+    width: 100px;
+}
+
+.userData td {
+    width: 50%;
+    padding: 0 5px;
+}
+
+@media screen and (max-width: 670px) {
+    #user {
+        padding-bottom: 35%;
+    }
 }
