@@ -1,9 +1,9 @@
 .pl{
-    width: 47%;
+    width: 20%;
     margin-top: 0;
     float:left;
-    margin-right: 0%;
-    margin-left: 0%;
+    margin-right: 5%;
+    margin-left: 20%;
 }
 
 .eng{
@@ -31,10 +31,10 @@
 
 
 #wordpl-1, #wordpl-2, #wordpl-3,#wordpl-4,#wordpl-5, #wordpl-6, #wordpl-7,#wordpl-8{
-    width:20%;
-    height: 1.5em;
-    line-height: 1.5em;
-    margin-bottom: 1%;
+    width:52.5%;
+    height: 2.24em;
+    line-height: 2.24em;
+    margin-bottom: 2%;
     margin-left: 70%;
     background-image: linear-gradient(#f9f8f6,#d2d1cf);
     color: #191919;
@@ -52,15 +52,14 @@
     padding-top:5px;
     padding-bottom:5px;
     color:white;
-    border-radius:4px;
-    border: #2929bc 2px solid;
+    border-radius:3px;
+    border: #f2f2f2 2px solid;
     height:70px;
     margin-top:20px;
     margin-bottom:20px;
     margin-left:38%;
     font-weight:800;
     font-size:0.8em;
-    border-radius: 0.75em;
     font-size:20px;
 }
 #stat{
@@ -70,7 +69,8 @@
     display: none;
     float:left;
     margin-top:0;
-    margin-left:15%;
+    margin-left:0;
+    margin-right:0;
 }
 #bad{
     font-color:#cc0000;
