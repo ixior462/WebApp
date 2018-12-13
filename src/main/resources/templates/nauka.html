@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="pl">
-
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <title>Tryb nauki I</title>
@@ -16,37 +15,39 @@
       /*]]>*/
   </script>
 </head>
-
 <body onload="loadFiche(); initializeCounter();">
-
-  <div id="container">
-    <center>
-      <div id="counter">
-          <span id="ficheNumber"></span><span id="numberOfWords"></span>
+<div id="container">
+  <center>
+    <h1 id="info">Przerobiono wszystkie słówka!</h1>
+    <div id="counter">
+      <span id="ficheNumber"></span><span id="numberOfWords"></span>
+    </div>
+    <br/>
+    <div id="ficheContainer">
+      <div class="front fische" id="frontFiche">
+        <span class="text" id="textENG1"></span>
+        <button type="button" class="speakerButton" onclick="readENG1()">&#x1f50a</button>
+        <br/>
+        <span class="text" id="textPL1"></span>
+        <button type="button" class="speakerButton" id="PLbutton1" onclick="readPL1()">&#x1f50a</button>
       </div>
-      <div id="ficheContainer">
-        <div class="front fische">
-          <p class="text" id="textENG"></p>
-          <button type="button" class="speakerButton" onclick="readENG()">&#x1f50a</button>
-          <!--<button type="button" class="mybutton" id="next" onclick="$('#card').flip();">&#x25B6</button>-->
-        </div>
-
-        <div class="back fische">
-          <p class="text" id="textPL"></p>
-          <button type="button" class="speakerButton" onclick="readPL()">&#x1f50a</button>
-          <!--<button type="button" class="mybutton" id="next" onclick="$('#card').flip();">&#x25B6</button>-->
-        </div>
+      <div class="back fische" id="backFiche">
+        <span class="text" id="textENG2"></span>
+        <button type="button" class="speakerButton" onclick="readENG2()">&#x1f50a</button>
+        <br/>
+        <span class="text" id="textPL2"></span>
+        <button type="button" class="speakerButton" id="PLbutton2" onclick="readPL2()">&#x1f50a</button>
       </div>
-        <button type="button" class="mybutton" id="next" onclick="nextFiche()">NEXT</button>
-        <button type="button" class="mybutton" id="nextStage" >Następny etap</button>
-    </center>
-
-  </div>
-  <script>
-    $('#ficheContainer').flip({speed: 200});
-  </script>
-
-
+    </div>
+    <button type="button" class="mybutton" id="unlearned" onclick="notLearned()">Nie umiem</button>
+    <button type="button" class="mybutton" id="learned" onclick="nextFiche()">Umiem</button>
+    <button type="button" class="mybutton" id="showTranslation" onclick="showPL()">Pokaż tłumaczenie</button>
+    <button type="button" class="mybutton" id="next" onclick="loadUnlearnedWords()" >Dalej</button>
+    <button type="button" class="mybutton" id="nextStage" onclick="nextStage()">Następny etap</button>
+  </center>
+</div>
+<script>
+    $('#ficheContainer').flip({trigger: 'manual', axis: 'y'});
+</script>
 </body>
-
-<html>
+</html>
