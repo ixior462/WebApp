@@ -25,6 +25,7 @@ public class RegistrationController {
 
      Game game;
 
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(WebRequest request, Model model) {
         UserData user = new UserData();
@@ -205,6 +206,8 @@ public class RegistrationController {
                         session.setAttribute("player2points", currentGame.getPoints(2));
                         session.setAttribute("player1", currentGame.getPlayer(1));
                         session.setAttribute("player2", currentGame.getPlayer(2));
+                        session.setAttribute("isUpdated", 0);
+
 
 
 
@@ -217,16 +220,21 @@ public class RegistrationController {
                         session.setAttribute("player2points", currentGame.getPoints(2));
                         session.setAttribute("player1", currentGame.getPlayer(1));
                         session.setAttribute("player2", currentGame.getPlayer(2));
+                        session.setAttribute("isUpdated", 0);
+
+
                     }
                     else
                     {
                         System.out.println("Remis");
-                        System.out.println("Gracz "+ currentGame.getPlayer(1)+" wygrał");
-                        session.setAttribute("winner", "draw");
+                        String winner = currentGame.getPlayer(1)+" i "+currentGame.getPlayer(2);
+                        session.setAttribute("winner", winner);
                         session.setAttribute("player1points", currentGame.getPoints(1));
                         session.setAttribute("player2points", currentGame.getPoints(2));
                         session.setAttribute("player1", currentGame.getPlayer(1));
                         session.setAttribute("player2", currentGame.getPlayer(2));
+                        session.setAttribute("isUpdated", 1);
+
 
                     }
 
@@ -250,29 +258,44 @@ public class RegistrationController {
         String winner = (String) session.getAttribute("winner");
 
         String loser;
-        if(Objects.equals(winner, player1))
-            loser = player2;
-        else
-            loser = player1;
-
-        EloTuple tuple = new EloTuple();
-        tuple.WinnerElo = 1200; // change to get Player Elo by his login in DB  TODO -> getelo(winner)
-        tuple.LoserElo = 1200; // change to get Player Elo by his login in DB   TODO -> getelo(loser)
-        Elo elocalc = new Elo();
-        tuple = elocalc.calculateEloRating(tuple);
+        if(!winner.equals(player1+" i "+player2) && player1.equals(session.getAttribute("username").toString())) {
+            if (Objects.equals(winner, player1))
+                loser = player2;
+            else
+                loser = player1;
 
 
-        /*
-            TODO update players elo in DB
-         */
+            EloTuple tuple = new EloTuple();
+            ClientsDataAccessor parser = new ClientsDataAccessor();
+            Client currentWinner = parser.getClient(winner);
+            Client currentLoser = parser.getClient(loser);
+
+            tuple.WinnerElo = currentWinner.getElo();
+            tuple.LoserElo = currentLoser.getElo();
+            Elo elocalc = new Elo();
+            tuple = elocalc.calculateEloRating(tuple);
+            currentWinner.setElo(tuple.WinnerElo);
+            currentLoser.setElo(tuple.LoserElo);
+            parser.updateClientsEloJSON(currentWinner);
+            parser.updateClientsEloJSON(currentLoser);
+            System.out.println("Winner now has  "+tuple.WinnerElo+" elo points. Loser now has: "+tuple.LoserElo+" elo points");
+
+
+        }
+
+
+
+        ClientsDataAccessor parser = new ClientsDataAccessor();
+        Client pl1 = parser.getClient(player1);
+        Client pl2 = parser.getClient(player2);
 
         model.addAttribute("player1", player1);
         model.addAttribute("player2", player2);
         model.addAttribute("player1points", player1points);
         model.addAttribute("player2points", player2points);
         model.addAttribute("winner", winner);
+
         System.out.println("Player "+player1+" points: "+player1points+" Player "+player2+" points: "+player2points+" -----> Winner: "+winner);
-        System.out.println("Winner now has  "+tuple.WinnerElo+" elo points. Loser now has: "+tuple.LoserElo+" elo points");
 
         return "rival_results";
     }

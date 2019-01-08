@@ -14,6 +14,10 @@ public class ClientsDataAccessor {
         handler.addClientToJSON(client);
     }
 
+    public void updateClientsEloJSON(Client client){
+        handler.updateEloInJSON(client.getLogin(), client.getElo());
+    }
+
     public Client getClient(String login){
         return handler.getClientFromJSON(login);
     }

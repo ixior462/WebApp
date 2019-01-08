@@ -40,6 +40,9 @@ public class Client {
     public int getElo() {
         return elo;
     }
+    public int setElo(int newElo) {
+         this.elo = newElo; return elo;
+    }
 
     public String getLevel() {
         return level;

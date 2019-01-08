@@ -122,6 +122,58 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    public Client updateEloInJSON(String login, int newElo){
+
+        /**
+         *  return client from JSON file
+         */
+
+        Object obj = null;
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("clients.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("clients");
+            JSONObject updatedClient = null;
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject client = (JSONObject) list.get(i);
+                String loginFromDataBase = (String) client.get("login");
+                if(loginFromDataBase.equals(login))
+                {
+                    client.remove("elo");
+                    client.put("elo", newElo);
+                    updatedClient = client;
+                }
+                // ...
+            }
+
+            //Print object that we will add to the array
+            StringWriter out = new StringWriter();
+            updatedClient.writeJSONString(out);
+            String jsonText = out.toString();
+            System.out.println("\t" + jsonText);
+
+            //Add this new object to array
+            jsonObject.put("clients", list);
+
+            //Write whole thing to a file
+            FileWriter fileToWrite = new FileWriter("clients.json", false);
+            try {
+                fileToWrite.write(jsonObject.toJSONString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fileToWrite.flush();
+            fileToWrite.close();
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public boolean usernameAlreadyExist(String name) {
 
         /**

@@ -12,6 +12,7 @@ import java.util.List;
 
 @Controller
 public class WebController {
+
     @RequestMapping(value = "/index")
     public String showMainPage(){
         return "index";
@@ -75,4 +76,5 @@ public class WebController {
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka4";
     }
+
 }
