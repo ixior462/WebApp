@@ -1,6 +1,6 @@
 package com.project.app.gameauthorization;
 
 public class EloTuple {
-    int WinnerElo;
-    int LoserElo;
+    public int WinnerElo;
+    public int LoserElo;
 }
