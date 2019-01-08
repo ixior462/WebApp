@@ -1,5 +1,7 @@
 package com.project.app.registration;
 
+import com.project.app.gameauthorization.Elo;
+import com.project.app.gameauthorization.EloTuple;
 import com.project.app.gameauthorization.Game;
 import com.project.app.gameauthorization.QueueAccessor;
 import com.project.app.model.Client;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Controller
@@ -245,12 +248,32 @@ public class RegistrationController {
         int player1points =  (Integer) session.getAttribute("player1points");
         int player2points = (Integer) session.getAttribute("player2points");
         String winner = (String) session.getAttribute("winner");
+
+        String loser;
+        if(Objects.equals(winner, player1))
+            loser = player2;
+        else
+            loser = player1;
+
+        EloTuple tuple = new EloTuple();
+        tuple.WinnerElo = 1200; // change to get Player Elo by his login in DB  TODO -> getelo(winner)
+        tuple.LoserElo = 1200; // change to get Player Elo by his login in DB   TODO -> getelo(loser)
+        Elo elocalc = new Elo();
+        tuple = elocalc.calculateEloRating(tuple);
+
+
+        /*
+            TODO update players elo in DB
+         */
+
         model.addAttribute("player1", player1);
         model.addAttribute("player2", player2);
         model.addAttribute("player1points", player1points);
         model.addAttribute("player2points", player2points);
         model.addAttribute("winner", winner);
         System.out.println("Player "+player1+" points: "+player1points+" Player "+player2+" points: "+player2points+" -----> Winner: "+winner);
+        System.out.println("Winner now has  "+tuple.WinnerElo+" elo points. Loser now has: "+tuple.LoserElo+" elo points");
+
         return "rival_results";
     }
 
