@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nauka</title>
+    <link rel="stylesheet" href="css/learningstyle4.css">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        words = /*[[${words}]]*/[];
+        /*]]>*/
+
+    </script>
+    <script src="js/learningscript4.js"></script>
+</head>
+<body onload=setWord()>
+<div id="container">
+<div id="wordToTranslate" ></div>
+<input id="wordToCheck">
+<div>
+    <button class="btn" id="check" onclick="check()">Sprawdź</button>
+</div>
+<div>
+    <button class="btn" id="next" onclick="next()">Dalej</button>
+</div>
+<div>
+    <button class="btn" id="stat" onclick="stats()">Statystyki</button>
+<div/>
+<div id="checkResult"></div>
+<div id="checkResult2"></div>
+    <div id="Result"></div>
+</div>
+</div>
+</body>
+</html>

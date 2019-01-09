@@ -71,11 +71,11 @@ function checkBad(){
     for(var i=0;i<n;i++){
         if(document.getElementsByTagName('li')[i].id != "wordeng-"+j) {
             wrong++;
-            document.getElementById("check-"+j).innerText="Źle"
+            document.getElementById("check-"+j).innerText="✗"
 
         }
         else
-            document.getElementById("check-"+j).innerText="Dobrze"
+            document.getElementById("check-"+j).innerText="✓"
         j++;
     }
     return wrong;

@@ -1,0 +1,65 @@
+#container{
+    text-align: center;
+}
+#check{
+    background-image: linear-gradient(#f9f8f6,#d2d1cf);
+    color: #191919;
+    border: 2px solid #d00c27;
+    border-radius: 3px;
+    padding: 0.5%;
+    font-size:20px;
+    text-align: center;
+    margin-top:1%;
+    width:8%;
+    font-family: Cambria Math;
+
+}
+#next {
+    display: none;
+    background-image: linear-gradient(#f9f8f6,#d2d1cf);
+    color: #191919;
+    border: 2px solid #d00c27;
+    border-radius: 3px;
+    padding: 0.5%;
+    font-size:20px;
+    text-align: center;
+    margin-top:1%;
+    width:8%;
+    font-family: Cambria Math;
+}
+#stat {
+    display: none;
+    background-image: linear-gradient(#f9f8f6,#d2d1cf);
+    color: #191919;
+    border: 2px solid #d00c27;
+    border-radius: 3px;
+    padding: 0.5%;
+    font-size:20px;
+    text-align: center;
+    margin-top:1%;
+    width:8%;
+    font-family: Cambria Math;
+}
+#wordToTranslate{
+    font-size:30px;
+    margin-top:4%;
+    font-family: Cambria Math;
+}
+#wordToCheck{
+    border-top:none;
+    font-size:20px;
+    border-left: none;
+    border-right: none;
+    border-width: 2px;
+    border-color: rgb(64, 64, 64);
+    text-align: center;
+    margin-top:1%;
+    font-family: Cambria Math;
+    backgroun-color:inherit;
+
+}
+#checkResult,#checkResult2,#Result{
+    margin-top:1%;
+    font-family: Cambria Math;
+    font-size:20px;
+}
