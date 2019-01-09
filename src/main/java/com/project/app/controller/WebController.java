@@ -69,6 +69,13 @@ public class WebController {
         model.addAttribute("level",lesson.get(1));
         return "nauka2";
     }
+    @RequestMapping(value = "/nauka3")
+    public String showLearningPage3(@RequestParam(value = "lesson") int lesson ,Model model) {
+        DictionaryAccessor dict = new DictionaryAccessor();
+
+        model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
+        return "nauka3";
+    }
     @RequestMapping(value = "/nauka4")
     public String showLearningPage4(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
