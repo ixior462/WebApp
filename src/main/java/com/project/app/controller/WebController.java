@@ -41,6 +41,14 @@ public class WebController {
     public String showClientPage() {
         return "user";
     }
+    @RequestMapping(value = "/specialists")
+    public String showspecialistsPage() {
+        return "specialists";
+    }
+    @RequestMapping(value = "/specialistsClient")
+    public String showClientspecialistsPage() {
+        return "specialistsClient";
+    }
     @RequestMapping(value = "/nauka")
     public String showLearningPage(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
+    <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
+    <meta name="author" content="Weronika Jasiak">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>FishKey</title>
+    <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
+    <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
+    <script src="../public/js/scriptDiv.js" th:src="@{js/scriptDiv.js}"></script>
+</head>
+<body>
+<header>
+    <nav id="main-nav">
+        <ul class="menu">
+            <li>
+                <img src="../public/images/flaga.png" alt="logo" th:src="@{images/flaga.png}" usemap="#logomap">
+                <map name="logomap">
+                    <area shape="rect" coords="0,0,100,50" alt="Sun" href="/indexClient">
+                </map>
+            </li>
+            <li class="right"><a href="/login">Zaloguj</a></li>
+            <!-- TODO: Poprawić wysyłanie formularza. -->
+            <li class="right"><a href="/contact">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="specialists">
+    <button class="arrowL" onclick="previousSlide()">&#60;</button>
+    <div class="card" id="one">
+        <img src="../public/images/dog.jpg" th:src="@{images/dog.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Jakub Dziwiński</b></h4>
+            <p>Prezes</p>
+        </div>
+    </div>
+    <div class="card" id="two">
+        <img src="../public/images/dog2.jpg" th:src="@{images/dog2.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Weronika Jasiak</b></h4>
+            <p>Ten pracownik od frontu</p>
+        </div>
+    </div>
+    <div class="card" id="three">
+        <img src="../public/images/dog1.jpg" th:src="@{images/dog1.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Weronika Pawlak</b></h4>
+            <p>Ten pracownik od nauki</p>
+        </div>
+    </div>
+    <div class="card" id="four">
+        <img src="../public/images/dog3.jpg" th:src="@{images/dog3.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Dominika Kunc</b></h4>
+            <p>Ten pracownik od serwera</p>
+        </div>
+    </div>
+    <div class="card" id="five">
+        <img src="../public/images/dog4.jpg" th:src="@{images/dog4.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Paweł Krupski</b></h4>
+            <p>Ten pracownik od serwera</p>
+        </div>
+    </div>
+    <button class="arrowR" onclick="nextSlide()">&#62;</button>
+</section>
+</body>
+</html>

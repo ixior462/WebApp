@@ -7,7 +7,7 @@
         <meta name="author" content="Weronika Jasiak">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nazwa</title>
+        <title>FishKey</title>
         <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
         <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
@@ -16,8 +16,12 @@
         <header>
             <nav id="main-nav">
                 <ul class="menu">
-                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
-                    <li><a href="/indexClient"><h1>Nazwa</h1></a></li>
+                    <li>
+                        <img src="../public/images/flaga.png" alt="logo" th:src="@{images/flaga.png}" usemap="#logomap">
+                        <map name="logomap">
+                            <area shape="rect" coords="0,0,100,50" alt="Sun" href="/indexClient">
+                        </map>
+                    </li>
                     <li class="right"><a href="/index">Wyloguj</a></li>
                     <li class="right"><a class="active" href="#">
                         <i class="fas fa-user-secret"></i>
@@ -32,23 +36,11 @@
         </header>
         <!-- TODO: Wczytywanie danych użytkownika. -->
         <section id="user">
-            <i id="userPictrue" class="fas fa-user-secret"></i>
-            <div class="userData">
-                <br><br>
-                <table>
-                    <tr>
-                        <td align="right">NICK</td>
-                        <td align="left">Użytkownik</td>
-                    </tr>
-                    <tr>
-                        <td align="right">POZIOM</td>
-                        <td align="left">A1</td>
-                    </tr>
-                    <tr>
-                        <td align="right"><i id="crown" class="fas fa-crown"></i></td>
-                        <td align="left">1235</td>
-                    </tr>
-                </table>
+            <img scr="bond.jpg" th:src="@{images/bond.jpg}" id="userPictrue" alt="Bond James Bond">
+            <div class="userContainer">
+                <h4><b>Agent 007</b></h4>
+                <p>Poziom A1</p>
+                <i id="crown" class="fas fa-crown"></i>
             </div>
         </section>
     </body>

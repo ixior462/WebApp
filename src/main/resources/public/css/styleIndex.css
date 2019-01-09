@@ -5,6 +5,7 @@ html, body {
     width: 100%;
     height: 100%;
     padding: 0;
+    position: relative;
 }
 
 /***************************************** HEADER *******************************************/
@@ -377,40 +378,141 @@ slide button {
 
 /***************************************** USER *******************************************/
 #user {
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    top: 35%;
-    transform: translateY(-35%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
 #userPictrue {
-    font-size: 250px;
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
 }
 
 #crown {
     color: #ffbf00;
 }
 
-.userData {
-    padding-top: 10%;
-    display: flex;
-    justify-content: center;
-}
-
-.userData table {
-    align-self: center;
-    width: 100px;
-}
-
-.userData td {
-    width: 50%;
-    padding: 0 5px;
+.userContainer {
+    padding: 20px;
+    text-align: center;
 }
 
 @media screen and (max-width: 670px) {
     #user {
-        padding-bottom: 35%;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/***************************************** SPECIALISTS *******************************************/
+#specialists {
+    display: inline;
+}
+
+#two, #three, #four, #five {
+    display: none;
+}
+
+.arrowL, .arrowR {
+    display: inline-block;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+    color: #e0dfdd;
+    cursor: pointer;
+}
+
+.arrowL:focus, .arrowR:focus {
+    outline:0;
+}
+
+.arrowL {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.arrowR {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card img {
+    border-radius: 5px 5px 0 0;
+    width: 300px;
+    height: 300px;
+}
+
+.cardContainer {
+    padding: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 670px) {
+    .arrowL {
+        position: absolute;
+        top: 70%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+    }
+
+    .arrowR {
+        position: absolute;
+        top: 70%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+    }
+
+    .card {
+        display: inline-block;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+/***************************************** WAITING *******************************************/
+#waitingDots {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+@media screen and (max-width: 670px) {
+    #waitingDots {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }

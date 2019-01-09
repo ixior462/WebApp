@@ -7,7 +7,7 @@
         <meta name="author" content="Weronika Jasiak">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nazwa</title>
+        <title>FishKey</title>
         <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
         <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
@@ -16,8 +16,12 @@
         <header>
             <nav id="main-nav">
                 <ul class="menu">
-                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
-                    <li><a class="active" href="#"><h1>Nazwa</h1></a></li>
+                    <li>
+                        <img src="../public/images/flaga.png" alt="logo" th:src="@{images/flaga.png}" usemap="#logomap">
+                        <map name="logomap">
+                            <area shape="rect" coords="0,0,100,50" alt="Sun" href="/indexClient">
+                        </map>
+                    </li>
                     <li class="right"><a href="/index">Wyloguj</a></li>
                     <li class="right"><a href="/user">
                         <i class="fas fa-user-secret"></i>
@@ -32,9 +36,7 @@
         </header>
         <slider>
             <slide>
-                <!--- th:text="${username}" -->
                 <h2>Sprawdź czy wygrasz z Kubą!</h2>
-
                 <button onclick="location.href='/waiting'" type="button" id="login">Zagraj</button>
             </slide>
             <slide>
@@ -47,7 +49,7 @@
             </slide>
             <slide>
                 <h2>Poznaj naszych specjalistów!</h2>
-                <button onclick="location.href='#'" type="button" id="hello">Cześć!</button>
+                <button onclick="location.href='/specialistsClient'" type="button" id="hello">Cześć!</button>
             </slide>
         </slider>
     </body>

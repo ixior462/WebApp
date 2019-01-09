@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="refresh" content="4">
     <meta charset="UTF-8">
     <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
     <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
@@ -12,7 +11,7 @@
     <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
     <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <script src="../public/js/scriptDiv.js" th:src="@{js/scriptDiv.js}"></script>
 </head>
 <body>
 <header>
@@ -31,13 +30,49 @@
             <!-- TODO: Poprawić wysyłanie formularza. -->
             <li class="right"><a href="/contactClient">Kontakt</a></li>
             <!-- TODO: Dodać stronę z rywalizacją. -->
-            <li class="right"><a class="active" href="#">Rywalizuj</a></li>
+            <li class="right"><a href="/waiting">Rywalizuj</a></li>
             <li class="right"><a href="/menuClient">Ucz się</a></li>
         </ul>
     </nav>
 </header>
-<div id="waitingDots">
-    <p>Oczekiwanie na przeciwnika  <i class="fa fa-refresh fa-spin"></i></p>
-</div>
+<section id="specialists">
+    <button class="arrowL" onclick="previousSlide()">&#60;</button>
+    <div class="card" id="one">
+        <img src="../public/images/dog.jpg" th:src="@{images/dog.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Jakub Dziwiński</b></h4>
+            <p>Prezes</p>
+        </div>
+    </div>
+    <div class="card" id="two">
+        <img src="../public/images/dog2.jpg" th:src="@{images/dog2.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Weronika Jasiak</b></h4>
+            <p>Ten pracownik od frontu</p>
+        </div>
+    </div>
+    <div class="card" id="three">
+        <img src="../public/images/dog1.jpg" th:src="@{images/dog1.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Weronika Pawlak</b></h4>
+            <p>Ten pracownik od nauki</p>
+        </div>
+    </div>
+    <div class="card" id="four">
+        <img src="../public/images/dog3.jpg" th:src="@{images/dog3.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Dominika Kunc</b></h4>
+            <p>Ten pracownik od serwera</p>
+        </div>
+    </div>
+    <div class="card" id="five">
+        <img src="../public/images/dog4.jpg" th:src="@{images/dog4.jpg}" alt="Avatar">
+        <div class="cardContainer">
+            <h4><b>Paweł Krupski</b></h4>
+            <p>Ten pracownik od serwera</p>
+        </div>
+    </div>
+    <button class="arrowR" onclick="nextSlide()">&#62;</button>
+</section>
 </body>
 </html>

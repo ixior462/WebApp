@@ -7,7 +7,7 @@
         <meta name="author" content="Weronika Jasiak">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nazwa</title>
+        <title>FishKey</title>
         <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
         <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
     </head>
@@ -15,8 +15,12 @@
         <header>
             <nav id="main-nav">
                 <ul class="menu">
-                    <li><img src="../public/images/flaga.png" alt="flaga" th:src="@{images/flaga.png}"></li>
-                    <li><a href="/index"><h1>Nazwa</h1></a></li>
+                    <li>
+                        <img src="../public/images/flaga.png" alt="logo" th:src="@{images/flaga.png}" usemap="#logomap">
+                        <map name="logomap">
+                            <area shape="rect" coords="0,0,100,50" alt="Sun" href="/indexClient">
+                        </map>
+                    </li>
                     <li class="right"><a href="/login">Zaloguj</a></li>
                     <!-- TODO: Poprawić wysyłanie formularza. -->
                     <li class="right"><a class="active" href="#">Kontakt</a></li>
