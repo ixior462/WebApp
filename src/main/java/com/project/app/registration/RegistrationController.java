@@ -208,6 +208,37 @@ public class RegistrationController {
                         session.setAttribute("player2", currentGame.getPlayer(2));
                         session.setAttribute("isUpdated", 0);
 
+                        String info = "";
+
+                        String winner = currentGame.getPlayer(1);
+                        String player1 = currentGame.getPlayer(1);
+                        String player2 = currentGame.getPlayer(2);
+                        String loser;
+
+                        if (Objects.equals(winner, player1))
+                            loser = player2;
+                        else
+                            loser = player1;
+
+                        EloTuple tuple = new EloTuple();
+                        ClientsDataAccessor parser = new ClientsDataAccessor();
+                        Client currentWinner = parser.getClient(winner);
+                        Client currentLoser = parser.getClient(loser);
+
+                        tuple.WinnerElo = currentWinner.getElo();
+                        tuple.LoserElo = currentLoser.getElo();
+                        Elo elocalc = new Elo();
+                        tuple = elocalc.calculateEloRating(tuple);
+
+                        if (Objects.equals(winner, player))
+                            info = "Brawo, wygrałeś grę! Zdobywasz " + (tuple.WinnerElo - currentWinner.getElo()) +
+                                    " punktów rankingowych elo";
+                        else
+                            info = "Niestety, przegrałeś grę! Tracisz " + (currentLoser.getElo() - tuple.LoserElo) +
+                                    " punktów rankingowych elo";
+
+                        session.setAttribute("massage", info);
+
 
 
 
@@ -222,6 +253,35 @@ public class RegistrationController {
                         session.setAttribute("player2", currentGame.getPlayer(2));
                         session.setAttribute("isUpdated", 0);
 
+                        String info = "";
+
+                        String winner = currentGame.getPlayer(2);
+                        String player1 = currentGame.getPlayer(1);
+                        String player2 = currentGame.getPlayer(2);
+                        String loser;
+
+                        if (Objects.equals(winner, player1))
+                            loser = player2;
+                        else
+                            loser = player1;
+
+                        EloTuple tuple = new EloTuple();
+                        ClientsDataAccessor parser = new ClientsDataAccessor();
+                        Client currentWinner = parser.getClient(winner);
+                        Client currentLoser = parser.getClient(loser);
+
+                        tuple.WinnerElo = currentWinner.getElo();
+                        tuple.LoserElo = currentLoser.getElo();
+                        Elo elocalc = new Elo();
+                        tuple = elocalc.calculateEloRating(tuple);
+
+                        if (Objects.equals(winner, player))
+                            info = "Brawo, wygrałeś grę! Zdobywasz " + (tuple.WinnerElo - currentWinner.getElo()) +
+                                    " punktów rankingowych elo";
+                        else
+                            info = "Niestety, przegrałeś grę! Tracisz " + (currentLoser.getElo() - tuple.LoserElo) +
+                                    " punktów rankingowych elo";
+                        session.setAttribute("massage", info);
 
                     }
                     else
@@ -235,7 +295,8 @@ public class RegistrationController {
                         session.setAttribute("player2", currentGame.getPlayer(2));
                         session.setAttribute("isUpdated", 1);
 
-
+                        String info = "Remis, punkty rankingowe elo zostają bez zmian";
+                        session.setAttribute("massage", info);
                     }
 
                     return "redirect:rival_results";
@@ -256,7 +317,7 @@ public class RegistrationController {
         int player1points =  (Integer) session.getAttribute("player1points");
         int player2points = (Integer) session.getAttribute("player2points");
         String winner = (String) session.getAttribute("winner");
-
+        String massage = (String) session.getAttribute("massage");
         String loser;
         if(!winner.equals(player1+" i "+player2) && player1.equals(session.getAttribute("username").toString())) {
             if (Objects.equals(winner, player1))
@@ -289,6 +350,7 @@ public class RegistrationController {
         Client pl1 = parser.getClient(player1);
         Client pl2 = parser.getClient(player2);
 
+        model.addAttribute("massage", massage);
         model.addAttribute("player1", player1);
         model.addAttribute("player2", player2);
         model.addAttribute("player1points", player1points);
