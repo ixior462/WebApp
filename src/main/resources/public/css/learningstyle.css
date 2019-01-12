@@ -98,3 +98,9 @@
     line-height: 3.6em;
     margin-bottom: 2%;
 }
+#nextStage{
+    display: none;
+}
+#return{
+    display: none;
+}

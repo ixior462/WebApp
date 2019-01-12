@@ -74,3 +74,6 @@ body {
   background-color: inherit;
   font-size: 2em;
   -webkit-appearance: caret; }
+#return{
+  display: none;
+}

@@ -28,6 +28,12 @@
             width: 1.7em;
             display: inline-block;
         }
+        #nextStage{
+            display:none;
+        }
+        #return{
+            display: none;
+        }
     </style>
     <script  th:inline="javascript">
         /*<![CDATA[*/
@@ -53,6 +59,8 @@
      <button id="next" onclick="next();">Następne słówko</button>
      <br/>
      <button id="score" onclick="printScore();">Wynik</button>
+     <button type="button"  id="nextStage" onclick="nextStage()">Następny etap</button>
+     <button type="button"  id="return" onclick="returnToMain()">Powrót na stronę główną</button>
 
  </center>
 </body>

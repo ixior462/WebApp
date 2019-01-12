@@ -75,8 +75,15 @@ function next(){
 function stats(){
     document.getElementById("checkResult").innerText='✗ '+getBad();
     document.getElementById("checkResult2").innerText='✓ '+getCorrect();
-    if(getCorrect()==words.length)
-        document.getElementById("Result").innerText="Brawo, udało Ci się zaliczyć lekcję!"
-    else
-        document.getElementById("Result").innerText="Spróbuj jeszcze raz."
+    if(getCorrect()==words.length) {
+        document.getElementById("Result").innerText = "Brawo, udało Ci się zaliczyć lekcję!"
+        document.getElementById("return").style.display = "inline";
+    }
+    else {
+        document.getElementById("Result").innerText = "Spróbuj jeszcze raz."
+        document.getElementById("return").style.display = "inline";
+    }
+}
+function returnToMain() {
+    window.location.replace("/indexClient");
 }

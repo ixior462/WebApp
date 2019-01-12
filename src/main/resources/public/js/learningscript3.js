@@ -45,6 +45,9 @@ function printScore(){
     document.getElementById("wordPL").style.color = "#191919";
     document.getElementById("wordPL").innerText = "Dobre odpowiedzi: "+correct;
     document.getElementById("wordENG").innerText = "Złe odpowiedzi: "+incorrect;
+    document.getElementById("score").style.visibility="hidden";
+    document.getElementById("nextStage").style.display ="inline";
+    document.getElementById("return").style.display="inline";
 
 }
 function next(){
@@ -109,7 +112,7 @@ function check(){
     document.getElementById("reset").style.visibility = "hidden";
     document.getElementById("check").style.visibility = "hidden";
 
-    var eng = document.getElementById("ENG").childNodes
+    var eng = document.getElementById("ENG").childNodes;
     var word = "";
     for(var i=1; i<eng.length; i++){
         word += eng[i].innerText;
@@ -126,4 +129,12 @@ function check(){
     }
     result.visibility = "visible";
     document.getElementById("wordENG").innerText = wordENG;
+}
+function nextStage() {
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/nauka4?lesson="+lessonNumber);
+}
+function returnToMain() {
+    window.location.replace("/indexClient");
 }
