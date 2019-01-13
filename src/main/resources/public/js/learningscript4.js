@@ -87,3 +87,23 @@ function stats(){
 function returnToMain() {
     window.location.replace("/indexClient");
 }
+
+function initializeEnter() {
+    var input = document.getElementById("wordToCheck");
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Trigger the button element with a click
+            var btn = document.getElementById("check");
+            var btn2 = document.getElementById("next");
+
+            if(btn.style.display!="none")
+                btn.click();
+            else if(btn2.style.display!="none")
+                btn2.click();
+        }
+    });
+}
