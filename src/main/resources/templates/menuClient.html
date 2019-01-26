@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
         <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
         <script src="../public/js/script.js" th:src="@{js/script.js}"></script>
+
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
     </head>
     <body onload="open();">
@@ -38,14 +39,13 @@
         <section id="menuSidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="centerSidenav">
-                <a href="/nauka?lesson=1" onclick="closeNav()">Lekcja 1</a>
-                <a href="/nauka?lesson=2" onclick="closeNav()">Lekcja 2</a>
-                <a href="/nauka?lesson=3" onclick="closeNav()">Lekcja 3</a>
+                <a onclick="closeNav();loadHTML(1);">Lekcja 1</a>
+                <a onclick="closeNav();loadHTML(2);">Lekcja 2</a>
+                <a onclick="closeNav();loadHTML(3);">Lekcja 3</a>
             </div>
         </section>
         <section id="learn">
-            <div class="fish">
-                <p>Wybierz lekcje</p>
+            <div id="lesson" class="fish">
             </div>
         </section>
     </body>

@@ -19,3 +19,7 @@ function open() {
     document.getElementById("menuSidenav").style.width = "25%";
     document.getElementById("learn").style.marginLeft = "10%";
 }
+function loadHTML(number)
+{
+    document.getElementById("lesson").innerHTML='<object type="text/html" data="http://localhost:8080/nauka?lesson='+number+'" ></object>';
+}
