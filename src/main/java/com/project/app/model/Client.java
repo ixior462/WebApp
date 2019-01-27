@@ -40,6 +40,8 @@ public class Client {
     public int getElo() {
         return elo;
     }
+
+
     public int setElo(int newElo) {
          this.elo = newElo; return elo;
     }
@@ -52,8 +54,19 @@ public class Client {
         return lastLesson;
     }
 
+    public int setLastLesson(int lessonNumber) {
+        this.lastLesson = lessonNumber;
+        return lastLesson;
+    }
+
     public int getStage() {
         return stage;
     }
+
+    public int setStage(int stageNumber) {
+        this.stage = stageNumber;
+        return stage;
+    }
+
 
 }
