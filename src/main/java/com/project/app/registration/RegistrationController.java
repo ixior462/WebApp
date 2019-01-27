@@ -100,7 +100,7 @@ public class RegistrationController {
                 user.setPassword(passwordEncoder.encode(user.getPassword()));
 
             }
-            Client newClient = new Client(user.getUserName(), user.getPassword(), user.getEmail(), "A1", 1200, 0, 0);
+            Client newClient = new Client(user.getUserName(), user.getPassword(), user.getEmail(), "A1", 1200, 1, 1);
             parser.addNewClientToJSON(newClient);
             model.addAttribute("username", user.userName);
             session.setAttribute("username", user.userName);
