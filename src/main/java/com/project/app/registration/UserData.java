@@ -2,6 +2,11 @@ package com.project.app.registration;
 
 
 public class UserData {
+    /**
+     * @author      Weronika Pawlak
+     * @info        Class used to transfer user data entered during registration
+     * @version     1.0
+     */
     public String userName;
     public String password;
     public String matchingPassword;

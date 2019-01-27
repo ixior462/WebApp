@@ -12,6 +12,13 @@ import java.util.List;
 
 @Controller
 public class WebController {
+    /**
+     * @author      Weronika Pawlak
+     * @author      Weronika Jasiak
+     * @author      Jakub Dziwiński
+     * @info        Class used to handling requests
+     * @version     1.0
+     */
 
     @RequestMapping(value = "/index")
     public String showMainPage(){
