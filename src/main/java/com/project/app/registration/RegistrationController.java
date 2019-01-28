@@ -6,6 +6,7 @@ import com.project.app.gameauthorization.Game;
 import com.project.app.gameauthorization.QueueAccessor;
 import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
+import com.project.app.model.DictionaryAccessor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -184,23 +185,26 @@ public class RegistrationController {
 
 
     @RequestMapping("/rival_mode")
-    public String rivalMode(HttpSession session){
+    public String rivalMode(HttpSession session, Model model){
         String player = (String) session.getAttribute("username");
 
         Game currentGame =  queue.getGameByNameOfPlayer(player);
         session.setAttribute("game",currentGame );
 
-
+        System.out.println(currentGame.getWordsFromGame());
         int type = currentGame.getType();
         if(type==1)
         {
             //łączenie w pary
-            return "rival_mode";
+
+            model.addAttribute("words", currentGame.getWordsFromGame().toArray());
+            return "rivalGame1";
         }
         else
         {
             //rozsypanka
-            return "rival_mode";
+            model.addAttribute("words", currentGame.getWordsFromGame().toArray());
+            return "rivalGame1";
         }
     }
 

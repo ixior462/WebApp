@@ -83,6 +83,13 @@ public class WebController {
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "menu2";
     }
+    @RequestMapping(value = "/rivalGame1")
+    public String showRival(Model model){
+        DictionaryAccessor dict = new DictionaryAccessor();
+
+        model.addAttribute("words", dict.getWordsFromLesson(3).toArray());
+        return "rivalGame1";
+    }
     @RequestMapping(value = "/nauka2")
     public String showLearningPage2(@RequestParam("lesson") List<Integer> lesson , Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
@@ -101,12 +108,22 @@ public class WebController {
     public void setLessonAndStage(WebRequest request, HttpSession session) {
         ClientsDataAccessor parser = new ClientsDataAccessor();
         Client c = parser.getClient((String) session.getAttribute("username"));
-        c.setLastLesson(Integer.parseInt(request.getParameter("lesson")));
-        c.setStage(Integer.parseInt(request.getParameter("stage")));
-        parser.updateClientsLessonJSON(c);
-        parser.updateClientsStageJSON(c);
-        System.out.println("Lesson: "+request.getParameter("lesson")+" Stage: "+request.getParameter("stage")+" User: "+session.getAttribute("username"));
-        System.out.println("Lesson: "+c.getLastLesson()+" Stage: "+c.getStage()+" User: "+session.getAttribute("username"));
+        int lesson = Integer.parseInt(request.getParameter("lesson"));
+        int stage = Integer.parseInt(request.getParameter("stage"));
+        if(c.getLastLesson()==lesson){
+            if(c.getStage()<stage){
+                c.setStage(stage);
+                parser.updateClientsStageJSON(c);
+            }
+        }
+        else if(c.getLastLesson()<lesson) {
+            c.setLastLesson(lesson);
+            c.setStage(stage);
+            parser.updateClientsLessonJSON(c);
+            parser.updateClientsStageJSON(c);
+        }
+        //System.out.println("Lesson: "+request.getParameter("lesson")+" Stage: "+request.getParameter("stage")+" User: "+session.getAttribute("username"));
+
 
     }
     @RequestMapping(value = "/nauka4")
