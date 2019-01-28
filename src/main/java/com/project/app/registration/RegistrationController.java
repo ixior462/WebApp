@@ -134,6 +134,7 @@ public class RegistrationController {
     public String waitingPage(HttpSession session){
 
         String player = session.getAttribute("username").toString();
+        Game game;
         if(!queue.isInQueue(player) ) { //   new player wants to play, add him to queue, refresh site and wait for match for him :>
 
             if(!queue.isInGame(player)) {
@@ -141,7 +142,18 @@ public class RegistrationController {
                 queue.addToQueue(player);
             }
             else{
-                return "redirect:rival_mode";
+
+                while(true) {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (queue.getGameByNameOfPlayer(player) != null) {
+                        return "redirect:rival_mode";
+
+                    }
+                }
             }
         }
         else{   //player is waiting for a game to start :>
@@ -151,11 +163,16 @@ public class RegistrationController {
                 System.out.println(player);
                 if(queue.twoElementsAtQueue()){
                     System.out.println("Gracz "+player+" zaczyna grę");
-                    queue.addNewGame(queue.startGame());
+                    game = queue.startGame();
+                    queue.addNewGame(game);
+
                     //wpisz gre do arraylisty gier
                 }
                 if(!queue.isInQueue(player)){
-                    return "redirect:rival_mode";
+
+                        return "redirect:rival_mode";
+
+
                 }
             }
         }
@@ -167,8 +184,24 @@ public class RegistrationController {
 
 
     @RequestMapping("/rival_mode")
-    public String rivalMode(){
-        return "rival_mode";
+    public String rivalMode(HttpSession session){
+        String player = (String) session.getAttribute("username");
+
+        Game currentGame =  queue.getGameByNameOfPlayer(player);
+        session.setAttribute("game",currentGame );
+
+
+        int type = currentGame.getType();
+        if(type==1)
+        {
+            //łączenie w pary
+            return "rival_mode";
+        }
+        else
+        {
+            //rozsypanka
+            return "rival_mode";
+        }
     }
 
 

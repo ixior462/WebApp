@@ -34,4 +34,7 @@ public class DictionaryAccessor {
     public ArrayList<Word> getWordsFromLesson(int lesson){
         return handler.getWordsFromLessonFromJSON(lesson);
     }
+
+    public ArrayList<Word> getWordsFromLevel(String level, int amountOfWords){ return handler.getWordsFromLevelFromJSON(amountOfWords, level); }
+
 }
