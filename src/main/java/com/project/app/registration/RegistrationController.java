@@ -135,13 +135,13 @@ public class RegistrationController {
 
         String player = session.getAttribute("username").toString();
         if(!queue.isInQueue(player) ) { //   new player wants to play, add him to queue, refresh site and wait for match for him :>
+
             if(!queue.isInGame(player)) {
                 System.out.println("Użytkownik = '" + player + "' czeka na rozgrywke");
                 queue.addToQueue(player);
             }
             else{
                 return "redirect:rival_mode";
-
             }
         }
         else{   //player is waiting for a game to start :>
@@ -155,7 +155,6 @@ public class RegistrationController {
                     //wpisz gre do arraylisty gier
                 }
                 if(!queue.isInQueue(player)){
-                    // TODO: Game starts
                     return "redirect:rival_mode";
                 }
             }
@@ -185,6 +184,7 @@ public class RegistrationController {
             queue.getGameByNameOfPlayer(player).setPoints(player,point);
             System.out.println("Punkty gracza "+player+": "+point);
             queue.removeCurrentGame(player);
+            queue.removeTimer(player);
             return  "waitingResults";
         }
         else{
@@ -194,8 +194,21 @@ public class RegistrationController {
             while(true){
                 try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
                 String secondPlayer = queue.getGameByNameOfPlayer(player).getSecondPlayer(player);
-                if(!queue.isInGame(secondPlayer) ){
+                if(queue.isInGame(secondPlayer) ) {
 
+                    if(45 < queue.getTime(secondPlayer)){
+                        queue.removeTimer(secondPlayer);
+                        int point = 0;
+                        queue.getGameByNameOfPlayer(secondPlayer).setPoints(secondPlayer,point);
+                        System.out.println("Punkty gracza "+secondPlayer+": "+point);
+                        queue.removeCurrentGame(secondPlayer);
+                    }
+                    else{
+                        queue.addTimeToTimer(secondPlayer);
+                        System.out.println(queue.getTime(secondPlayer));
+                    }
+                }
+                else{
                     Game currentGame =  queue.getGameByNameOfPlayer(player);
 
                     if(currentGame.getPoints(1) > currentGame.getPoints(2) )
@@ -301,6 +314,7 @@ public class RegistrationController {
 
                     return "redirect:rival_results";
                 }
+
             }
         }
 

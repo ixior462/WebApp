@@ -3,9 +3,7 @@ package com.project.app.gameauthorization;
 import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class QueueAccessor {
 
@@ -16,6 +14,7 @@ public class QueueAccessor {
         queue = new ArrayList<>();
         currentgames = new ArrayList<>();
         listOfGames = new ArrayList<>();
+        timer = new TreeMap<>();
     }
 
     private static QueueAccessor single_instance = null;
@@ -32,6 +31,22 @@ public class QueueAccessor {
     private List<String> queue;
     private List<String> currentgames;
     private List<Game> listOfGames;
+    private Map<String,Integer> timer;
+
+
+    public void removeTimer(String player){
+        timer.remove(player);
+    }
+
+    public void addTimeToTimer(String player){
+        Integer i = timer.get(player);
+        timer.remove(player);
+        timer.put(player, i + 1);
+    }
+
+    public int getTime(String player){
+        return timer.get(player);
+    }
 
     public boolean isInQueue(String player){
 
@@ -40,6 +55,7 @@ public class QueueAccessor {
 
     public void addToQueue(String player){
         queue.add(player);
+        timer.put(player, 0);
     }
 
     public boolean twoElementsAtQueue(){
@@ -87,7 +103,6 @@ public class QueueAccessor {
 
         if(block) {
             block = false;
-            //Alfa version
             addToCurrentGame(queue.get(1));
             addToCurrentGame(queue.get(0));
 
@@ -96,7 +111,6 @@ public class QueueAccessor {
             Client player_2 = accessor.getClient(queue.get(0));
             queue.remove(0);
 
-            //panie prowizarka jakich mało
             game = new Game();
             game.setPlayers(player_1, player_2);
             game.startGame();
