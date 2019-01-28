@@ -4,15 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/learningscript3.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <style>
         .text{
-            font-size: 1.5em;
-            height: 1.5em;
+            font-size: 3.5vw;
+            height: 3.5vw;
             color: #191919;
+        }
+        .mybutton {
+            border: none;
+            background-color: #f2f2f2;
+            font-size: 3vw;
+            border-radius: 3px;
+            color: #191919;
+            margin-top: 5px;
         }
         .letterButton{
            border-color: #d00c27;
            background-image: linear-gradient(#f9f8f6, #d2d1cf);
+            font-size: 3vw;
+            height: 4.5vw;
+            padding: 0;
+            width: 4.5vw;
            border-radius: 2px;
            margin: 1px;
         }
@@ -23,12 +36,15 @@
             border-width: 2px;
             border-radius: 2px;
             margin: 1px;
-            height: 1.5em;
-            line-height: 1.5em;
-            width: 1.7em;
+            height: 3.5vw;
+            font-size: 3vw;
+            width: 3.5vw;
             display: inline-block;
         }
         #nextStage{
+            display:none;
+        }
+        #reload{
             display:none;
         }
         #return{
@@ -52,15 +68,16 @@
      <div id="lettersContainer">
 
      </div>
-     <button id="reset" onclick="reset();">Reset</button>
+     <button id="reset" class="mybutton"onclick="reset();">Reset</button>
      <br/>
-     <button id="check" onclick="check();">Sprawdź</button>
+     <button id="check"class="mybutton" onclick="check();">Sprawdź</button>
      <br/>
-     <button id="next" onclick="next();">Następne słówko</button>
+     <button id="next" class="mybutton"onclick="next();">Następne słówko</button>
      <br/>
-     <button id="score" onclick="printScore();">Wynik</button>
-     <button type="button"  id="nextStage" onclick="nextStage()">Następny etap</button>
-     <button type="button"  id="return" onclick="returnToMain()">Powrót na stronę główną</button>
+     <button id="score" class="mybutton" onclick="printScore();">Wynik</button>
+     <button type="button" class="mybutton"  id="nextStage" onclick="nextStage()">Następny etap</button>
+     <button type="button" class="mybutton"  id="reload" onclick="reload()">Spróbuj jeszcze raz</button>
+     <button type="button" class="mybutton" id="return" onclick="returnToMain()">Powrót na stronę główną</button>
 
  </center>
 </body>

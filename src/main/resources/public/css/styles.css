@@ -4,7 +4,7 @@ body {
 #info {
   display: none;
   color: #191919;
-  font-size: 1.6em; }
+  font-size: 2.5vw; }
 
 #container {
   -webkit-touch-callout: none;
@@ -18,15 +18,15 @@ body {
   -ms-user-select: none;
   /* Internet Explorer/Edge */
   user-select: none;
-  padding-top: 1.5em; }
+  padding-top: 1vw; }
 
 #counter {
   background-image: linear-gradient(#f9f8f6, #d2d1cf);
   border: 2px solid #d00c27;
   border-radius: 3px;
-  width: 65px; }
+  width: 10vw; }
   #counter span {
-    font-size: 1.6em;
+    font-size: 2vw;
     color: #191919; }
 
 #unlearned {
@@ -38,9 +38,9 @@ body {
   border: 2px solid #35f922; }
 
 #ficheContainer {
-  width: 400px;
-  height: 220px;
-  line-height: 100px; }
+  width: 50vw;
+  height: 27vw;
+  line-height: 13vw; }
 
 .fische {
   background-image: linear-gradient(#f9f8f6, #d2d1cf);
@@ -50,14 +50,14 @@ body {
   border-color: #d00c27; }
   .fische .text {
     text-align: center;
-    margin-left: 0.5em;
-    font-size: 3em;
+    margin-left: 0.5vw;
+    font-size: 3vw;
     color: #191919; }
 
 .mybutton {
   border: none;
   background-color: #f2f2f2;
-  font-size: 30px;
+  font-size: 3vw;
   border-radius: 3px;
   color: #191919;
   margin-top: 5px;
@@ -72,8 +72,5 @@ body {
 .speakerButton {
   border: none;
   background-color: inherit;
-  font-size: 2em;
+  font-size: 2.5vw;
   -webkit-appearance: caret; }
-#return{
-  display: none;
-}

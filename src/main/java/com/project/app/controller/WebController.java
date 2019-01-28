@@ -1,11 +1,13 @@
 package com.project.app.controller;
 
+import com.project.app.model.Client;
+import com.project.app.model.ClientsDataAccessor;
 import com.project.app.model.DictionaryAccessor;
 import com.project.app.model.Word;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -56,6 +58,10 @@ public class WebController {
     public String showClientspecialistsPage() {
         return "specialistsClient";
     }
+    @RequestMapping(value = "/lessonMenu")
+    public String lessonMenu(){
+        return "lessonMenu";
+    }
     @RequestMapping(value = "/nauka")
     public String showLearningPage(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
@@ -84,12 +90,24 @@ public class WebController {
         model.addAttribute("level",lesson.get(1));
         return "nauka2";
     }
-    @RequestMapping(value = "/nauka3")
+    @GetMapping(value = "/nauka3")
     public String showLearningPage3(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
 
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka3";
+    }
+    @PostMapping(value = "/nauka3")
+    public void setLessonAndStage(WebRequest request, HttpSession session) {
+        ClientsDataAccessor parser = new ClientsDataAccessor();
+        Client c = parser.getClient((String) session.getAttribute("username"));
+        c.setLastLesson(Integer.parseInt(request.getParameter("lesson")));
+        c.setStage(Integer.parseInt(request.getParameter("stage")));
+        parser.updateClientsLessonJSON(c);
+        parser.updateClientsStageJSON(c);
+        System.out.println("Lesson: "+request.getParameter("lesson")+" Stage: "+request.getParameter("stage")+" User: "+session.getAttribute("username"));
+        System.out.println("Lesson: "+c.getLastLesson()+" Stage: "+c.getStage()+" User: "+session.getAttribute("username"));
+
     }
     @RequestMapping(value = "/nauka4")
     public String showLearningPage4(@RequestParam(value = "lesson") int lesson ,Model model) {

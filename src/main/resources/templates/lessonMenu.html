@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #container{
+            text-align: center;
+        }
+        #lesson{
+            font-size: 3.5vw;
+            margin-bottom: 2vw;
+        }
+        .stage{
+            text-decoration: none;
+            color: #191919;
+            font-size: 3vw;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <p id="lesson"></p>
+    </div>
+    <script>
+        var cont = document.getElementById("container");
+        var url = new URL(document.URL);
+        var lessonNumber = url.searchParams.get("lesson");
+        document.getElementById("lesson").innerText = "LEKCJA "+lessonNumber;
+
+        for(var i=1;i<=4;i++) {
+            var link = document.createElement("a");
+            link.className = "stage";
+            if(i==1)
+                link.href = "/nauka?lesson="+lessonNumber;
+            else if(i==2)
+                link.href = "/nauka2?lesson="+lessonNumber+"&lesson=1";
+            else
+                link.href = "/nauka"+i+"?lesson="+lessonNumber;
+
+            link.innerText = "ETAP "+i;
+            cont.appendChild(link);
+            cont.appendChild(document.createElement("br"))
+        }
+    </script>
+</body>
+</html>

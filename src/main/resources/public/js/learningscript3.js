@@ -8,7 +8,16 @@ var letterID = 1;
 var correct = 0;
 var incorrect = 0;
 
+function randLetter() {
+    var char;
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char= possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return char;
+}
+
 function initialize(){
+
     document.getElementById("check").style.visibility = "hidden";
     document.getElementById("next").style.visibility = "hidden";
     document.getElementById("score").style.visibility = "hidden";
@@ -28,6 +37,9 @@ function shuffle(a) {
     }
     return a;
 }
+function reload(){
+    location.reload();
+}
 function reset(){
     document.getElementById("check").style.visibility = "hidden";
     letterID = 1;
@@ -46,7 +58,17 @@ function printScore(){
     document.getElementById("wordPL").innerText = "Dobre odpowiedzi: "+correct;
     document.getElementById("wordENG").innerText = "Złe odpowiedzi: "+incorrect;
     document.getElementById("score").style.visibility="hidden";
-    document.getElementById("nextStage").style.display ="inline";
+    var score = correct/(correct+incorrect);
+    if(score >= 0.9) {
+        var url = new URL(document.URL);
+        var lessonNumber = url.searchParams.get("lesson");
+        var data = {lesson: lessonNumber, stage: 3};
+        $.post("/nauka3", data, function(){});
+        document.getElementById("nextStage").style.display = "inline";
+    }
+    else{
+        document.getElementById("reload").style.display ="inline";
+    }
     document.getElementById("return").style.display="inline";
 
 }
@@ -104,7 +126,7 @@ function loadLetters() {
     })(i);
 }
 function check(){
-    if(wordsId<words.length - 1)
+    if(wordsId<words.length)
         document.getElementById("next").style.visibility = "visible";
     else
         document.getElementById("score").style.visibility = "visible";
