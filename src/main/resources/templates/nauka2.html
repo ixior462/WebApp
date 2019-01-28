@@ -21,11 +21,6 @@
 </head>
 <body onload="initializeN()">
 <div class="pl" id="pl" th:object = "${words}">
-    <div id="stats">
-        <div id="title">Statystyki:</div>
-        <div id="corr"></div>
-        <div id="bad"></div>
-    </div>
     <div  class="worddiv" id="wordpl-1" th:text="${words[0].pl}"></div>
     <div  class="worddiv" id="wordpl-2" th:text="${words[1].pl}"></div>
     <div  class="worddiv" id="wordpl-3" th:text="${words[2].pl}"></div>
@@ -35,6 +30,7 @@
     <div  class="worddiv" id="wordpl-7" th:text="${words[6].pl}"></div>
     <div  class="worddiv" id="wordpl-8" th:text="${words[7].pl}"></div>
 </div>
+<div id="englis">
 <ul class="eng" id="eng" th:object="${words}">
     <li class="draggable worddiv" id="wordeng-1" th:text="${words[0].eng}"></li>
     <li class="draggable worddiv" id="wordeng-2" th:text="${words[1].eng}"></li>
@@ -45,6 +41,7 @@
     <li class="draggable worddiv" id="wordeng-7"th:text="${words[6].eng}"></li>
     <li class="draggable worddiv" id="wordeng-8"th:text="${words[7].eng}"></li>
 </ul>
+</div>
 <div id="checksymb">
     <div id="check-1"></div>
     <div id="check-2"></div>
@@ -55,11 +52,16 @@
     <div id="check-7"></div>
     <div id="check-8"></div>
 </div>
-
+<div id="buttons">
 <button class="btn" id="check" onclick="check()">Sprawdź</button>
 <button class="btn" id="next" onclick="next()">Dalej</button>
 <button class="btn" id="stat" onclick="stats()">Statystyki</button>
 <button type="button" class="btn" id="nextStage" onclick="nextStage()">Następny etap</button>
 <button type="button" class="btn" id="return" onclick="returnToMain()">Powrót na stronę główną</button>
+</div>
+<div id="stats">
+    <div id="corr"></div>
+    <div id="bad"></div>
+</div>
 </body>
 </html>

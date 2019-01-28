@@ -7,13 +7,16 @@
     border: 2px solid #d00c27;
     border-radius: 3px;
     padding: 0.5%;
-    font-size:20px;
+    font-size:calc(7px + 1vw);
     text-align: center;
     margin-top:1%;
     width:8%;
+    min-width:60px;
+    min-height: 20px;
     font-family: Cambria Math;
 
 }
+
 #next {
     display: none;
     background-image: linear-gradient(#f9f8f6,#d2d1cf);
@@ -21,10 +24,12 @@
     border: 2px solid #d00c27;
     border-radius: 3px;
     padding: 0.5%;
-    font-size:20px;
+    font-size:calc(7px + 1vw);
     text-align: center;
     margin-top:1%;
     width:8%;
+    min-width:60px;
+    min-height: 20px;
     font-family: Cambria Math;
 }
 #stat {
@@ -34,20 +39,22 @@
     border: 2px solid #d00c27;
     border-radius: 3px;
     padding: 0.5%;
-    font-size:20px;
+    font-size:calc(7px + 0.8vw);
     text-align: center;
     margin-top:1%;
     width:8%;
     font-family: Cambria Math;
+    min-width:60px;
+    min-height: 20px;
 }
 #wordToTranslate{
-    font-size:30px;
+    font-size:calc(10px + 2vw);
     margin-top:4%;
     font-family: Cambria Math;
 }
 #wordToCheck{
     border-top:none;
-    font-size:20px;
+    font-size:calc(10px + 1.5vw);
     border-left: none;
     border-right: none;
     border-width: 2px;
@@ -61,7 +68,7 @@
 #checkResult,#checkResult2,#Result{
     margin-top:1%;
     font-family: Cambria Math;
-    font-size:20px;
+    font-size:calc(7px + 1vw);
 }
 #return{
     display: none;
@@ -70,9 +77,11 @@
     border: 2px solid #d00c27;
     border-radius: 3px;
     padding: 0.5%;
-    font-size:20px;
+    font-size:calc(7px + 1vw);
     text-align: center;
     margin-top:1%;
     width:8%;
     font-family: Cambria Math;
+    min-width:60px;
+    min-height: 20px;
 }
