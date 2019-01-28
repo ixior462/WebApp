@@ -118,11 +118,11 @@ function next() {
 function stats(){
 
     var z = document.getElementById("bad");
-    z.innerText = "Źle:    "+bad;
+    z.innerText = "✗    "+bad;
 
     var correct =all-bad;
     var y = document.getElementById("corr");
-    y.textContent = "Dobrze:    "+correct;
+    y.textContent = "✓    "+correct;
     document.getElementById("stats").style.display="inline";
     document.getElementById("stat").style.display="none";
     document.getElementById("nextStage").style.display="inline";
