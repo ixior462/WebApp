@@ -143,4 +143,31 @@ public class DictionaryJSONHandler {
         return wordsFromLesson;
     }
 
+    public int getAmountOfLessonsFromJSON()
+    {
+        Object obj = null;
+        ArrayList <Word> wordsFromLesson = new ArrayList<Word>();
+        int amount = 1;
+
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("dictionary.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("words");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject word = (JSONObject) list.get(i);
+                int lessonNumber = toIntExact((long) word.get("lesson"));
+                if (lessonNumber > amount) {
+                    amount = lessonNumber;
+                }
+            }
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+
 }

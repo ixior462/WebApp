@@ -27,6 +27,10 @@ public class DictionaryAccessor {
         return handler.getRandomWordFromJSON();
     }
 
+    public int getAmountOfLessons(){
+        return handler.getAmountOfLessonsFromJSON();
+    }
+
     public ArrayList<Word> getWordsFromLesson(int lesson){
         return handler.getWordsFromLessonFromJSON(lesson);
     }
