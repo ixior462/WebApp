@@ -18,6 +18,11 @@ public class ClientsDataAccessor {
         handler.updateEloInJSON(client.getLogin(), client.getElo());
     }
 
+    public void updateClientsLessonJSON(Client client){ handler.updateLessonInJSON(client.getLogin(), client.getLastLesson()); }
+
+    public void updateClientsStageJSON(Client client){ handler.updateStageInJSON(client.getLogin(), client.getStage()); }
+
+
     public Client getClient(String login){
         return handler.getClientFromJSON(login);
     }
