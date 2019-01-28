@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
         <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
         <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
         <meta name="author" content="Weronika Jasiak">
@@ -27,23 +26,23 @@
                 </ul>
             </nav>
         </header>
-        <slider>
-            <slide>
+        <section class="slider">
+            <div id="slide1">
                 <h2>Rozpocznij z nami swoją przygodę z angielskim!</h2>
                 <button onclick="location.href='/login'" type="button" id="login">Zaloguj</button>
-            </slide>
-            <slide>
+            </div>
+            <div id="slide2">
                 <h2>Rywalizuj z innymi użytkownikami o tytuł Króla!</h2>
                 <h3>Niech Królowa będzie pod wrażeniem twojej znajomości słownictwa!</h3>
-            </slide>
-            <slide>
+            </div>
+            <div id="slide3">
                 <h2>Skorzystaj z nowoczesnych sposobów nauki słownictwa,<br>
                    a efekty zobaczysz już po pierwszej lekcji!</h2>
-            </slide>
-            <slide>
+            </div>
+            <div id="slide4">
                 <h2>Poznaj naszych specjalistów!</h2>
                 <button onclick="location.href='/specialists'" type="button" id="hello">Cześć!</button>
-            </slide>
-        </slider>
+            </div>
+        </section>
     </body>
 </html>

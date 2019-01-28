@@ -47,7 +47,9 @@
     font-size:calc(8px + 0.7vw);
     text-align: center;
 }
-
+#repeat{
+    display:none;
+}
 
 .btn{
     background:#cc0000;
@@ -73,11 +75,11 @@
     margin-right:0;
 }
 #bad{
-    font-color:#cc0000;
+    color:#cc0000;
     font-size:calc(8px + 0.7vw);
 }
 #corr{
-    font-color:#2929bc;
+    color:#2929bc;
     font-size:calc(8px + 0.7vw);
 }
 #next{

@@ -125,10 +125,15 @@ function stats(){
     y.textContent = "✓    "+correct;
     document.getElementById("stats").style.display="inline";
     document.getElementById("stat").style.display="none";
-    document.getElementById("nextStage").style.display="inline";
+    if(correct>=0.9*all) {
+        document.getElementById("nextStage").style.display = "inline";
+    }
+    else
+        document.getElementById("repeat").style.display="inline";
     document.getElementById("return").style.display="inline";
 
 }
+
 function clear(){
     for(var z=1; z<=n;z++){
         document.getElementById("check-"+z).innerText="";
@@ -138,6 +143,11 @@ function nextStage() {
     var url = new URL(document.URL);
     var lessonNumber = url.searchParams.get("lesson");
     window.location.replace("/nauka3?lesson="+lessonNumber);
+}
+function repeat(){
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/nauka2?lesson="+lessonNumber+"&lesson=1");
 }
 function returnToMain() {
     window.location.replace("/indexClient");

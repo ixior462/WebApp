@@ -75,19 +75,31 @@ function next(){
 function stats(){
     document.getElementById("checkResult").innerText='✗ '+getBad();
     document.getElementById("checkResult2").innerText='✓ '+getCorrect();
-    if(getCorrect()==words.length) {
+    if(getCorrect()>=words.length*0.9) {
         document.getElementById("Result").innerText = "Brawo, udało Ci się zaliczyć lekcję!"
+        document.getElementById("NextLesson").style.display="inline";
         document.getElementById("return").style.display = "inline";
     }
     else {
         document.getElementById("Result").innerText = "Spróbuj jeszcze raz."
+        document.getElementById("repeat").style.display="inline";
         document.getElementById("return").style.display = "inline";
     }
 }
 function returnToMain() {
     window.location.replace("/indexClient");
 }
-
+function repeat(){
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/nauka4?lesson="+lessonNumber);
+}
+function nextLesson(){
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    var nextlesson = parseInt(lessonNumber) +1;
+    window.location.replace("/nauka?lesson="+nextlesson);
+}
 function initializeEnter() {
     var input = document.getElementById("wordToCheck");
     // Execute a function when the user releases a key on the keyboard
