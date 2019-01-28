@@ -13,7 +13,7 @@ body{
 #info{
   display: none;
   color: $text;
-  font-size: 1.6em;;
+  font-size: 2.5vw;;
 }
 #container{
   -webkit-touch-callout: none; /* iOS Safari */
@@ -22,15 +22,15 @@ body{
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
-  padding-top: 1.5em;
+  padding-top: 1vw;
 }
 #counter{
   background-image: linear-gradient($fiche1, $fiche2);
   border: 2px solid $frame;
   border-radius: 3px;
-  width: 65px;
+  width: 10vw;
   span{
-    font-size: 1.6em;;
+    font-size: 2vw;
     color: $text;
   }
 }
@@ -43,9 +43,9 @@ body{
   border: 2px solid $learned1;
 }
 #ficheContainer{
-  width: 400px;
-  height: 220px;
-  line-height: 100px;
+  width: 50vw;
+  height: 27vw;
+  line-height: 13vw;
 }
 .fische {
   background-image: linear-gradient($fiche1, $fiche2);
@@ -56,15 +56,15 @@ body{
 
   .text{
     text-align: center;
-    margin-left: 0.5em;
-    font-size: 3em;
+    margin-left: 0.5vw;
+    font-size: 3vw;
     color: $text;
   }
 }
 .mybutton{
   border: none;
   background-color: #f2f2f2;
-  font-size: 30px;
+  font-size: 3vw;
   border-radius: 3px;
   color: $text;
   margin-top: 5px;
@@ -79,6 +79,6 @@ body{
 .speakerButton{
   border: none;
   background-color: inherit;
-  font-size: 2em;
+  font-size: 2.5vw;
   -webkit-appearance: caret;
 }
