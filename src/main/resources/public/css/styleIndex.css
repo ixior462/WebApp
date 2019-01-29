@@ -384,17 +384,17 @@ object {
 /***************************************** USER *******************************************/
 
 #userCenter {
-    margin-top: 25%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     resize: both;
     overflow: auto;
+    padding-bottom: 10px;
+    transform: translateY(40%);
 }
 
 #user {
-    resize: both;
-    overflow: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
@@ -416,6 +416,18 @@ object {
 }
 
 /***************************************** SPECIALISTS *******************************************/
+
+#specialistsSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    resize: both;
+    overflow: auto;
+    padding-bottom: 10px;
+    transform: translateY(40%);
+}
+
 #specialists {
     display: inline;
 }
@@ -456,10 +468,6 @@ object {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .card:hover {
@@ -477,33 +485,18 @@ object {
     text-align: center;
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 670px){
     .arrowL {
-        position: absolute;
-        top: 70%;
-        left: 20%;
-        transform: translate(-50%, -50%);
+        left: 10%;
     }
-
     .arrowR {
-        position: absolute;
-        top: 70%;
-        left: 80%;
-        transform: translate(-50%, -50%);
+        left: 90%;
     }
 
-    .card {
-        display: inline-block;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        border-radius: 5px;
-        position: absolute;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
 }
+
 /***************************************** WAITING *******************************************/
+
 #waitingDots {
     position: absolute;
     top: 50%;
