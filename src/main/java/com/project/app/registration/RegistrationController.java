@@ -145,11 +145,7 @@ public class RegistrationController {
             else{
 
                 while(true) {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
                     if (queue.getGameByNameOfPlayer(player) != null) {
                         return "redirect:rival_mode";
 

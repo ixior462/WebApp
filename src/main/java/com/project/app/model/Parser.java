@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  * @author      Dominika Kunc
- * @info        Class that converts *.csv file to an ArrayList of Word class objects.
+ * @use        Class that converts *.csv file to an ArrayList of Word class objects.
  * @version     1.0
  */
 public class Parser {

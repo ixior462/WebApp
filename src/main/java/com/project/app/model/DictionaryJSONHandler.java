@@ -144,7 +144,7 @@ public class DictionaryJSONHandler {
         Random random = new Random();
         for(int i = 0; i < amountOfWords; i++)
         {
-           int r =  random.nextInt((wordsFromLevel.size() - i) + 1);
+           int r =  random.nextInt((wordsFromLevel.size()-1 - i) + 1);
            System.out.println("random: "+ r);
            randomWords.add(wordsFromLevel.get(r));
            wordsFromLevel.remove(r);

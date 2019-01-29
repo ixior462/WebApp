@@ -9,6 +9,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static java.lang.Math.toIntExact;
 
@@ -121,6 +124,58 @@ public class ClientsJSONHandler {
 
         return null;
     }
+
+    public ArrayList<Client> getRankingFromJSON()
+    {
+        /**
+         *  return client from JSON file
+         */
+
+        ArrayList<Client> ranking = new ArrayList<Client>();
+
+        Object obj = null;
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("clients.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("clients");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject client = (JSONObject) list.get(i);
+
+                    ranking.add( new Client(
+                            (String) client.get("login"),
+                            (String) client.get("password"),
+                            (String) client.get("email"),
+                            (String) client.get("level"),
+                            toIntExact( (long) client.get("elo")),
+                            toIntExact( (long) client.get("lastLesson")),
+                            toIntExact( (long) client.get("stage"))));
+
+                // ...
+            }
+
+            Collections.sort(ranking, new Comparator<Client>(){
+                public int compare(Client c1, Client c2){
+                    if(c1.getElo()== c2.getElo())
+                        return 0;
+                    return c1.getElo() < c2.getElo() ? 1 : -1;
+                }
+            });
+
+            for(int i = 0; i < ranking.size(); i++)
+            {
+                Client c = ranking.get(i);
+                System.out.println((i+1)+". "+c.getLogin()+" - "+c.getElo());
+            }
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return ranking;
+    }
+
 
     public Client updateEloInJSON(String login, int newElo){
 
