@@ -18,7 +18,7 @@ public class WebController {
      * @author      Weronika Pawlak
      * @author      Weronika Jasiak
      * @author      Jakub Dziwiński
-     * @info        Class used to handling requests
+     *         Class used to handling requests
      * @version     1.0
      */
 

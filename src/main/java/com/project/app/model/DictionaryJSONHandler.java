@@ -166,6 +166,43 @@ public class DictionaryJSONHandler {
     }
 
     /**
+     *  Method that returns specified amount of words on specified level from JSON file.
+     * @author Dominika Kunc
+     * @param lessonNumber number of wanted lesson
+     * @return topic of specified lesson
+     */
+    public String getTopicOfLessonFromJSON(int lessonNumber){
+
+        /**
+         *  return apecified amount of words on specified level from JSON file
+         */
+
+        Object obj = null;
+        String topic="";
+
+
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("dictionary.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("words");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject word = (JSONObject) list.get(i);
+                int lesson = (Integer) word.get("lesson");
+                if (lesson == lessonNumber) {
+                    topic = (String) word.get("category");
+                }
+            }
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return topic;
+    }
+
+    /**
      *  Method that returns words from specified lesson from JSON file.
      * @author Dominika Kunc
      * @param lesson waned lesson number

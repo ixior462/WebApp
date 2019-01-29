@@ -37,6 +37,17 @@ public class DictionaryAccessor {
     }
 
     /**
+     *  Method that returns amount of unique lessons in JSON file.
+     * @author Dominika Kunc
+     * @param lessonNumber number of lesson to find
+     * @return topic of specified lesson
+     */
+    public String getTopicOfLesson(int lessonNumber){
+        return handler.getTopicOfLessonFromJSON(lessonNumber);
+    }
+
+
+    /**
      *  Method that returns words from specified lesson from JSON file.
      * @author Dominika Kunc
      * @param lesson wanted lesson number
