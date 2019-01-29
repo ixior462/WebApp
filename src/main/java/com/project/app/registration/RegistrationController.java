@@ -178,7 +178,12 @@ public class RegistrationController {
 
     }
 
-
+    @RequestMapping(value = "/back")
+    public String backToClientMainPage(HttpSession session){
+        String player = session.getAttribute("username").toString();
+        queue.removeFromQueue(player);
+        return "redirect:indexClient";
+    }
 
     @RequestMapping("/rival_mode")
     public String rivalMode(HttpSession session, Model model){
