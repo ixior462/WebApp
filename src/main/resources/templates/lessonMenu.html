@@ -19,6 +19,14 @@
         }
 
     </style>
+    <script  th:inline="javascript">
+        /*<![CDATA[*/
+        var lastLesson = /*[[${lastLesson}]]*/0;
+        /*]]>*/
+        /*<![CDATA[*/
+        var stage = /*[[${stage}]]*/0;
+        /*]]>*/
+    </script>
 </head>
 <body>
 
@@ -30,8 +38,15 @@
         var url = new URL(document.URL);
         var lessonNumber = url.searchParams.get("lesson");
         document.getElementById("lesson").innerText = "LEKCJA "+lessonNumber;
+        var n=0;
+        if(lessonNumber==lastLesson){
+            n = stage;
+        } else if(lessonNumber<lastLesson){
+            n = 4;
+        }
 
-        for(var i=1;i<=4;i++) {
+        console.log(n);
+        for(var i=1;i<=n;i++) {
             var link = document.createElement("a");
             link.className = "stage";
             if(i==1)

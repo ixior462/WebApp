@@ -83,7 +83,11 @@ public class WebController {
         return "specialistsClient";
     }
     @RequestMapping(value = "/lessonMenu")
-    public String lessonMenu(){
+    public String lessonMenu(HttpSession session, Model model){
+        ClientsDataAccessor parser = new ClientsDataAccessor();
+        Client c = parser.getClient((String) session.getAttribute("username"));
+        model.addAttribute("lastLesson", c.getLastLesson());
+        model.addAttribute("stage", c.getStage());
         return "lessonMenu";
     }
     @RequestMapping(value = "/nauka")
