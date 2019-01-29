@@ -1,4 +1,4 @@
-package com.project.app.registration;
+package com.project.app.model;
 /**
  *  Class used to transfer user data entered during registration
  * @author      Weronika Pawlak
