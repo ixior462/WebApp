@@ -99,7 +99,7 @@ public class Game {
     /**
      *  Method that set points of player after the game.
      * @param player contains player's name.
-     * @return playerPoints contains player's points after the game.
+     * @param playerPoints contains player's points after the game.
      */
     public void setPoints(String player, int playerPoints)
     {
