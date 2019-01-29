@@ -192,6 +192,7 @@ public class DictionaryJSONHandler {
                 int lesson = (Integer) word.get("lesson");
                 if (lesson == lessonNumber) {
                     topic = (String) word.get("category");
+                    break;
                 }
             }
 
