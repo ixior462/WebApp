@@ -21,15 +21,18 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author      Weronika Pawlak
+ * @author      Weronika Jasiak
+ * @author      Jakub Dziwiński
+ * @author      Paweł Krupski
+ * @author      Dominika Kunc
+ *         Class used to handling requests
+ * @version     1.0
+ */
 @Controller
 public class WebController {
-    /**
-     * @author      Weronika Pawlak
-     * @author      Weronika Jasiak
-     * @author      Jakub Dziwiński
-     *         Class used to handling requests
-     * @version     1.0
-     */
+
 
 
     /*
