@@ -111,7 +111,7 @@ function next() {
     clear();
 }
 function stats(){
-    document.getElementById("points").value = getCorrect();
+    document.getElementById("points").value = all-bad;
     document.getElementById("pointsForm").submit();
     /*var z = document.getElementById("bad");
     z.innerText = "✗    "+bad;
