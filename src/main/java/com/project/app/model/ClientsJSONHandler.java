@@ -15,19 +15,29 @@ import java.util.Comparator;
 
 import static java.lang.Math.toIntExact;
 
+/**
+ *  Class that have access to clients.json and directly add or read from that file
+ * @author      Paweł Krupski
+ * @version     1.0
+ */
 public class ClientsJSONHandler {
     
 
 
 
-    //Class that will acces Clients JSON file
+    //Class that will access Clients JSON file
     private JSONParser parser;
 
     public ClientsJSONHandler() {
         this.parser = new JSONParser();
     }
 
-
+    /**
+     *  Method that adds new Client to JSON file.
+     * @author Paweł Krupski
+     * @param client new Client object to be added
+     *
+     */
     public void addClientToJSON(Client client) {
 
         /**
@@ -87,7 +97,12 @@ public class ClientsJSONHandler {
     }
 
 
-
+    /**
+     *  Method that returns Client with specified login form JSON file.
+     * @author Paweł Krupski
+     * @param login login of wanted Client
+     * @return Client client
+     */
     public Client getClientFromJSON(String login){
 
         /**
@@ -125,6 +140,11 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that returns ArrayList of Clients containing all Clients from JSON file and sorted in descending order.
+     * @author Dominika Kunc
+     * @return ArrayList of Clients ranking
+     */
     public ArrayList<Client> getRankingFromJSON()
     {
         /**
@@ -177,6 +197,13 @@ public class ClientsJSONHandler {
     }
 
 
+    /**
+     *  Method that updates ELO points of specified Client in JSON File.
+     * @author Dominika Kunc
+     * @param login login of Client to be updated
+     * @param newElo new ELO points value
+     * @return Client updatedClient
+     */
     public Client updateEloInJSON(String login, int newElo){
 
         /**
@@ -229,6 +256,12 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that checks if specified username exists in JSON file.
+     * @author Paweł Krupski
+     * @param name username to be checked
+     * @return true if exist false if not
+     */
     public boolean usernameAlreadyExist(String name) {
 
         /**
@@ -259,6 +292,13 @@ public class ClientsJSONHandler {
 
     }
 
+    /**
+     *  Method that updates Lesson of specified Client in JSON File.
+     * @author Dominika Kunc
+     * @param login login of Cient to be updated
+     * @param newLesson new lesson number
+     * @return Client updatedClient
+     */
     public Client updateLessonInJSON(String login, int newLesson){
 
         /**
@@ -311,6 +351,13 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that updates stage of specified Client in JSON File.
+     * @author Dominika Kunc
+     * @param login login of Client to be updated
+     * @param newStage new stage value
+     * @return Client updatedClient
+     */
     public Client updateStageInJSON(String login, int newStage){
 
         /**

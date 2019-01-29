@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * Class that converts *.csv file to an ArrayList of Word class objects.
  * @author      Dominika Kunc
- * @use        Class that converts *.csv file to an ArrayList of Word class objects.
  * @version     1.0
  */
 public class Parser {
 
     /**
-     *
+     *  Method that converts *.csv file to an ArrayList of Word class objects.
      * @param filePath path of file to parse
      * @return ArrayList of parsed Word class objects
      */

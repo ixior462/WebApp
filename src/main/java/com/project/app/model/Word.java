@@ -1,12 +1,13 @@
 package com.project.app.model;
 
+/**
+ *  Class that represents each single word that is included in the dictionary
+ * @author      Paweł Krupski
+ * @version     1.0
+ */
 public class Word {
 
-    /**
-     * @author      Paweł Krupski
-     * @info        Class that represents each single word that is included in the dictionary
-     * @version     1.0
-     */
+
 
     private String eng;
     private String pl;
@@ -25,21 +26,43 @@ public class Word {
 
     }
 
+
+    /**
+     * Method that returns Word's english version
+     * @return Word's english version
+     */
     public String getEng() {
         return eng;
     }
 
+    /**
+     * Method that returns Word's polish version
+     * @return Word's polish version
+     */
     public String getPl() {
         return pl;
     }
 
+    /**
+     * Method that returns Word's level
+     * @return Word's level
+     */
     public String getLabel() {
         return label;
     }
 
+    /**
+     * Method that returns lesson of Word
+     * @return lesson of Word
+     */
     public int getLesson() {
         return lesson;
     }
+
+    /**
+     * Method that returns Word's category
+     * @return Word's category
+     */
     public String getCategory() {
         return category;
     }
