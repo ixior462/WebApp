@@ -8,6 +8,11 @@ import com.project.app.model.Word;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Class that regulates process of making a game with two players and calculating results of it.
+ * @author      Dominika Kunc
+ * @version     1.0
+ */
 public class Game {
 
     private Client player_1;
@@ -20,6 +25,11 @@ public class Game {
     private String levelOfGame;
     private ArrayList<Word> randomWords;
 
+    /**
+     *  Method that set up Game parameters.
+     * @param player_1 object of Client with information about his elo.
+     * @param player_2 object of Client with information about his elo.
+     */
     public void setPlayers(Client player_1, Client player_2){
         accessor = new ClientsDataAccessor();
         dictionaryAccessor = new DictionaryAccessor();
@@ -51,6 +61,11 @@ public class Game {
         }
     }
 
+    /**
+     *  Method that calculates level difficulty of a game based on elo points of player.
+     * @param elo contains elo points of player.
+     * @return level difficulty of game.
+     */
     public String getLevelFromElo(int elo)
     {
         String level="";
@@ -70,7 +85,7 @@ public class Game {
         {
             level = "C2";
         }
-        else if(elo >=1250 && elo < 1200)
+        else if(elo >= 1150)
         {
             level = "A2";
         }
@@ -80,6 +95,12 @@ public class Game {
         }
     return level;
     }
+
+    /**
+     *  Method that set points of player after the game.
+     * @param player contains player's name.
+     * @return playerPoints contains player's points after the game.
+     */
     public void setPoints(String player, int playerPoints)
     {
         if(player_1.getLogin().equals(player))
@@ -93,6 +114,11 @@ public class Game {
         }
     }
 
+    /**
+     *  Method that returns how many points player get after the game.
+     *  @param player contains player's index in game.
+     *  @return number of points won in a game by player.
+     */
     public int getPoints(int player)
     {
         if(player == 1)
@@ -106,6 +132,11 @@ public class Game {
         }
     }
 
+    /**
+     *  Method that returns player's name based on his index in game.
+     *  @param player contains player's index in game.
+     *  @return player's name.
+     */
     public String getPlayer(int player)
     {
         if(player == 1)
@@ -119,25 +150,46 @@ public class Game {
         }
     }
 
+    /**
+     *  Method that returns type of Game.
+     *  @return type of Game.
+     */
     public int getType()
     {
         return typeOfGame;
     }
 
+    /**
+     *  Method that returns level of Game.
+     *  @return level of Game.
+     */
     public String getLevelOfGame()
     {
         return levelOfGame;
     }
 
+    /**
+     *  Method that returns ArrayList of words used in a game.
+     *  @return ArrayList of words used in a game.
+     */
     public ArrayList<Word> getWordsFromGame()
     {
         return randomWords;
     }
 
+    /**
+     *  Method that starts a game.
+     *
+     */
     public void startGame(){
         System.out.println("GAME -> "+player_1.getLogin() +" VS "+player_2.getLogin());
     }
 
+    /**
+     *  Method that returns second player's name based on a first player's name.
+     * @param player first player's name.
+     * @return second's player name.
+     */
     public String getSecondPlayer(String player) {
 
         if(player_1.getLogin().equals(player))
