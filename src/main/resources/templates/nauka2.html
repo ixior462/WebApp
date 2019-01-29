@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/learningstyle.css">
 </head>
 <body onload="initializeN()">
+<div id="container">
 <div class="pl" id="pl" th:object = "${words}">
     <div  class="worddiv" id="wordpl-1" th:text="${words[0].pl}"></div>
     <div  class="worddiv" id="wordpl-2" th:text="${words[1].pl}"></div>
@@ -58,11 +59,14 @@
 <button class="btn" id="stat" onclick="stats()">Statystyki</button>
 <button type="button" class="btn" id="nextStage" onclick="nextStage()">Następny etap</button>
 <button type="button" class="btn" id="repeat" onclick="repeat()">Spróbuj jeszcze raz</button>
+    <div id ="main">
 <button type="button" class="btn" id="return" onclick="returnToMain()">Powrót na stronę główną</button>
+    </div>
 </div>
 <div id="stats">
     <div id="corr"></div>
     <div id="bad"></div>
+</div>
 </div>
 </body>
 </html>
