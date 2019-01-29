@@ -189,7 +189,7 @@ public class DictionaryJSONHandler {
             JSONArray list = (JSONArray) jsonObject.get("words");
             for (int i = 0; i < list.size(); ++i) {
                 JSONObject word = (JSONObject) list.get(i);
-                int lesson = (Integer) word.get("lesson");
+                int lesson = ((Long) word.get("lesson")).intValue();
                 if (lesson == lessonNumber) {
                     topic = (String) word.get("category");
                     break;

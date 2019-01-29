@@ -22,6 +22,13 @@ public class WebController {
      * @version     1.0
      */
 
+
+    /**
+     *  Method that checks sets lesson and stage for user
+     * @author Jakub Dziwiński
+     * @param request request containing values of lesson and stage
+     * @param session session containing username
+     */
     static void setLessonAndStage(WebRequest request, HttpSession session){
         ClientsDataAccessor parser = new ClientsDataAccessor();
         Client c = parser.getClient((String) session.getAttribute("username"));
@@ -82,12 +89,15 @@ public class WebController {
     public String showClientspecialistsPage() {
         return "specialistsClient";
     }
-    @RequestMapping(value = "/lessonMenu")
-    public String lessonMenu(HttpSession session, Model model){
+    @GetMapping(value = "/lessonMenu")
+    public String lessonMenu(HttpSession session, Model model, @RequestParam(value = "lesson") int lesson ){
+        DictionaryAccessor dict = new DictionaryAccessor();
         ClientsDataAccessor parser = new ClientsDataAccessor();
         Client c = parser.getClient((String) session.getAttribute("username"));
+
         model.addAttribute("lastLesson", c.getLastLesson());
         model.addAttribute("stage", c.getStage());
+        model.addAttribute("topic", dict.getTopicOfLesson(lesson));
         return "lessonMenu";
     }
     @RequestMapping(value = "/nauka")

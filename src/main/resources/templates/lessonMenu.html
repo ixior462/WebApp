@@ -9,6 +9,7 @@
             text-align: center;
         }
         #lesson{
+            padding-top: 2vw;
             font-size: 3.5vw;
             margin-bottom: 2vw;
         }
@@ -26,6 +27,9 @@
         /*<![CDATA[*/
         var stage = /*[[${stage}]]*/0;
         /*]]>*/
+        /*<![CDATA[*/
+        var topic = /*[[${topic}]]*/0;
+        /*]]>*/
     </script>
 </head>
 <body>
@@ -37,7 +41,7 @@
         var cont = document.getElementById("container");
         var url = new URL(document.URL);
         var lessonNumber = url.searchParams.get("lesson");
-        document.getElementById("lesson").innerText = "LEKCJA "+lessonNumber;
+        document.getElementById("lesson").innerText = "Lekcja "+lessonNumber+" - "+topic;
         var n=0;
         if(lessonNumber==lastLesson){
             n = stage;
