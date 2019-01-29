@@ -63,6 +63,7 @@ public class RegistrationController {
             else
             {
                 System.out.println("Wrong password");
+                model.addAttribute("errorMessage", "Błędny login i/lub hasło.");
 
 
 
@@ -71,6 +72,8 @@ public class RegistrationController {
         else
         {
             System.out.println("No user with login:  "+user.getUserName());
+            model.addAttribute("errorMessage", "Błędny login i/lub hasło.");
+
 
         }
         model.addAttribute("username", user.userName);
@@ -105,13 +108,15 @@ public class RegistrationController {
             parser.addNewClientToJSON(newClient);
             model.addAttribute("username", user.userName);
             session.setAttribute("username", user.userName);
+            return "redirect:indexClient";
         }
         else{
             //TODO: NOTIFY USER THAT NAME HE CHOOSE IS ALREADY TAKEN AND HE DIDN'T REGISTER
+            model.addAttribute("errorMessage", "Wybrana nazwa użytkownika jest zajęta.");
 
             // Right now, user only see: "Hello User: null"
         }
-        return "redirect:indexClient";
+        return "redirect:register";
     }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

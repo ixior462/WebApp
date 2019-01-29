@@ -42,7 +42,9 @@ public class WebController {
     }
 
     @RequestMapping(value = "/index")
-    public String showMainPage(){
+    public String showMainPage(Model model){
+        model.addAttribute("errorMessage", "");
+
         return "index";
     }
     @RequestMapping(value = "/contact")
