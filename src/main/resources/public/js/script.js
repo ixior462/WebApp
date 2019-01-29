@@ -27,7 +27,7 @@ function initializeMenu() {
     for (var i = 1; i <= lessons; i++) {
         (function f(i) {
             {
-                var link = document.createElement("a");
+                var link = document.createElement("pre");
                 link.innerText = "Lekcja " + i;
                 link.onclick = function () {
                     closeNav();
@@ -39,5 +39,5 @@ function initializeMenu() {
     }
 }
 function loadHTML(number) {
-    document.getElementById("learn").innerHTML='<object type="text/html" data="http://localhost:8080/nauka?lesson='+number+'" ></object>';
+    document.getElementById("learn").innerHTML='<object type="text/html" data="http://localhost:8080/lessonMenu?lesson='+number+'" ></object>';
 }

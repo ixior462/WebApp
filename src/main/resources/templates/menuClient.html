@@ -10,10 +10,15 @@
         <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
         <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
         <script src="../public/js/script.js" th:src="@{js/script.js}"></script>
+        <script  th:inline="javascript">
+            /*<![CDATA[*/
+            lessons = /*[[${lessons}]]*/0;
+            /*]]>*/
+        </script>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
     </head>
-    <body onload="open();">
+    <body onload="open();initializeMenu();">
         <header>
             <nav id="main-nav">
                 <ul class="menu">
@@ -37,10 +42,8 @@
         </header>
         <div id="menuSidenav" class="sidenav">
             <pre href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</pre>
-            <div class="centerSidenav">
-                <pre onclick="closeNav();loadHTML(1);">Lekcja 1</pre>
-                <pre onclick="closeNav();loadHTML(2);">Lekcja 2</pre>
-                <pre onclick="closeNav();loadHTML(3);">Lekcja 3</pre>
+            <div id = "sideMenu" class="centerSidenav">
+
             </div>
         </div>
         <div id="learn">
