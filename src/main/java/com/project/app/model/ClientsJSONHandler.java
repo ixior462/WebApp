@@ -196,6 +196,26 @@ public class ClientsJSONHandler {
         return ranking;
     }
 
+    /**
+     *  Method that returns ArrayList of Clients containing all Clients from JSON file and sorted in descending order.
+     * @author Dominika Kunc
+     * @param username username of client
+     * @return Client's place in ranking
+     */
+    public int getClientRankingFromJSON(String username) {
+
+        ArrayList<Client> ranking = getRankingFromJSON();
+        for(int i = 0; i < ranking.size(); i++)
+        {
+            Client c = ranking.get(i);
+            if(c.getLogin().equals(username))
+            {
+                return i+1;
+            }
+        }
+        return 0;
+    }
+
 
     /**
      *  Method that updates ELO points of specified Client in JSON File.
