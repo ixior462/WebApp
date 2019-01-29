@@ -53,6 +53,11 @@ public class QueueAccessor {
         return queue.contains(player);
     }
 
+    public boolean removeFromQueue(String player){
+
+        return queue.remove(player);
+    }
+
     public void addToQueue(String player){
         queue.add(player);
         timer.put(player, 0);

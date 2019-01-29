@@ -14,13 +14,14 @@ import java.io.IOException;
 
 import static java.lang.Math.toIntExact;
 
+/**
+ * Class that have access to dictionary.json and directly add or read from that file
+ * @author      Paweł Krupski
+ * @version     1.0
+ */
 public class DictionaryJSONHandler {
 
-    /**
-     * @author      Paweł Krupski
-     * @info        Class that have access to dictionary.json and directly add or read from that file
-     * @version     1.0
-     */
+
 
     private JSONParser parser;
 
@@ -85,7 +86,11 @@ public class DictionaryJSONHandler {
 
     }
 
-
+    /**
+     *  Method that returns random word from JSON file.
+     * @author Dominika Kunc
+     * @return Word randomWord
+     */
     public Word getRandomWordFromJSON(){
 
         /**
@@ -113,6 +118,13 @@ public class DictionaryJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that returns specified amount of words on specified level from JSON file.
+     * @author Dominika Kunc
+     * @param amountOfWords wanted amount of random words
+     * @param level wanted level of words
+     * @return ArrayList of Words with randomly selected words
+     */
     public ArrayList<Word> getWordsFromLevelFromJSON(int amountOfWords, String level){
 
         /**
@@ -144,7 +156,7 @@ public class DictionaryJSONHandler {
         Random random = new Random();
         for(int i = 0; i < amountOfWords; i++)
         {
-           int r =  random.nextInt((wordsFromLevel.size() - i) + 1);
+           int r =  random.nextInt((wordsFromLevel.size()-1 - i) + 1);
            System.out.println("random: "+ r);
            randomWords.add(wordsFromLevel.get(r));
            wordsFromLevel.remove(r);
@@ -153,6 +165,12 @@ public class DictionaryJSONHandler {
         return randomWords;
     }
 
+    /**
+     *  Method that returns words from specified lesson from JSON file.
+     * @author Dominika Kunc
+     * @param lesson waned lesson number
+     * @return ArrayList of Words with words from specified lesson
+     */
     public ArrayList<Word> getWordsFromLessonFromJSON(int lesson){
 
         /**
@@ -183,6 +201,11 @@ public class DictionaryJSONHandler {
         return wordsFromLesson;
     }
 
+    /**
+     *  Method that returns amount of unique lessons in JSON file.
+     * @author Dominika Kunc
+     * @return amount of unique lessons in JSON file
+     */
     public int getAmountOfLessonsFromJSON()
     {
         Object obj = null;

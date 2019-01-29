@@ -145,11 +145,7 @@ public class RegistrationController {
             else{
 
                 while(true) {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
                     if (queue.getGameByNameOfPlayer(player) != null) {
                         return "redirect:rival_mode";
 
@@ -182,7 +178,12 @@ public class RegistrationController {
 
     }
 
-
+    @RequestMapping(value = "/back")
+    public String backToClientMainPage(HttpSession session){
+        String player = session.getAttribute("username").toString();
+        queue.removeFromQueue(player);
+        return "redirect:indexClient";
+    }
 
     @RequestMapping("/rival_mode")
     public String rivalMode(HttpSession session, Model model){

@@ -9,22 +9,35 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static java.lang.Math.toIntExact;
 
+/**
+ *  Class that have access to clients.json and directly add or read from that file
+ * @author      Paweł Krupski
+ * @version     1.0
+ */
 public class ClientsJSONHandler {
     
 
 
 
-    //Class that will acces Clients JSON file
+    //Class that will access Clients JSON file
     private JSONParser parser;
 
     public ClientsJSONHandler() {
         this.parser = new JSONParser();
     }
 
-
+    /**
+     *  Method that adds new Client to JSON file.
+     * @author Paweł Krupski
+     * @param client new Client object to be added
+     *
+     */
     public void addClientToJSON(Client client) {
 
         /**
@@ -84,7 +97,12 @@ public class ClientsJSONHandler {
     }
 
 
-
+    /**
+     *  Method that returns Client with specified login form JSON file.
+     * @author Paweł Krupski
+     * @param login login of wanted Client
+     * @return Client client
+     */
     public Client getClientFromJSON(String login){
 
         /**
@@ -122,6 +140,70 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that returns ArrayList of Clients containing all Clients from JSON file and sorted in descending order.
+     * @author Dominika Kunc
+     * @return ArrayList of Clients ranking
+     */
+    public ArrayList<Client> getRankingFromJSON()
+    {
+        /**
+         *  return client from JSON file
+         */
+
+        ArrayList<Client> ranking = new ArrayList<Client>();
+
+        Object obj = null;
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("clients.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("clients");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject client = (JSONObject) list.get(i);
+
+                    ranking.add( new Client(
+                            (String) client.get("login"),
+                            (String) client.get("password"),
+                            (String) client.get("email"),
+                            (String) client.get("level"),
+                            toIntExact( (long) client.get("elo")),
+                            toIntExact( (long) client.get("lastLesson")),
+                            toIntExact( (long) client.get("stage"))));
+
+                // ...
+            }
+
+            Collections.sort(ranking, new Comparator<Client>(){
+                public int compare(Client c1, Client c2){
+                    if(c1.getElo()== c2.getElo())
+                        return 0;
+                    return c1.getElo() < c2.getElo() ? 1 : -1;
+                }
+            });
+
+            for(int i = 0; i < ranking.size(); i++)
+            {
+                Client c = ranking.get(i);
+                System.out.println((i+1)+". "+c.getLogin()+" - "+c.getElo());
+            }
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return ranking;
+    }
+
+
+    /**
+     *  Method that updates ELO points of specified Client in JSON File.
+     * @author Dominika Kunc
+     * @param login login of Client to be updated
+     * @param newElo new ELO points value
+     * @return Client updatedClient
+     */
     public Client updateEloInJSON(String login, int newElo){
 
         /**
@@ -174,6 +256,12 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that checks if specified username exists in JSON file.
+     * @author Paweł Krupski
+     * @param name username to be checked
+     * @return true if exist false if not
+     */
     public boolean usernameAlreadyExist(String name) {
 
         /**
@@ -204,6 +292,13 @@ public class ClientsJSONHandler {
 
     }
 
+    /**
+     *  Method that updates Lesson of specified Client in JSON File.
+     * @author Dominika Kunc
+     * @param login login of Cient to be updated
+     * @param newLesson new lesson number
+     * @return Client updatedClient
+     */
     public Client updateLessonInJSON(String login, int newLesson){
 
         /**
@@ -256,6 +351,13 @@ public class ClientsJSONHandler {
         return null;
     }
 
+    /**
+     *  Method that updates stage of specified Client in JSON File.
+     * @author Dominika Kunc
+     * @param login login of Client to be updated
+     * @param newStage new stage value
+     * @return Client updatedClient
+     */
     public Client updateStageInJSON(String login, int newStage){
 
         /**
