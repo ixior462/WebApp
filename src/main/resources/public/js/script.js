@@ -2,21 +2,23 @@ function openNav() {
     var x = document.getElementById("menuSidenav");
     if(x.style.width === "0%") {
         x.style.width = "25%";
-        document.getElementById("learn").style.width="75%";
+        document.getElementById("learn").style.width = "75%";
+        document.getElementById("learn").style.transition = "0.5s";
     } else {
         x.style.width = "0%";
-        document.getElementById("learn").style.width="100%";
+        document.getElementById("learn").style.width = "100%";
     }
 }
 
 function closeNav() {
     document.getElementById("menuSidenav").style.width = "0%";
-    document.getElementById("learn").style.width="100%";
+    document.getElementById("learn").style.width = "100%";
 }
 
 function open() {
     document.getElementById("menuSidenav").style.width = "25%";
     document.getElementById("learn").style.width = "75%";
+    document.getElementById("learn").style.transition = "0.5s";
 }
 var lessons = 0;
 function initializeMenu() {

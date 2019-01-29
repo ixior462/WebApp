@@ -6,7 +6,7 @@ html, body {
     height: 100%;
     padding: 0;
     position: relative;
-    overflow:hidden;
+    overflow-x: hidden;
 }
 
 /***************************************** HEADER *******************************************/
@@ -267,7 +267,7 @@ ul.menu img {
     padding-left: 30%;
 }
 
-.centerSidenav a, .closebtn {
+.centerSidenav pre, .closebtn {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
     font-size: 20px;
@@ -276,11 +276,11 @@ ul.menu img {
     color: #000000;
 }
 
-.centerSidenav a:hover, .closebtn:hover {
+.centerSidenav pre:hover, .closebtn:hover {
     color: #001f7e;
 }
 
-.centerSidenav a.active {
+.centerSidenav pre.active {
     color: #d00c27;
 }
 
@@ -312,7 +312,7 @@ object {
         width: 100%;
     }
 
-    .centerSidenav a, .closebtn {
+    .centerSidenav pre, .closebtn {
         font-size: 15px;
     }
 
@@ -382,11 +382,19 @@ object {
 }
 
 /***************************************** USER *******************************************/
+
+#userCenter {
+    margin-top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    resize: both;
+    overflow: auto;
+}
+
 #user {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    resize: both;
+    overflow: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
@@ -405,15 +413,6 @@ object {
 .userContainer {
     padding: 20px;
     text-align: center;
-}
-
-@media screen and (max-width: 670px) {
-    #user {
-        position: absolute;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
 }
 
 /***************************************** SPECIALISTS *******************************************/
@@ -482,14 +481,14 @@ object {
     .arrowL {
         position: absolute;
         top: 70%;
-        left: 25%;
+        left: 20%;
         transform: translate(-50%, -50%);
     }
 
     .arrowR {
         position: absolute;
         top: 70%;
-        left: 75%;
+        left: 80%;
         transform: translate(-50%, -50%);
     }
 

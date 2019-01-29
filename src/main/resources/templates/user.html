@@ -34,12 +34,14 @@
             </nav>
         </header>
         <!-- TODO: Wczytywanie danych użytkownika. -->
-        <section id="user">
-            <img src="bond.jpg" th:src="@{images/bond.jpg}" id="userPictrue" alt="Bond James Bond">
-            <div class="userContainer">
-                <p th:text="'User: ' + ${username}"></p>
-                <p>Poziom A1</p>
-                <i id="crown" class="fas fa-crown"></i>
+        <section id="userCenter">
+            <div id="user">
+                <img src="bond.jpg" th:src="@{images/bond.jpg}" id="userPictrue" alt="Bond James Bond">
+                <div class="userContainer">
+                    <p th:text="'Użytkownik: ' + ${username}"></p>
+                    <p>Poziom A1</p>
+                    <i id="crown" class="fas fa-crown"></i>
+                </div>
             </div>
         </section>
     </body>
