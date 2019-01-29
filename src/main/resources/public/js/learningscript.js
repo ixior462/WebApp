@@ -8,14 +8,17 @@ function initializeN(){
         n = 4;
     } else if (data == 2) {
         n = 6;
+
     } else
         n = 8;
+
 }
 $( function() {
     var parent = document.getElementById("pl");
     var parent2 = document.getElementById("eng");
     var parent3 = document.getElementById("checksymb");
     if(data==1) {
+        document.getElementById("container").style.marginTop="10%";
         for(i=5;i<=8;i++){
             parent.removeChild(document.getElementById("wordpl-"+i));
             parent2.removeChild(document.getElementById("wordeng-"+i));
@@ -23,11 +26,15 @@ $( function() {
         }
     }
     if(data==2) {
+        document.getElementById("container").style.marginTop="5%";
         for(i=7;i<=8;i++){
             parent.removeChild(document.getElementById("wordpl-"+i));
             parent2.removeChild(document.getElementById("wordeng-"+i));
             parent3.removeChild(document.getElementById("check-"+i));
         }
+    }
+    if(data==3){
+        document.getElementById("container").style.marginTop="3%";
     }
     var ul = document.querySelector('ul');
     for (var i = ul.children.length; i >= 0; i--) {
@@ -149,10 +156,8 @@ function nextStage() {
     window.location.replace("/nauka3?lesson="+lessonNumber);
 }
 function repeat(){
-    var url = new URL(document.URL);
-    var lessonNumber = url.searchParams.get("lesson");
-    window.location.replace("/nauka2?lesson="+lessonNumber+"&lesson=1");
+    window.location.reload();
 }
-function returnToMain() {
+function returnToMain(){
     window.location.replace("/indexClient");
 }
