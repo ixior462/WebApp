@@ -62,7 +62,11 @@ public class WebController {
         return "contactClient";
     }
     @RequestMapping(value = "/menuClient")
-    public String showClientMenuPage(){
+    public String showClientMenuPage(HttpSession session, Model model){
+        ClientsDataAccessor parser = new ClientsDataAccessor();
+        Client c = parser.getClient((String) session.getAttribute("username"));
+        System.out.println(c.getLastLesson());
+        model.addAttribute("lessons", c.getLastLesson());
         return "menuClient";
     }
     @RequestMapping(value = "/user")
