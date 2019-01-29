@@ -104,17 +104,22 @@ function nextFiche(){
       return;
   }
   else if(wordIndex == 0&& unlearnedWords.length == 0){
-        document.getElementById("nextStage").style.display = "block";
-        document.getElementById("info").innerHTML = "Udało ci się przerobić wszystkie słówka!";
-        document.getElementById("info").style.display = "block";
-        document.getElementById("frontFiche").style.display = "none";
-        document.getElementById("backFiche").style.display = "none";
-        document.getElementById("counter").style.display = "none";
-        document.getElementById("unlearned").style.display = "none";
-        document.getElementById("learned").style.display = "none";
-        document.getElementById("showTranslation").style.display = "none";
-        document.getElementById("return").style.display = "inline";
-        return;
+      var url = new URL(document.URL);
+      var lessonNumber = url.searchParams.get("lesson");
+      var data = {lesson: lessonNumber, stage: 2};
+      console.log(data);
+      $.post("/nauka", data, function(){});
+      document.getElementById("nextStage").style.display = "block";
+      document.getElementById("info").innerHTML = "Udało ci się przerobić wszystkie słówka!";
+      document.getElementById("info").style.display = "block";
+      document.getElementById("frontFiche").style.display = "none";
+      document.getElementById("backFiche").style.display = "none";
+      document.getElementById("counter").style.display = "none";
+      document.getElementById("unlearned").style.display = "none";
+      document.getElementById("learned").style.display = "none";
+      document.getElementById("showTranslation").style.display = "none";
+      document.getElementById("return").style.display = "inline";
+      return;
   }
   loadFiche();
   $("#ficheContainer").flip('toggle');

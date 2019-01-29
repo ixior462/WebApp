@@ -62,7 +62,7 @@ function printScore(){
     if(score >= 0.9) {
         var url = new URL(document.URL);
         var lessonNumber = url.searchParams.get("lesson");
-        var data = {lesson: lessonNumber, stage: 3};
+        var data = {lesson: lessonNumber, stage: 4};
         $.post("/nauka3", data, function(){});
         document.getElementById("nextStage").style.display = "inline";
     }

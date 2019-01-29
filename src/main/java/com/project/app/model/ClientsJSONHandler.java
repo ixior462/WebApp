@@ -223,8 +223,8 @@ public class ClientsJSONHandler {
                 String loginFromDataBase = (String) client.get("login");
                 if(loginFromDataBase.equals(login))
                 {
-                    client.remove("lesson");
-                    client.put("lesson", newLesson);
+                    client.remove("lastLesson");
+                    client.put("lastLesson", newLesson);
                     updatedClient = client;
                 }
                 // ...

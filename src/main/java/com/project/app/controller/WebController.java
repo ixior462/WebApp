@@ -22,6 +22,25 @@ public class WebController {
      * @version     1.0
      */
 
+    static void setLessonAndStage(WebRequest request, HttpSession session){
+        ClientsDataAccessor parser = new ClientsDataAccessor();
+        Client c = parser.getClient((String) session.getAttribute("username"));
+        int lesson = Integer.parseInt(request.getParameter("lesson"));
+        int stage = Integer.parseInt(request.getParameter("stage"));
+        if(c.getLastLesson()==lesson){
+            if(c.getStage()<stage){
+                c.setStage(stage);
+                parser.updateClientsStageJSON(c);
+            }
+        }
+        else if(c.getLastLesson()<lesson) {
+            c.setLastLesson(lesson);
+            c.setStage(stage);
+            parser.updateClientsLessonJSON(c);
+            parser.updateClientsStageJSON(c);
+        }
+    }
+
     @RequestMapping(value = "/index")
     public String showMainPage(){
         return "index";
@@ -70,6 +89,10 @@ public class WebController {
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka";
     }
+    @PostMapping(value = "/nauka")
+    public void setLessonAndStage1(WebRequest request, HttpSession session) {
+        setLessonAndStage(request, session);
+    }
     @RequestMapping(value = "/naukav2")
     public String showLearningPagev2(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
@@ -98,6 +121,10 @@ public class WebController {
         model.addAttribute("level",lesson.get(1));
         return "nauka2";
     }
+    @PostMapping(value = "/nauka2")
+    public void setLessonAndStage2(WebRequest request, HttpSession session) {
+        setLessonAndStage(request, session);
+    }
     @GetMapping(value = "/nauka3")
     public String showLearningPage3(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
@@ -106,23 +133,8 @@ public class WebController {
         return "nauka3";
     }
     @PostMapping(value = "/nauka3")
-    public void setLessonAndStage(WebRequest request, HttpSession session) {
-        ClientsDataAccessor parser = new ClientsDataAccessor();
-        Client c = parser.getClient((String) session.getAttribute("username"));
-        int lesson = Integer.parseInt(request.getParameter("lesson"));
-        int stage = Integer.parseInt(request.getParameter("stage"));
-        if(c.getLastLesson()==lesson){
-            if(c.getStage()<stage){
-                c.setStage(stage);
-                parser.updateClientsStageJSON(c);
-            }
-        }
-        else if(c.getLastLesson()<lesson) {
-            c.setLastLesson(lesson);
-            c.setStage(stage);
-            parser.updateClientsLessonJSON(c);
-            parser.updateClientsStageJSON(c);
-        }
+    public void setLessonAndStage3(WebRequest request, HttpSession session) {
+        setLessonAndStage(request, session);
         //System.out.println("Lesson: "+request.getParameter("lesson")+" Stage: "+request.getParameter("stage")+" User: "+session.getAttribute("username"));
 
 
@@ -133,6 +145,10 @@ public class WebController {
 
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka4";
+    }
+    @PostMapping(value = "/nauka4")
+    public void setLessonAndStage4(WebRequest request, HttpSession session) {
+        setLessonAndStage(request, session);
     }
 
 }

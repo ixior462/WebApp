@@ -76,6 +76,11 @@ function stats(){
     document.getElementById("checkResult").innerText='✗ '+getBad();
     document.getElementById("checkResult2").innerText='✓ '+getCorrect();
     if(getCorrect()>=words.length*0.9) {
+        var url = new URL(document.URL);
+        var lessonNumber = url.searchParams.get("lesson");
+        lessonNumber++;
+        var data = {lesson: lessonNumber, stage: 1};
+        $.post("/nauka4", data, function(){});
         document.getElementById("Result").innerText = "Brawo, udało Ci się zaliczyć lekcję!"
         document.getElementById("NextLesson").style.display="inline";
         document.getElementById("return").style.display = "inline";
