@@ -87,9 +87,9 @@ public class WebController {
     @RequestMapping(value = "/rivalGame1")
     public String showRival(Model model){
         DictionaryAccessor dict = new DictionaryAccessor();
-
-        model.addAttribute("words", dict.getWordsFromLesson(3).toArray());
-        return "rivalGame1";
+        model.addAttribute("level",2);
+        model.addAttribute("words", dict.getWordsFromLevel("A1",5).toArray());
+        return "rivalGame2";
     }
     @RequestMapping(value = "/nauka2")
     public String showLearningPage2(@RequestParam("lesson") List<Integer> lesson , Model model) {

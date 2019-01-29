@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Nauka</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/rivalScript2.js"></script>
+    <style>
+        #pointsForm{
+            display: none;
+        }
+    </style>
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+        words = /*[[${words}]]*/[];
+        /*]]>*/
+
+    </script>
+    <link rel="stylesheet" href="css/learningstyle.css">
+</head>
+<body onload="initializeN()">
+<div class="pl" id="pl" th:object = "${words}">
+    <div  class="worddiv" id="wordpl-1" th:text="${words[0].pl}"></div>
+    <div  class="worddiv" id="wordpl-2" th:text="${words[1].pl}"></div>
+    <div  class="worddiv" id="wordpl-3" th:text="${words[2].pl}"></div>
+    <div  class="worddiv" id="wordpl-4" th:text="${words[3].pl}"></div>
+    <div  class="worddiv" id="wordpl-5" th:text="${words[4].pl}"></div>
+</div>
+<div id="englis">
+<ul class="eng" id="eng" th:object="${words}">
+    <li class="draggable worddiv" id="wordeng-1" th:text="${words[0].eng}"></li>
+    <li class="draggable worddiv" id="wordeng-2" th:text="${words[1].eng}"></li>
+    <li class="draggable worddiv" id="wordeng-3" th:text="${words[2].eng}"></li>
+    <li class="draggable worddiv" id="wordeng-4" th:text="${words[3].eng}"></li>
+    <li class="draggable worddiv" id="wordeng-5" th:text="${words[4].eng}"></li>
+
+</ul>
+</div>
+<div id="checksymb">
+    <div id="check-1"></div>
+    <div id="check-2"></div>
+    <div id="check-3"></div>
+    <div id="check-4"></div>
+    <div id="check-5"></div>
+</div>
+<div id="buttons">
+<button class="btn" id="check" onclick="check()">Sprawdź</button>
+<button class="btn" id="next" onclick="next()">Dalej</button>
+<button class="btn" id="stat" onclick="stats()">Przejdź dalej</button>
+<button type="button" class="btn" id="nextStage" onclick="nextStage()">Następny etap</button>
+<button type="button" class="btn" id="repeat" onclick="repeat()">Spróbuj jeszcze raz</button>
+<button type="button" class="btn" id="return" onclick="returnToMain()">Powrót na stronę główną</button>
+</div>
+<form id="pointsForm" action="/waitingResults" method="post">
+    <input type="hidden" id="points" name="points" value="0">
+</form>
+<div id="stats">
+    <div id="corr"></div>
+    <div id="bad"></div>
+</div>
+</body>
+</html>

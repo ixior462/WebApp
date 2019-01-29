@@ -198,7 +198,7 @@ public class RegistrationController {
             //łączenie w pary
 
             model.addAttribute("words", currentGame.getWordsFromGame().toArray());
-            return "rivalGame1";
+            return "rivalGame2";
         }
         else
         {
