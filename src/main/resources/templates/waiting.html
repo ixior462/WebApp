@@ -27,17 +27,18 @@
             <li class="right"><a href="/user">
                 <i class="fas fa-user-secret"></i>
             </a></li>
-            <!-- TODO: Poprawić wysyłanie formularza. -->
             <li class="right"><a href="/contactClient">Kontakt</a></li>
-            <!-- TODO: Dodać stronę z rywalizacją. -->
             <li class="right"><a class="active" href="#">Rywalizuj</a></li>
             <li class="right"><a href="/menuClient">Ucz się</a></li>
         </ul>
     </nav>
 </header>
-<div id="waitingDots">
-    <p>Oczekiwanie na przeciwnika  <i class="fa fa-refresh fa-spin"></i></p>
-    <a href="/back">Powrót!</a>
-</div>
+<section></section>
+<section id="waiting">
+    <div id="waitingDots">
+        <p>Oczekiwanie na przeciwnika  <i class="fa fa-refresh fa-spin"></i></p>
+        <button onclick="location.href='/back'" type="button" id="back">Powrót!</button>
+    </div>
+</section>
 </body>
 </html>
