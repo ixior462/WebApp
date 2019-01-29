@@ -63,6 +63,17 @@ public class ClientsDataAccessor {
     }
 
     /**
+     *  Method that returns ArrayList of Clients containing all Clients from JSON file and sorted in descending order.
+     * @author Dominika Kunc
+     * @param username username of client
+     * @return Client's place in ranking
+     */
+    public int getClientRanking(String username){
+        return handler.getClientRankingFromJSON(username);
+    }
+
+
+    /**
      *  Method that returns Client with specified login form JSON file.
      * @author Paweł Krupski
      * @param login login of wanted Client

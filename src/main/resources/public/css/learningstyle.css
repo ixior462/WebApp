@@ -3,6 +3,9 @@
     margin-top: 0;
     float:left;
     margin-left: 25%;
+
+
+
 }
 
 .eng{
@@ -14,6 +17,7 @@
 #englis{
     float:left;
     width:20%;
+
 }
 .eng li{
     width:52.5%;
@@ -29,6 +33,7 @@
     font-size:calc(8px + 0.7vw);
     text-align: center;
     list-style-type: none;
+
 }
 
 
@@ -46,23 +51,26 @@
     padding: 2%;
     font-size:calc(8px + 0.7vw);
     text-align: center;
+
 }
 #repeat{
     display:none;
 }
 
 .btn{
-    background:#cc0000;
     width:20%;
     min-width: 80px;
     padding-top:5px;
     padding-bottom:5px;
     border-radius:3px;
-    border: #f2f2f2 2px solid;
     height:20%;
     margin-bottom:2%;
     text-align: center;
     font-size:calc(8px + 0.7vw);
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    background-color: #f2f2f2;
+    color: #191919;
 }
 #stat{
     display: none;
@@ -71,15 +79,13 @@
     display: none;
     float:left;
     margin-top:0;
-    margin-left:45%;
+    margin-left:46%;
     margin-right:0;
 }
 #bad{
-    color:#cc0000;
     font-size:calc(8px + 0.7vw);
 }
 #corr{
-    color:#2929bc;
     font-size:calc(8px + 0.7vw);
 }
 #next{
@@ -105,5 +111,9 @@
     display: none;
 }
 #return{
+    clear: both;
     display: none;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }

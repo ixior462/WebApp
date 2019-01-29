@@ -37,7 +37,26 @@ public class DictionaryAccessor {
     }
 
     /**
-     *  Method that returns amount of unique lessons in JSON file.
+     *  Method that returns amount of unique lessons on specified level in JSON file.
+     * @author Dominika Kunc
+     * @return amount of unique lessons on specified levelin JSON file
+     */
+    public int getAmountOfLessonsOnLevel(String level){
+        return handler.getAmountOfLessonsOnLevelFromJSON(level);
+    }
+
+    /**
+     *  Method that returns level of specified lesson in JSON file.
+     * @author Dominika Kunc
+     * @param lessonNumber number of lesson to find
+     * @return level of specified lesson
+     */
+    public String getLevelOfLesson(int lessonNumber){
+        return handler.getLevelOfLessonFromJSON(lessonNumber);
+    }
+
+    /**
+     *  Method that returns topic of specified lesson in JSON file.
      * @author Dominika Kunc
      * @param lessonNumber number of lesson to find
      * @return topic of specified lesson
@@ -45,7 +64,6 @@ public class DictionaryAccessor {
     public String getTopicOfLesson(int lessonNumber){
         return handler.getTopicOfLessonFromJSON(lessonNumber);
     }
-
 
     /**
      *  Method that returns words from specified lesson from JSON file.

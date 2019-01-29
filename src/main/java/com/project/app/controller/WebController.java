@@ -68,8 +68,13 @@ public class WebController {
     @RequestMapping(value = "/index")
     public String showMainPage(HttpSession session,Model model){
         model.addAttribute("errorMessage", "");
-        String player = session.getAttribute("username").toString();
-        queue.removeFromQueue(player);
+        if(session.getAttribute("username")!=null)
+        {
+            String player = session.getAttribute("username").toString();
+
+            queue.removeFromQueue(player);
+        }
+
 
         return "index";
     }
@@ -83,16 +88,25 @@ public class WebController {
     }
     @RequestMapping(value = "/indexClient")
     public String showClientMainPage(HttpSession session, Model model){
-        String player = session.getAttribute("username").toString();
-        queue.removeFromQueue(player);
+        if(session.getAttribute("username")!=null)
+        {
+            String player = session.getAttribute("username").toString();
+
+            queue.removeFromQueue(player);
+        }
         return "indexClient";
     }
     @RequestMapping(value = "/contactClient")
     public String showClientContactPage(HttpSession session){
-        String player = session.getAttribute("username").toString();
-        queue.removeFromQueue(player);
+        if(session.getAttribute("username")!=null)
+        {
+            String player = session.getAttribute("username").toString();
+
+            queue.removeFromQueue(player);
+        }
         return "contactClient";
     }
+
     @RequestMapping(value = "/menuClient")
     public String showClientMenuPage(HttpSession session, Model model){
         ClientsDataAccessor parser = new ClientsDataAccessor();
