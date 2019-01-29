@@ -47,7 +47,8 @@ public class WebController {
         return "menuClient";
     }
     @RequestMapping(value = "/user")
-    public String showClientPage() {
+    public String showClientPage(HttpSession session, Model model) {
+        model.addAttribute("username", session.getAttribute("username"));
         return "user";
     }
     @RequestMapping(value = "/specialists")
