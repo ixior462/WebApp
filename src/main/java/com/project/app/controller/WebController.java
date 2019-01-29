@@ -116,6 +116,11 @@ public class WebController {
     }
     @RequestMapping(value = "/user")
     public String showClientPage(HttpSession session, Model model) {
+        ClientsDataAccessor parser = new ClientsDataAccessor();
+        Client c = parser.getClient((String) session.getAttribute("username"));
+        int k = parser.getClientRanking((String) session.getAttribute("username"));
+        model.addAttribute("level", c.getLevel());
+        model.addAttribute("ranking", k+1);
         model.addAttribute("username", session.getAttribute("username"));
         return "user";
     }
