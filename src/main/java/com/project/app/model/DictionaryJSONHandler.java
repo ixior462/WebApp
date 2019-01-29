@@ -136,6 +136,7 @@ public class DictionaryJSONHandler {
         ArrayList <Word> randomWords = new ArrayList<Word>();
 
 
+
         try {
 
             //Read whole array of objects
@@ -153,20 +154,32 @@ public class DictionaryJSONHandler {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        Random random = new Random();
-        for(int i = 0; i < amountOfWords; i++)
+        if(amountOfWords==-1)
         {
-           int r =  random.nextInt((wordsFromLevel.size()-1 - i) + 1);
-           System.out.println("random: "+ r);
-           randomWords.add(wordsFromLevel.get(r));
-           wordsFromLevel.remove(r);
+            return wordsFromLevel;
 
         }
+        else
+        {
+            Random random = new Random();
+
+            for(int i = 0; i < amountOfWords; i++)
+            {
+                int r =  random.nextInt((wordsFromLevel.size()-1 - i) + 1);
+                System.out.println("random: "+ r);
+                randomWords.add(wordsFromLevel.get(r));
+                wordsFromLevel.remove(r);
+
+                return randomWords;
+
+            }
+        }
         return randomWords;
+
     }
 
     /**
-     *  Method that returns specified amount of words on specified level from JSON file.
+     *  Method that returns topic of specified lesson from JSON file.
      * @author Dominika Kunc
      * @param lessonNumber number of wanted lesson
      * @return topic of specified lesson
@@ -202,6 +215,46 @@ public class DictionaryJSONHandler {
 
         return topic;
     }
+
+
+    /**
+     *  Method that returns level of specified lesson from JSON file.
+     * @author Dominika Kunc
+     * @param lessonNumber number of wanted lesson
+     * @return level of specified lesson
+     */
+    public String getLevelOfLessonFromJSON(int lessonNumber){
+
+        /**
+         *  return apecified amount of words on specified level from JSON file
+         */
+
+        Object obj = null;
+        String level="";
+
+
+        try {
+
+            //Read whole array of objects
+            obj = parser.parse(new FileReader("dictionary.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray list = (JSONArray) jsonObject.get("words");
+            for (int i = 0; i < list.size(); ++i) {
+                JSONObject word = (JSONObject) list.get(i);
+                int lesson = ((Long) word.get("lesson")).intValue();
+                if (lesson == lessonNumber) {
+                    level = (String) word.get("label");
+                    break;
+                }
+            }
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return level;
+    }
+
 
     /**
      *  Method that returns words from specified lesson from JSON file.
@@ -271,4 +324,36 @@ public class DictionaryJSONHandler {
         return amount;
     }
 
+
+    /**
+     *  Method that returns amount of unique lessons in JSON file.
+     * @author Dominika Kunc
+     * @return amount of unique lessons in JSON file
+     */
+    public int getAmountOfLessonsOnLevelFromJSON(String level)
+    {
+        Object obj = null;
+        ArrayList <Word> wordsFromLevel = getWordsFromLevelFromJSON(-1, level);
+        ArrayList <String> uniqueLessons = new ArrayList<String>();
+
+
+       for(Word w : wordsFromLevel)
+       {
+           String wLesson = Integer.toString(w.getLesson());
+          int contains = 0;
+          for(String s : uniqueLessons)
+          {
+              if(s.equals(wLesson))
+              {
+                  contains++;
+              }
+          }
+          if(contains==0)
+          {
+              uniqueLessons.add(wLesson);
+          }
+       }
+        int amount = uniqueLessons.size();
+        return amount;
+    }
 }
