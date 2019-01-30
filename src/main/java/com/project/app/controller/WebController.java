@@ -46,7 +46,7 @@ public class WebController {
         QueueAccessor -> outside method to grant to have only one instantiation od the queue
      */
     QueueAccessor queue = QueueAccessor.getInstance();
-
+    int sent = 0;
     /**
      *  Method that checks sets lesson and stage for user
      * @author Jakub Dziwiński
@@ -90,32 +90,88 @@ public class WebController {
         return "contact";
     }
     @PostMapping(value = "/contact")
-    public String showContactPagePost(WebRequest request){
+    public String showContactPagePost(WebRequest request, HttpSession session){
         String topic = request.getParameter("topic");
         String email = request.getParameter("email");
         String subject = request.getParameter("subject");
         String text = "FROM: "+email+ "\n"+subject;
-        emailService.sendSimpleMessage("fishkey.contact@gmail.com", email, topic, text);
+        session.setAttribute("from", email);
+        session.setAttribute("topic", topic);
+        session.setAttribute("text", text);
 
 
         System.out.println(request.getParameter("topic"));
-        return "redirect:index";
+        return "redirect:load";
     }
+
+
     @RequestMapping(value = "/load")
-    public String showLoadPage(){
-        return "load";
+    public String showLoadPage(HttpSession session){
+        if(sent==0)
+        {
+            sent = 1;
+            return "load";
+
+        }
+        else if(sent==1)
+        {
+            String topic = (String) session.getAttribute("topic");
+            String email = (String) session.getAttribute("from");
+            String text = (String) session.getAttribute("text");
+            System.out.println("jestem tu");
+            emailService.sendSimpleMessage("fishkey.contact@gmail.com", email, topic, text);
+            sent=2;
+            return "load";
+
+        }
+        else
+        {
+            sent = 0;
+            return"redirect:index";
+        }
     }
+
+    @RequestMapping(value = "/loadClient")
+    public String showLoadPageClient(HttpSession session){
+        if(sent==0)
+        {
+            sent = 1;
+            return "loadClient";
+
+        }
+        else if(sent==1)
+        {
+            String topic = (String) session.getAttribute("topic");
+            String email = (String) session.getAttribute("from");
+            String text = (String) session.getAttribute("text");
+            System.out.println("jestem tu");
+            emailService.sendSimpleMessage("fishkey.contact@gmail.com", email, topic, text);
+            sent=2;
+            return "loadClient";
+        }
+        else
+        {
+            sent = 0;
+            return"redirect:indexClient";
+        }
+
+    }
+
+
     @PostMapping(value = "/contactClient")
-    public String showContactClientPagePost(WebRequest request){
+    public String showContactClientPagePost(WebRequest request, HttpSession session){
         String topic = request.getParameter("topic");
         String email = request.getParameter("email");
         String subject = request.getParameter("subject");
         String text = "FROM: "+email+ "\n"+subject;
-        emailService.sendSimpleMessage("fishkey.contact@gmail.com", email, topic, text);
+        session.setAttribute("from", email);
+        session.setAttribute("topic", topic);
+        session.setAttribute("text", text);
+
 
 
         System.out.println(request.getParameter("topic"));
-        return "redirect:indexClient";
+        return "redirect:loadClient";
     }
     @RequestMapping(value = "/indexClient")
     public String showClientMainPage(HttpSession session, Model model){

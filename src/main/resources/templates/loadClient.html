@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
+    <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
+    <meta name="author" content="Weronika Jasiak">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="refresh" content="1">
+    <title>FishKey</title>
+    <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
+    <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+</head>
+<body>
+<header>
+    <nav id="main-nav">
+        <ul class="menu">
+            <li>
+                <img src="../public/images/flaga.png" alt="logo" th:src="@{images/flaga.png}" usemap="#logomap">
+                <map name="logomap">
+                    <area shape="rect" coords="0,0,100,50" alt="logo" href="/indexClient">
+                </map>
+            </li>
+            <li class="right"><a href="/index">Wyloguj</a></li>
+            <li class="right"><a href="/user">
+                <i class="fas fa-user-secret"></i>
+            </a></li>
+            <li class="right"><a class="active" href="#">Kontakt</a></li>
+            <li class="right"><a href="/waiting">Rywalizuj</a></li>
+            <li class="right"><a href="/menuClient">Ucz się</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="waiting">
+    <div id="waitingDots">
+        <p>Wysyłanie wiadomości<i class="fa fa-refresh fa-spin"></i></p>
+    </div>
+</section>
+</body>
+</html>
+
