@@ -65,12 +65,12 @@ function printScore(){
         var lessonNumber = url.searchParams.get("lesson");
         var data = {lesson: lessonNumber, stage: 4};
         $.post("/nauka3", data, function(){});
-        document.getElementById("nextStage").style.display = "inline";
+        document.getElementById("nextStage").style.display = "block";
     }
     else{
-        document.getElementById("reload").style.display ="inline";
+        document.getElementById("reload").style.display ="block";
     }
-    document.getElementById("return").style.display="inline";
+    document.getElementById("return").style.display="block";
 
 }
 function next(){
