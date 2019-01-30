@@ -8,6 +8,10 @@ import com.project.app.model.Client;
 import com.project.app.model.ClientsDataAccessor;
 import com.project.app.model.DictionaryAccessor;
 import com.project.app.model.UserData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.*;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +39,8 @@ import java.util.concurrent.TimeUnit;
 public class WebController {
 
 
+    @Autowired
+    private EmailService emailService;
 
     /*
         QueueAccessor -> outside method to grant to have only one instantiation od the queue
@@ -83,8 +91,28 @@ public class WebController {
     }
     @PostMapping(value = "/contact")
     public String showContactPagePost(WebRequest request){
+        String topic = request.getParameter("topic");
+        String email = request.getParameter("email");
+        String subject = request.getParameter("subject");
+        String text = "FROM: "+email+ "\n"+subject;
+        emailService.sendSimpleMessage("fishkey.contact@gmail.com", email, topic, text);
+
+
         System.out.println(request.getParameter("topic"));
-        return "contact";
+        return "redirect:index";
+    }
+
+    @PostMapping(value = "/contactClient")
+    public String showContactClientPagePost(WebRequest request){
+        String topic = request.getParameter("topic");
+        String email = request.getParameter("email");
+        String subject = request.getParameter("subject");
+        String text = "FROM: "+email+ "\n"+subject;
+        emailService.sendSimpleMessage("fishkey.contact@gmail.com", email, topic, text);
+
+
+        System.out.println(request.getParameter("topic"));
+        return "redirect:indexClient";
     }
     @RequestMapping(value = "/menu")
     public String showMenuPage(){
@@ -99,6 +127,7 @@ public class WebController {
             queue.removeFromQueue(player);
         }
         return "indexClient";
+
     }
     @RequestMapping(value = "/contactClient")
     public String showClientContactPage(HttpSession session){
