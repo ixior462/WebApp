@@ -8,7 +8,7 @@ $unlearned1: #f90000;
 $unlearned2: #ff1f15;
 
 body{
-  background-color: #d9d9d9;
+  background-color: black;
 }
 #info{
   display: none;
@@ -45,13 +45,13 @@ body{
 #ficheContainer{
   width: 50vw;
   height: 27vw;
-  line-height: 13vw;
+  line-height: 12vw;
 }
 .fische {
   background-image: linear-gradient($fiche1, $fiche2);
   border-radius: 3px;
   border-style: solid;
-  border-width: 5px;
+  border-width: 0.5vw;
   border-color: $frame;
 
   .text{
