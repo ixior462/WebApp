@@ -170,11 +170,11 @@ public class DictionaryJSONHandler {
                 randomWords.add(wordsFromLevel.get(r));
                 wordsFromLevel.remove(r);
 
-                return randomWords;
+
 
             }
+            return randomWords;
         }
-        return randomWords;
 
     }
 
