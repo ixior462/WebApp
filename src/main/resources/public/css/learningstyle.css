@@ -7,12 +7,17 @@
 
 
 }
+@media screen and (max-width: 670px) {
+    .pl {
+        margin-left: 10%;
+    }
+}
 
 .eng{
     width: 100%;
     height:100%;
     margin-top: 0;
-    margin-left: 0;
+    margin-left: 10px;
 }
 #englis{
     float:left;
@@ -20,17 +25,17 @@
 
 }
 .eng li{
-    width:52.5%;
-    min-width:50px;
-    height: 2.24em;
-    line-height: 2.24em;
+    width:68%;
+    min-width:80px;
+    height: 2.0em;
+    line-height: 2.0em;
     margin-bottom: 2%;
     background-image: linear-gradient(#f9f8f6,#d2d1cf);
     color: #191919;
     border: 2px solid #d00c27;
     border-radius: 3px;
     padding: 2%;
-    font-size:calc(8px + 0.7vw);
+    font-size:calc(7px + 0.5vw);
     text-align: center;
     list-style-type: none;
 
@@ -38,18 +43,18 @@
 
 
 #wordpl-1, #wordpl-2, #wordpl-3,#wordpl-4,#wordpl-5, #wordpl-6, #wordpl-7,#wordpl-8{
-    width:52.5%;
-    min-width:50px;
-    height: 2.24em;
-    line-height: 2.24em;
+    width:68%;
+    min-width:80px;
+    height: 2.0em;
+    line-height: 2.0em;
     margin-bottom: 2%;
-    margin-left: 50%;
+    margin-left: 40%;
     background-image: linear-gradient(#f9f8f6,#d2d1cf);
     color: #191919;
     border: 2px solid #d00c27;
     border-radius: 3px;
     padding: 2%;
-    font-size:calc(8px + 0.7vw);
+    font-size:calc(7px + 0.5vw);
     text-align: center;
 
 }
@@ -79,7 +84,7 @@
     display: none;
     float:left;
     margin-top:0;
-    margin-left:46%;
+    margin-left:47%;
     margin-right:0;
 }
 #bad{
@@ -92,21 +97,28 @@
     display: none;
 }
 
-#buttons{
+.buttons{
     clear: both;
     margin-left: 42%;
+}
+@media screen and (max-width: 670px) {
+    .buttons {
+        margin-left: 30%;
+    }
 }
 #checksymb{
     float:left;
     min-width: 60px;
 }
 #check-1,#check-2,#check-3,#check-4,#check-5,#check-6,#check-7,#check-8{
-    height: 3.6em;
-    line-height: 3.6em;
+    height: 3em;
+    line-height: 3em;
     margin-bottom: 2%;
     font-size:calc(6px + 0.7vw); ;
-    padding-left: 80%;
+    padding-left: 100%;
+    margin-left:50%;
 }
+
 #nextStage{
     display: none;
 }

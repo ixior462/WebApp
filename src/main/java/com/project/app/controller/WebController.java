@@ -199,8 +199,16 @@ public class WebController {
     public String showClientMenuPage(HttpSession session, Model model){
         ClientsDataAccessor parser = new ClientsDataAccessor();
         Client c = parser.getClient((String) session.getAttribute("username"));
+        DictionaryAccessor dict = new DictionaryAccessor();
+        int A2=dict.getAmountOfLessonsOnLevel("A1");
+        int B1=dict.getAmountOfLessonsOnLevel("A2")+A2;
+        int B2=dict.getAmountOfLessonsOnLevel("B1")+B1;
+        int C1=dict.getAmountOfLessonsOnLevel("B2")+B2;
+        int C2=dict.getAmountOfLessonsOnLevel("C1")+C1;
+        int [] numbOfLessons = {A2,B1,B2,C1,C2};
         System.out.println(c.getLastLesson());
         model.addAttribute("lessons", c.getLastLesson());
+        model.addAttribute("numbOfLessons", numbOfLessons );
         return "menuClient";
     }
     @RequestMapping(value = "/user")

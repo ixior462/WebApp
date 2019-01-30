@@ -105,7 +105,7 @@ function nextLesson(){
     var url = new URL(document.URL);
     var lessonNumber = url.searchParams.get("lesson");
     var nextlesson = parseInt(lessonNumber) +1;
-    window.location.replace("/nauka?lesson="+nextlesson);
+    window.location.replace("/lessonMenu?lesson="+nextlesson);
 }
 function initializeEnter() {
     var input = document.getElementById("wordToCheck");
