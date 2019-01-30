@@ -152,9 +152,10 @@ public class WebController {
     public String showClientPage(HttpSession session, Model model) {
         ClientsDataAccessor parser = new ClientsDataAccessor();
         Client c = parser.getClient((String) session.getAttribute("username"));
+        DictionaryAccessor dict = new DictionaryAccessor();
         int k = parser.getClientRanking((String) session.getAttribute("username"));
-        model.addAttribute("level", c.getLevel());
-        model.addAttribute("ranking", k+1);
+        model.addAttribute("level", dict.getLevelOfLesson(c.getLastLesson()));
+        model.addAttribute("ranking", k);
         model.addAttribute("username", session.getAttribute("username"));
         return "user";
     }
@@ -212,6 +213,13 @@ public class WebController {
     @GetMapping(value = "/nauka3")
     public String showLearningPage3(@RequestParam(value = "lesson") int lesson ,Model model) {
         DictionaryAccessor dict = new DictionaryAccessor();
+        String level = dict.getLevelOfLesson(lesson);
+        if(level.charAt(0)=='A')
+            model.addAttribute("additionalLetters", 0);
+        else if(level.charAt(0)=='B')
+            model.addAttribute("additionalLetters", 2);
+        else if(level.charAt(0)=='C')
+            model.addAttribute("additionalLetters", 3);
 
         model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
         return "nauka3";
@@ -415,6 +423,8 @@ public class WebController {
         else
         {
             //rozsypanka
+
+            model.addAttribute("additionalLetters", 2);
             model.addAttribute("words", currentGame.getWordsFromGame().toArray());
             return "rivalGame1";
         }

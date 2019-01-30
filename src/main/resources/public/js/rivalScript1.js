@@ -7,6 +7,7 @@ var wordENG = "";
 var letterID = 1;
 var correct = 0;
 var incorrect = 0;
+var additionalLetters = 0;
 
 function randLetter() {
     var char;
@@ -49,7 +50,7 @@ function reset(){
     }
     l = document.getElementsByClassName("letter");
     for(var i=0; i<l.length; i++){
-        l[i].innerHTML = "-";
+        l[i].innerHTML = "_";
     }
 }
 function printScore(){
@@ -108,23 +109,36 @@ function removeLetters(){
 function loadLetters() {
     var letters = shuffle(wordENG.split(""));
     for (var i = 0; i < letters.length; i++) (function f(i) {
-        var letter = document.createElement("button");
+
         var blank = document.createElement("div");
         blank.className = "letter";
-        blank.innerText = "-";
+        blank.innerText = "_";
+
+
+        //console.log(letters[i]);
+
+        document.getElementById("ENG").appendChild(blank);
+
+    })(i);
+    for(var i=0; i<additionalLetters; i++) {
+        letters.push(randLetter());
+    }
+    shuffle(letters);
+    for (var i = 0; i < letters.length; i++) (function f(i) {
+        var letter = document.createElement("button");
         letter.innerText = letters[i];
         letter.className = "letterButton";
-        //console.log(letters[i]);
         letter.onclick = function () {
-            letter.style.visibility = "hidden";
-            document.getElementById("ENG").childNodes[letterID].innerHTML = letters[i];
-            letterID++;
-            if(letterID==letters.length+1){
-                document.getElementById("check").style.visibility = "visible";
+            if(letterID<letters.length+1-additionalLetters) {
+                letter.style.visibility = "hidden";
+                document.getElementById("ENG").childNodes[letterID].innerHTML = letters[i];
+                letterID++;
+                if (letterID == letters.length + 1 - additionalLetters) {
+                    document.getElementById("check").style.visibility = "visible";
+                }
+                //document.getElementById("wordENG").innerText += letters[i];
             }
-            //document.getElementById("wordENG").innerText += letters[i];
         };
-        document.getElementById("ENG").appendChild(blank);
         document.getElementById("lettersContainer").appendChild(letter);
     })(i);
 }
