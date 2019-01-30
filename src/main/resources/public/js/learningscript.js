@@ -135,9 +135,9 @@ function stats(){
     document.getElementById("stat").style.display="none";
     if(correct>=0.9*all) {
         var url = new URL(document.URL);
-        var lessonNumber = url.searchParams.get("lesson")[0];
+        var lessonNumber = url.searchParams.get("lesson");
         var data = {lesson: lessonNumber, stage: 3};
-        $.post("/nauka4", data, function(){});
+        $.post("/nauka2", data, function(){});
         document.getElementById("nextStage").style.display = "inline";
     }
     else
@@ -159,6 +159,9 @@ function nextStage() {
 function repeat(){
     window.location.reload();
 }
-function returnToMain(){
-    window.location.replace("/indexClient");
+function returnToMenu() {
+
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/lessonMenu?lesson="+lessonNumber);
 }
