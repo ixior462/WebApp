@@ -91,8 +91,10 @@ function stats(){
         document.getElementById("return").style.display = "inline";
     }
 }
-function returnToMain() {
-    window.location.replace("/indexClient");
+function returnToMenu() {
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/lessonMenu?lesson="+lessonNumber);
 }
 function repeat(){
     var url = new URL(document.URL);

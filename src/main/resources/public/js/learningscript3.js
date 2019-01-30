@@ -157,6 +157,9 @@ function nextStage() {
     var lessonNumber = url.searchParams.get("lesson");
     window.location.replace("/nauka4?lesson="+lessonNumber);
 }
-function returnToMain() {
-    window.location.replace("/indexClient");
+function returnToMenu() {
+
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/lessonMenu?lesson="+lessonNumber);
 }

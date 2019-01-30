@@ -8,13 +8,16 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/learningscript.js"></script>
     <script th:inline="javascript">
-
+        /*<![CDATA[*/
+        lessonLevel = [[${leveloflesson}]];
+        /*]]>*/
         /*<![CDATA[*/
         data = [[${level}]];
         /*]]>*/
         /*<![CDATA[*/
         words = /*[[${words}]]*/[];
         /*]]>*/
+
 
     </script>
     <link rel="stylesheet" href="css/learningstyle.css">
@@ -60,7 +63,7 @@
 <button type="button" class="btn" id="nextStage" onclick="nextStage()">Następny etap</button>
 <button type="button" class="btn" id="repeat" onclick="repeat()">Spróbuj jeszcze raz</button>
     <div id ="main">
-<button type="button" class="btn" id="return" onclick="returnToMain()">Powrót na stronę główną</button>
+<button type="button" class="btn" id="return" onclick="returnToMenu()">Powrót</button>
     </div>
 </div>
 <div id="stats">

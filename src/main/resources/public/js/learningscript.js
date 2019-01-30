@@ -1,15 +1,16 @@
 var bad=0;
 var all=0;
 var data=0;
+var lessonLevel=0;
 var words=[];
 var n;
 function initializeN(){
-    if (data == 1) {
+    if (lessonLevel == "A1"||lessonLevel=="A2") {
         n = 4;
-    } else if (data == 2) {
+    } else if (lessonLevel == "B1"||lessonLevel=="B2") {
         n = 6;
 
-    } else
+    } else if(lessonLevel=="C1"||lessonLevel=="C2")
         n = 8;
 
 }
@@ -17,7 +18,7 @@ $( function() {
     var parent = document.getElementById("pl");
     var parent2 = document.getElementById("eng");
     var parent3 = document.getElementById("checksymb");
-    if(data==1) {
+    if(lessonLevel=="A1"||lessonLevel=="A2") {
         document.getElementById("container").style.marginTop="10%";
         for(i=5;i<=8;i++){
             parent.removeChild(document.getElementById("wordpl-"+i));
@@ -25,7 +26,7 @@ $( function() {
             parent3.removeChild(document.getElementById("check-"+i));
         }
     }
-    if(data==2) {
+    if(lessonLevel=="B1"||lessonLevel=="B2") {
         document.getElementById("container").style.marginTop="5%";
         for(i=7;i<=8;i++){
             parent.removeChild(document.getElementById("wordpl-"+i));
@@ -33,7 +34,7 @@ $( function() {
             parent3.removeChild(document.getElementById("check-"+i));
         }
     }
-    if(data==3){
+    if(lessonLevel=="C1"||lessonLevel=="C2"){
         document.getElementById("container").style.marginTop="3%";
     }
     var ul = document.querySelector('ul');
@@ -134,9 +135,9 @@ function stats(){
     document.getElementById("stat").style.display="none";
     if(correct>=0.9*all) {
         var url = new URL(document.URL);
-        var lessonNumber = url.searchParams.get("lesson")[0];
+        var lessonNumber = url.searchParams.get("lesson");
         var data = {lesson: lessonNumber, stage: 3};
-        $.post("/nauka4", data, function(){});
+        $.post("/nauka2", data, function(){});
         document.getElementById("nextStage").style.display = "inline";
     }
     else
@@ -158,6 +159,9 @@ function nextStage() {
 function repeat(){
     window.location.reload();
 }
-function returnToMain(){
-    window.location.replace("/indexClient");
+function returnToMenu() {
+
+    var url = new URL(document.URL);
+    var lessonNumber = url.searchParams.get("lesson");
+    window.location.replace("/lessonMenu?lesson="+lessonNumber);
 }
