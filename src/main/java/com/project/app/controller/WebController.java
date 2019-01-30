@@ -618,7 +618,10 @@ public class WebController {
         Client pl1 = parser.getClient(player1);
         Client pl2 = parser.getClient(player2);
 
-        model.addAttribute("message", message);
+        String[] m = message.split("-");
+        model.addAttribute("message1", m[0]);
+        model.addAttribute("message2", m[1]);
+
         model.addAttribute("player1", player1);
         model.addAttribute("player2", player2);
         model.addAttribute("player1points", player1points);
