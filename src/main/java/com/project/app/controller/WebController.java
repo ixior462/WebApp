@@ -188,20 +188,8 @@ public class WebController {
     public void setLessonAndStage1(WebRequest request, HttpSession session) {
         setLessonAndStage(request, session);
     }
-    @RequestMapping(value = "/naukav2")
-    public String showLearningPagev2(@RequestParam(value = "lesson") int lesson ,Model model) {
-        DictionaryAccessor dict = new DictionaryAccessor();
 
-        model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
-        return "naukav2";
-    }
-    @RequestMapping(value = "/menu2")
-    public String showLearningMenu(@RequestParam(value = "lesson") int lesson ,Model model) {
-        DictionaryAccessor dict = new DictionaryAccessor();
 
-        model.addAttribute("words", dict.getWordsFromLesson(lesson).toArray());
-        return "menu2";
-    }
     @RequestMapping(value = "/rivalGame1")
     public String showRival(Model model){
         DictionaryAccessor dict = new DictionaryAccessor();
