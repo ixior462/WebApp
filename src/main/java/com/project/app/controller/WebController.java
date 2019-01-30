@@ -185,6 +185,7 @@ public class WebController {
         DictionaryAccessor dict = new DictionaryAccessor();
         model.addAttribute("words", dict.getWordsFromLesson(lesson.get(0)).toArray());
         model.addAttribute("level",lesson.get(1));
+        model.addAttribute("leveloflesson", dict.getLevelOfLesson(lesson.get(0)));
         return "nauka2";
     }
     @PostMapping(value = "/nauka2")
