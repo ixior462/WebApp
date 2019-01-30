@@ -50,7 +50,7 @@ public class UserData {
     }
     /**
      * Method that sets client's email
-     * @param new email value
+     * @param email value
      * @author Weronika Pawlak
      */
     public void setEmail(String email) {
@@ -58,7 +58,7 @@ public class UserData {
     }
     /**
      * Method that sets client's matching password
-     * @param new matching password value
+     * @param matchingPassword value
      * @author Weronika Pawlak
      */
     public void setMatchingPassword(String matchingPassword) {
@@ -67,7 +67,7 @@ public class UserData {
     }
     /**
      * Method that sets client's password
-     * @param new password value
+     * @param password value
      * @author Weronika Pawlak
      */
     public void setPassword(String password) {
@@ -75,7 +75,7 @@ public class UserData {
     }
     /**
      * Method that sets client's username
-     * @param new username value
+     * @param userName value
      * @author Weronika Pawlak
      */
     public void setUserName(String userName) {
