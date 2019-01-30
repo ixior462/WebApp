@@ -3,9 +3,11 @@
 <head>
     <meta name="description" content="System umożliwi efektywne przyswajanie wiedzy poprzez różnorodne sposoby nauczania.">
     <meta name="keywords" content="angielski, słówka, nauka, poziom, online, słownictwo">
+    <meta name="author" content="Weronika Jasiak">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Results</title>
+    <meta http-equiv="refresh" content="1">
+    <title>FishKey</title>
     <link rel="stylesheet" href="../public/css/reset.css" th:href="@{css/reset.css}">
     <link rel="stylesheet" href="../public/css/styleIndex.css" th:href="@{css/styleIndex.css}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" th:href="@{https://use.fontawesome.com/releases/v5.5.0/css/all.css}">
@@ -31,40 +33,11 @@
         </ul>
     </nav>
 </header>
-<div id="result">
-    <table id="table">
-        <tr>
-            <td th:text="${player1}"></td>
-            <td th:text="${player2}"></td>
-        </tr>
-        <tr>
-            <td th:text="${player1points}"></td>
-            <td th:text="${player2points}"></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="zombie">Z</td>
-        </tr>
-        <tr>
-            <td colspan="2">Zwycięzca</td>
-        </tr>
-        <tr>
-            <td th:text="${winner}" colspan="2"></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="zombie">Z</td>
-        </tr>
-        <tr>
-            <td th:text="${message}" colspan="2"></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="zombie">Z</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button href="/indexClient" id="back">Powrót</button>
-            </td>
-        </tr>
-    </table>
-</div>
+<section id="waiting">
+    <div id="waitingDots">
+        <p>Wysyłanie wiadomości<i class="fa fa-refresh fa-spin"></i></p>
+    </div>
+</section>
 </body>
 </html>
+

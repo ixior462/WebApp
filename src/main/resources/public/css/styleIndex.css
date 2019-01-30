@@ -500,6 +500,7 @@ object {
 }
 
 /***************************************** WAITING *******************************************/
+
 #waiting {
     margin: 0 auto;
     display: flex;
@@ -519,6 +520,46 @@ object {
     margin: 30px 0 0 80px;
     border: none;
     color: #ffffff;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/***************************************** RESULT *******************************************/
+
+#result {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    resize: both;
+    overflow: auto;
+    height: 84.4%;
+}
+
+#table {
+    table-layout: fixed;
+}
+
+#table, th, td {
+    text-align: center;
+    font-size: 20px;
+    empty-cells: show;
+}
+
+#table td {
+    width: 50%;
+}
+
+.zombie {
+    color: #ffffff;
+}
+
+#back {
+    background-color: #d00c27;
+    border: none;
+    color: #f9f8f6;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;

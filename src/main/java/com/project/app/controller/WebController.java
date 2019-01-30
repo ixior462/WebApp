@@ -101,7 +101,10 @@ public class WebController {
         System.out.println(request.getParameter("topic"));
         return "redirect:index";
     }
-
+    @RequestMapping(value = "/load")
+    public String showLoadPage(){
+        return "load";
+    }
     @PostMapping(value = "/contactClient")
     public String showContactClientPagePost(WebRequest request){
         String topic = request.getParameter("topic");
@@ -113,10 +116,6 @@ public class WebController {
 
         System.out.println(request.getParameter("topic"));
         return "redirect:indexClient";
-    }
-    @RequestMapping(value = "/menu")
-    public String showMenuPage(){
-        return "menu";
     }
     @RequestMapping(value = "/indexClient")
     public String showClientMainPage(HttpSession session, Model model){
