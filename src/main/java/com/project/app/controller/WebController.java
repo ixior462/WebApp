@@ -81,6 +81,11 @@ public class WebController {
     public String showContactPage(){
         return "contact";
     }
+    @PostMapping(value = "/contact")
+    public String showContactPagePost(WebRequest request){
+        System.out.println(request.getParameter("topic"));
+        return "contact";
+    }
     @RequestMapping(value = "/menu")
     public String showMenuPage(){
         return "menu";
