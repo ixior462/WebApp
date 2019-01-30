@@ -11,6 +11,125 @@
         #pointsForm{
             display: none;
         }
+        .pl{
+            width: 20%;
+            margin-top: 0;
+            float:left;
+            margin-left: 25%;
+
+
+
+        }
+
+        .eng{
+            width: 100%;
+            height:100%;
+            margin-top: 0;
+            margin-left: 0;
+        }
+        #englis{
+            float:left;
+            width:20%;
+
+        }
+        .eng li{
+            width:52.5%;
+            min-width:50px;
+            height: 2.24em;
+            line-height: 2.24em;
+            margin-bottom: 2%;
+            background-image: linear-gradient(#f9f8f6,#d2d1cf);
+            color: #191919;
+            border: 2px solid #d00c27;
+            border-radius: 3px;
+            padding: 2%;
+            font-size:calc(8px + 0.7vw);
+            text-align: center;
+            list-style-type: none;
+
+        }
+
+
+        #wordpl-1, #wordpl-2, #wordpl-3,#wordpl-4,#wordpl-5, #wordpl-6, #wordpl-7,#wordpl-8{
+            width:52.5%;
+            min-width:50px;
+            height: 2.24em;
+            line-height: 2.24em;
+            margin-bottom: 2%;
+            margin-left: 50%;
+            background-image: linear-gradient(#f9f8f6,#d2d1cf);
+            color: #191919;
+            border: 2px solid #d00c27;
+            border-radius: 3px;
+            padding: 2%;
+            font-size:calc(8px + 0.7vw);
+            text-align: center;
+
+        }
+        #repeat{
+            display:none;
+        }
+
+        .btn{
+            width:20%;
+            min-width: 80px;
+            padding-top:5px;
+            padding-bottom:5px;
+            border-radius:3px;
+            height:20%;
+            margin-bottom:2%;
+            text-align: center;
+            font-size:calc(8px + 0.7vw);
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            background-color: #f2f2f2;
+            color: #191919;
+        }
+        #stat{
+            display: none;
+        }
+        #stats{
+            display: none;
+            float:left;
+            margin-top:0;
+            margin-left:46%;
+            margin-right:0;
+        }
+        #bad{
+            font-size:calc(8px + 0.7vw);
+        }
+        #corr{
+            font-size:calc(8px + 0.7vw);
+        }
+        #next{
+            display: none;
+        }
+
+        #buttons{
+            clear: both;
+            margin-left: 42%;
+        }
+        #checksymb{
+            float:left;
+            min-width: 60px;
+        }
+        #check-1,#check-2,#check-3,#check-4,#check-5,#check-6,#check-7,#check-8{
+            height: 3.6em;
+            line-height: 3.6em;
+            margin-bottom: 2%;
+            font-size:calc(6px + 0.7vw); ;
+            padding-left: 80%;
+        }
+        #nextStage{
+            display: none;
+        }
+        #return{
+            clear: both;
+            display: none;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
     <script th:inline="javascript">
 
@@ -19,7 +138,6 @@
         /*]]>*/
 
     </script>
-    <link rel="stylesheet" href="css/learningstyle.css">
 </head>
 <body onload="initializeN()">
 <div class="pl" id="pl" th:object = "${words}">
